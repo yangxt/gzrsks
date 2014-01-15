@@ -14,8 +14,10 @@
 #import "NewsContentVC.h"
 #import "MessageBox.h"
 #import "UMSocial.h"
+#import "FavoriteNewsVC.h"
 
 extern NSString  *const UMAppKey;
+extern NSString  *const kNewsCacheKey;
 extern NSString  *const kNetAPIErorDomain;
 extern NSString  *const kNetAPIErrorDesc;
 extern NSInteger const kNetAPIErrorCode;
@@ -25,6 +27,8 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
 
 @interface NewsGroupListVC()
 @property (weak, nonatomic) IBOutlet UITableView *newsGroupListView;
+@property (weak, nonatomic) IBOutlet UITableView *myFavoriteNewsTableView;
+
 @end
 
 @implementation NewsGroupListVC
@@ -44,15 +48,15 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
     [self->_themeButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     [self->_themeButton addTarget:self action:@selector(changeTheme) forControlEvents:UIControlEventTouchUpInside];
     
-    self->_favoriteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self->_favoriteButton setFrame:CGRectMake(0, 0, 44, 44)];
-    [self->_favoriteButton setTitle:@"私货" forState:UIControlStateNormal];
-    [self->_favoriteButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self->_favoriteButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-    [self->_favoriteButton addTarget:self action:@selector(myFavoriteNews) forControlEvents:UIControlEventTouchUpInside];
+    self->_shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self->_shareButton setFrame:CGRectMake(0, 0, 44, 44)];
+    [self->_shareButton setTitle:@"分享" forState:UIControlStateNormal];
+    [self->_shareButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self->_shareButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+    [self->_shareButton addTarget:self action:@selector(shareThisAppToFriends) forControlEvents:UIControlEventTouchUpInside];
     
-    NSArray *leftItems = @[[[UIBarButtonItem alloc] initWithCustomView:self->_favoriteButton],
-                           [[UIBarButtonItem alloc] initWithCustomView:self->_themeButton]];
+    NSArray *leftItems = @[[[UIBarButtonItem alloc] initWithCustomView:self->_themeButton],
+                           [[UIBarButtonItem alloc] initWithCustomView:self->_shareButton]];
     [self.navigationItem setLeftBarButtonItems:leftItems];
     
     
@@ -64,18 +68,18 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
     [self->_refreshButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
     [self->_refreshButton addTarget:self action:@selector(refreshNewsList) forControlEvents:UIControlEventTouchUpInside];
     
-    self->_shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self->_shareButton setFrame:CGRectMake(0, 0, 44, 44)];
-    [self->_shareButton setTitle:@"分享" forState:UIControlStateNormal];
-    [self->_shareButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self->_shareButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-    [self->_shareButton addTarget:self action:@selector(shareThisAppToFriends) forControlEvents:UIControlEventTouchUpInside];
+    self->_favoriteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self->_favoriteButton setFrame:CGRectMake(0, 0, 44, 44)];
+    [self->_favoriteButton setTitle:@"私货" forState:UIControlStateNormal];
+    [self->_favoriteButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self->_favoriteButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+    [self->_favoriteButton addTarget:self action:@selector(myFavoriteNews) forControlEvents:UIControlEventTouchUpInside];
     
     self->_refreshActivityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     self->_refreshActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
     self->_refreshActivityIndicator.hidesWhenStopped = YES;
 
-    NSArray *rightItems = @[[[UIBarButtonItem alloc] initWithCustomView:self->_shareButton],
+    NSArray *rightItems = @[[[UIBarButtonItem alloc] initWithCustomView:self->_favoriteButton],
                             [[UIBarButtonItem alloc] initWithCustomView:self->_refreshButton],
                             [[UIBarButtonItem alloc] initWithCustomView:self->_refreshActivityIndicator]];
     [self.navigationItem setRightBarButtonItems:rightItems];
@@ -177,13 +181,18 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
 #pragma mark - 收藏,分享
 - (void)myFavoriteNews
 {
-    
+    FavoriteNewsVC *vc = [[FavoriteNewsVC alloc] initWithNibName:@"FavoriteNewsVC" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)shareThisAppToFriends
 {
-    NSArray *snsNames = @[UMShareToQQ,UMShareToQzone,UMShareToWechatTimeline,UMShareToWechatSession,UMShareToSina,UMShareToTencent,UMShareToSms,UMShareToEmail];
+#if !(TARGET_IPHONE_SIMULATOR)
+    
+    NSArray *snsNames = @[UMShareToQzone,UMShareToSina,UMShareToTencent,UMShareToSms,UMShareToEmail,UMShareToRenren,UMShareToDouban];
     [UMSocialSnsService presentSnsIconSheetView:self appKey:UMAppKey shareText:@"s" shareImage:nil shareToSnsNames:snsNames delegate:nil];
+    
+#endif
 }
 
 #pragma mark - 调节屏幕亮度
@@ -204,6 +213,7 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+
     NewsGroup *newsGroup = [[NewsProvider sharedInstance] getNewsGroupByIndex:section];
     return newsGroup.count;
 }
@@ -242,7 +252,7 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return kNewsGroupTableViewHeaderViewHeight;
+    return  kNewsGroupTableViewHeaderViewHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

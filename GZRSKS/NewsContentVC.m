@@ -9,6 +9,9 @@
 #import "NewsContentVC.h"
 #import "News.h"
 #import "MessageBox.h"
+#import "TMCache.h"
+
+NSString *const kNewsCacheKey = @"NewsCacheKey";
 
 extern NSString  *const kNetAPIErorDomain;
 extern NSInteger const kNetAPIErrorCode;
@@ -34,6 +37,7 @@ extern NSString  *const kNetAPIErrorDesc;
 {
     [super viewDidLoad];
   
+    // 导航栏右边按钮
     self->_refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self->_refreshButton setFrame:CGRectMake(0, 0, 44, 44)];
     [self->_refreshButton setTitle:@"刷新" forState:UIControlStateNormal];
@@ -43,10 +47,11 @@ extern NSString  *const kNetAPIErrorDesc;
     
     self->_favoriteButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self->_favoriteButton setFrame:CGRectMake(0, 0, 44, 44)];
+    [self->_favoriteButton setEnabled:NO];
     [self->_favoriteButton setTitle:@"收藏" forState:UIControlStateNormal];
     [self->_favoriteButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self->_favoriteButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-    [self->_refreshButton addTarget:self action:@selector(addThisNewsToMyFavorite) forControlEvents:UIControlEventTouchUpInside];
+    [self->_favoriteButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+    [self->_favoriteButton addTarget:self action:@selector(addThisNewsToMyFavorite) forControlEvents:UIControlEventTouchUpInside];
     
     self->_refreshActivityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     self->_refreshActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
@@ -65,6 +70,7 @@ extern NSString  *const kNetAPIErrorDesc;
     [self refreshNewsContent];
 }
 
+// 获取新闻内容
 - (void)refreshNewsContent
 {
     [self->_refreshButton setEnabled:NO];
@@ -72,17 +78,20 @@ extern NSString  *const kNetAPIErrorDesc;
     
     if(self.news.content)
     {
+        [self->_favoriteButton setEnabled:YES];
         [self.webView loadHTMLString:self.news.content baseURL:nil];
         return;
     }
     
     [[NewsProvider sharedInstance] fetchNewsContentWithURL:self.news.contentUrl onCompleted:^(NSString *content) {
+        
+        [self->_favoriteButton setEnabled:YES];
         [self.news setContent:content];
         [self->_refreshButton setEnabled:YES];
         [self.webView loadHTMLString:content baseURL:nil];
         
     } onFail:^(NSError *error) {
-        [self->_refreshButton setHidden:NO];
+        [self->_refreshButton setEnabled:NO];
         [self->_refreshActivityIndicator stopAnimating];
         
         NSString *desc = @"网络链接断开或过慢";
@@ -94,9 +103,19 @@ extern NSString  *const kNetAPIErrorDesc;
     }];
 }
 
+// 收藏
 - (void)addThisNewsToMyFavorite
 {
-    
+   [[TMCache sharedCache] objectForKey:kNewsCacheKey block:^(TMCache *cache, NSString *key, id object) {
+       NSDictionary *dict = object;
+       if(!dict)
+           dict = [NSMutableDictionary new];
+       [dict setValue:self.news forKey:self.news.contentUrl.absoluteString];
+       
+       [[TMCache sharedCache] setObject:dict forKey:kNewsCacheKey block:^(TMCache *cache, NSString *key, id object) {
+           NSLog(@"收藏成功");
+       }];
+    }];
 }
 
 #pragma mark - UIWebView Delegate

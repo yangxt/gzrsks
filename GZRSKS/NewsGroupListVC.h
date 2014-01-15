@@ -8,9 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum {
+    NewsTypeRealtime,
+    NewsTypeFavorite
+}NewsType;
+
 @interface NewsGroupListVC : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
     @private
+    NewsType _newsType;
     UIButton *_loadMoreButton;
     UIButton *_refreshButton;
     UIButton *_favoriteButton;
@@ -19,5 +25,6 @@
     UIActivityIndicatorView *_loadMoreActivityIndicator;
     UIActivityIndicatorView *_refreshActivityIndicator;
     NSURLSessionTask *_fetchNewsTask;
+    NSArray *_favortesNews;
 }
 @end
