@@ -158,7 +158,6 @@ extern NSString  *const kAppDownloadAddress;
     DocType type = [DocTypeDetector dectectWithURL:request.URL];
     switch(type)
     {
-        case DocTypeHTML:
         case DocTypeDoc:
         case DocTypeXls:
         case DocTypeTxt:
@@ -169,12 +168,13 @@ extern NSString  *const kAppDownloadAddress;
             [self->_refreshActivityIndicator stopAnimating];
             return NO;
         }
-            
+         
+        case DocTypeHTML:  // 不允许打开网站，是因为网页含有多少个链接，会导致递归操作，导致程序崩溃.
         case DocTypePPT:
         case DocTypeZip:
         {
             NSString *dtName = [DocTypeDetector docTypeName:type];
-            NSString *msg = [NSString stringWithFormat:@"不能打开%@! 可外发到邮箱、微博、QQ空间等,稍候在电脑上打开.",dtName];
+            NSString *msg = [NSString stringWithFormat:@"不允许打开%@! 可外发到邮箱、微博、QQ空间等,稍候在电脑上打开.",dtName];
             [MessageBox showWithMessage:msg buttonTitle:@"外发" handler:^{
             
                 NSString *msg = [NSString stringWithFormat:@"来自 %@ 的附件: %@",kAppDownloadAddress,request.URL.absoluteString];
@@ -187,7 +187,7 @@ extern NSString  *const kAppDownloadAddress;
             return NO;
         }
             
-        case DocTypeUnkonw:
+        case DocTypeNewsContent:
             return YES;
     }
     

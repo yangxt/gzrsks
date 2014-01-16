@@ -13,7 +13,8 @@
 + (DocType)dectectWithURL:(NSURL *)url
 {
     NSString *eName = [[url pathExtension] lowercaseString];
-    
+    NSString *schmem = [[url scheme] lowercaseString];
+    NSLog(@"%@",schmem);
     if([eName isEqualToString:@"doc"] || [eName isEqualToString:@"docx"])
         return DocTypeDoc;
     
@@ -29,11 +30,11 @@
     if([eName isEqualToString:@"txt"] || [eName isEqualToString:@"rtf"])
         return DocTypeTxt;
     
-    if([eName isEqualToString:@"http"] || [eName isEqualToString:@"shtml"] || [eName isEqualToString:@"html"] ||
+    if([schmem isEqualToString:@"http"] || [eName isEqualToString:@"shtml"] || [eName isEqualToString:@"html"] ||
        [eName isEqualToString:@"aspx"] || [eName isEqualToString:@"jsp"]   || [eName isEqualToString:@"php"])
         return DocTypeHTML;
     
-    return DocTypeUnkonw;
+    return DocTypeNewsContent;
 
 }
 
@@ -52,9 +53,9 @@
         case DocTypeZip:
             return @"压缩文件";
         case DocTypeHTML:
-            return @"网站";
-        case DocTypeUnkonw:
-            return @"未知类型文件";
+            return @"外部网站";
+        case DocTypeNewsContent:
+            return @"人事考试信息";
     }
     return @"未知类型文件";
 }

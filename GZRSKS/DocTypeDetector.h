@@ -15,7 +15,7 @@ typedef enum {
     DocTypePPT,
     DocTypeTxt,
     DocTypeZip,
-    DocTypeUnkonw
+    DocTypeNewsContent
 }DocType;
 
 @interface DocTypeDetector : NSObject

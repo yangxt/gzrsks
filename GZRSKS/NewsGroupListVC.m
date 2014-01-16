@@ -84,7 +84,6 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
                             [[UIBarButtonItem alloc] initWithCustomView:self->_refreshActivityIndicator]];
     [self.navigationItem setRightBarButtonItems:rightItems];
     
-    
     // 载入更多UI
     self->_loadMoreButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self->_loadMoreButton.frame = CGRectMake(0, 0, 320, 50);
