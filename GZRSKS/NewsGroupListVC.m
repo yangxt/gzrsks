@@ -138,7 +138,8 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
         
         [self.newsGroupListView reloadData];
         [self.newsGroupListView.tableFooterView setHidden:NO];
-        [self.newsGroupListView setContentOffset:CGPointZero animated:YES];
+        // 参考:http://stackoverflow.com/questions/9450302/tell-uiscrollview-to-scroll-to-the-top
+        [self.newsGroupListView setContentOffset:CGPointMake(0, -self.newsGroupListView.contentInset.top) animated:YES];
         [self->_refreshActivityIndicator stopAnimating];
         [self->_refreshButton setEnabled:YES];
 
