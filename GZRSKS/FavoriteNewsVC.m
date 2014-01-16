@@ -40,7 +40,7 @@ static NSString *const kFavoriteCellReuseId = @"FavoriteCellReuseId";
     UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [clearButton setFrame:CGRectMake(0, 0, 44, 44)];
     [clearButton setTitle:@"清除" forState:UIControlStateNormal];
-    [clearButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [clearButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [clearButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
     [clearButton addTarget:self action:@selector(deleteAllFavoriteNews) forControlEvents:UIControlEventTouchUpInside];
     
@@ -70,7 +70,9 @@ static NSString *const kFavoriteCellReuseId = @"FavoriteCellReuseId";
 - (void)deleteAllFavoriteNews
 {
     [MessageBox showWithMessage:@"你确定要这么干?" buttonTitle:@"确定" handler:^{
+        
         [[TMCache sharedCache] removeAllObjects:^(TMCache *cache) {
+            
             dispatch_sync(dispatch_get_main_queue(), ^{
                 [self.navigationItem.rightBarButtonItem.customView setHidden:YES];
                 self->_favoriteNewsArray = [NSArray new];

@@ -43,6 +43,7 @@ extern NSString  *const kNetAPIErrorDesc;
     [self->_favoriteButton setTitle:@"收藏" forState:UIControlStateNormal];
     [self->_favoriteButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self->_favoriteButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+    [self->_favoriteButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
     [self->_favoriteButton addTarget:self action:@selector(favoriteNewsOperation) forControlEvents:UIControlEventTouchUpInside];
     
     self->_refreshActivityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
@@ -142,12 +143,10 @@ extern NSString  *const kNetAPIErrorDesc;
 - (BOOL)theNewsIsFavorited:(News *)news
 {
     NSArray *array = [[TMCache sharedCache] objectForKey:kNewsCacheKey];
-    for(News *n in array){
-        if([n.contentUrl.absoluteString isEqualToString:news.contentUrl.absoluteString]){
+    for(News *n in array)
+        if([n.contentUrl.absoluteString isEqualToString:news.contentUrl.absoluteString])
             return YES;
-        }
-    }
-    
+
     return NO;
 }
 
