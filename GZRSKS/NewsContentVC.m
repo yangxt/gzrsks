@@ -10,12 +10,18 @@
 #import "News.h"
 #import "MessageBox.h"
 #import "TMCache.h"
+#import "DocTypeDetector.h"
+#import "DocViewerVC.h"
+#import "UMSocial.h"
+
+extern NSString *const UMAppKey;
 
 NSString *const kNewsCacheKey = @"NewsCacheKey";
 
 extern NSString  *const kNetAPIErorDomain;
 extern NSInteger const kNetAPIErrorCode;
 extern NSString  *const kNetAPIErrorDesc;
+extern NSString  *const kAppDownloadAddress;
 
 @interface NewsContentVC ()<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
@@ -55,13 +61,8 @@ extern NSString  *const kNetAPIErrorDesc;
     self.navigationItem.rightBarButtonItems = rightItems;
     
     [self->_favoriteButton setEnabled:NO];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
     [self refreshNewsContent];
+
 }
 
 // 获取新闻内容
@@ -151,6 +152,47 @@ extern NSString  *const kNetAPIErrorDesc;
 }
 
 #pragma mark - UIWebView Delegate
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    DocType type = [DocTypeDetector dectectWithURL:request.URL];
+    switch(type)
+    {
+        case DocTypeHTML:
+        case DocTypeDoc:
+        case DocTypeXls:
+        case DocTypeTxt:
+        {
+            DocViewerVC *vc = [[DocViewerVC alloc] initWithDocType:type docURL:request.URL];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+            [self->_refreshActivityIndicator stopAnimating];
+            return NO;
+        }
+            
+        case DocTypePPT:
+        case DocTypeZip:
+        {
+            NSString *dtName = [DocTypeDetector docTypeName:type];
+            NSString *msg = [NSString stringWithFormat:@"不能打开%@! 可外发到邮箱、微博、QQ空间等,稍候在电脑上打开.",dtName];
+            [MessageBox showWithMessage:msg buttonTitle:@"外发" handler:^{
+            
+                NSString *msg = [NSString stringWithFormat:@"来自 %@ 的附件: %@",kAppDownloadAddress,request.URL.absoluteString];
+                NSArray *snsNames = @[UMShareToQzone,UMShareToSina,UMShareToTencent,UMShareToSms,UMShareToEmail,UMShareToRenren,UMShareToDouban];
+                [UMSocialSnsService presentSnsIconSheetView:self appKey:UMAppKey shareText:msg shareImage:nil shareToSnsNames:snsNames delegate:nil];
+                
+            }];
+            
+            [self->_refreshActivityIndicator stopAnimating];
+            return NO;
+        }
+            
+        case DocTypeUnkonw:
+            return YES;
+    }
+    
+    return YES;
+}
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {

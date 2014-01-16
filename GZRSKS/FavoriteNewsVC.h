@@ -11,6 +11,7 @@
 @interface FavoriteNewsVC : UIViewController
 {
     @private
+    UIButton *_clearButton;
     NSArray *_favoriteNewsArray;
 }
 @end

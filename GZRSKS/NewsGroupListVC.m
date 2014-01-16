@@ -21,6 +21,8 @@ extern NSString  *const kNetAPIErorDomain;
 extern NSString  *const kNetAPIErrorDesc;
 extern NSInteger const kNetAPIErrorCode;
 
+NSString *const kAppDownloadAddress = @"https://itunes.apple.com/cn/app/gui-zhou-ren-shi-kao-shi/id622339104?mt=8";
+
 static const CGFloat kNewsGroupTableViewHeaderViewHeight = 35.0;
 static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseableIdentifier";
 
@@ -136,7 +138,7 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
         
         [self.newsGroupListView reloadData];
         [self.newsGroupListView.tableFooterView setHidden:NO];
-        [self.newsGroupListView setContentOffset:CGPointMake(0, -60) animated:YES];
+        [self.newsGroupListView setContentOffset:CGPointZero animated:YES];
         [self->_refreshActivityIndicator stopAnimating];
         [self->_refreshButton setEnabled:YES];
 
@@ -187,8 +189,9 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
 {
 #if !(TARGET_IPHONE_SIMULATOR)
     
+    NSString *msg = [NSString stringWithFormat:@"考公务员、事业单位等[必备神器]，请用力猛搓:%@ ",kAppDownloadAddress];
     NSArray *snsNames = @[UMShareToQzone,UMShareToSina,UMShareToTencent,UMShareToSms,UMShareToEmail,UMShareToRenren,UMShareToDouban];
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:UMAppKey shareText:@"s" shareImage:nil shareToSnsNames:snsNames delegate:nil];
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:UMAppKey shareText:msg shareImage:nil shareToSnsNames:snsNames delegate:nil];
     
 #endif
 }
@@ -199,7 +202,7 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
     static BOOL isNight = NO;
     isNight = !isNight;
     [self->_themeButton setTitle:isNight?@"夜晚":@"白天" forState:UIControlStateNormal];
-    [[UIScreen mainScreen] setBrightness:isNight?0.05:0.8];
+    [[UIScreen mainScreen] setBrightness:isNight ? 0.15 : 0.8];
 }
 
 #pragma mark - UITableViewDataSource

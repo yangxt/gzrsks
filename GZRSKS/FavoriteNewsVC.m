@@ -37,14 +37,15 @@ static NSString *const kFavoriteCellReuseId = @"FavoriteCellReuseId";
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kFavoriteCellReuseId];
     
-    UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [clearButton setFrame:CGRectMake(0, 0, 44, 44)];
-    [clearButton setTitle:@"清除" forState:UIControlStateNormal];
-    [clearButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [clearButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
-    [clearButton addTarget:self action:@selector(deleteAllFavoriteNews) forControlEvents:UIControlEventTouchUpInside];
+    self->_clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self->_clearButton setFrame:CGRectMake(0, 0, 44, 44)];
+    [self->_clearButton setTitle:@"清除" forState:UIControlStateNormal];
+    [self->_clearButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self->_clearButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+    [self->_clearButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+    [self->_clearButton addTarget:self action:@selector(deleteAllFavoriteNews) forControlEvents:UIControlEventTouchUpInside];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:clearButton];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self->_clearButton];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -58,7 +59,7 @@ static NSString *const kFavoriteCellReuseId = @"FavoriteCellReuseId";
             if(self->_favoriteNewsArray == nil || self->_favoriteNewsArray.count == 0)
             {
                 self->_favoriteNewsArray = [NSMutableArray new];
-                [self.navigationItem.rightBarButtonItem.customView setHidden:YES];
+                [self->_clearButton setEnabled:NO];
             }
             
             [self.tableView reloadData];
@@ -74,7 +75,7 @@ static NSString *const kFavoriteCellReuseId = @"FavoriteCellReuseId";
         [[TMCache sharedCache] removeAllObjects:^(TMCache *cache) {
             
             dispatch_sync(dispatch_get_main_queue(), ^{
-                [self.navigationItem.rightBarButtonItem.customView setHidden:YES];
+                [self->_clearButton setEnabled:NO];
                 self->_favoriteNewsArray = [NSArray new];
                 [self.tableView reloadData];
             });

@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "DocTypeDetector.h"
 
 @interface GZRSKSTests : XCTestCase
 
@@ -28,7 +29,13 @@
 
 - (void)testExample
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    [DocTypeDetector dectectWithURL:[NSURL URLWithString:@"http://www.baidu.com/myDoc.XSL"]];
+    [DocTypeDetector dectectWithURL:[NSURL URLWithString:@"http://www.baidu.com/myDoc.Doc"]];
+    [DocTypeDetector dectectWithURL:[NSURL URLWithString:@"http://www.baidu.com/myDoc.Ppt"]];
+    [DocTypeDetector dectectWithURL:[NSURL URLWithString:@"http://www.baidu.com/myDoc.zip"]];
+    [DocTypeDetector dectectWithURL:[NSURL URLWithString:@"http://www.baidu.com/myDoc.rar"]];
+    [DocTypeDetector dectectWithURL:[NSURL URLWithString:@"http://www.baidu.com/myDoc.txt"]];
+    [DocTypeDetector dectectWithURL:[NSURL URLWithString:@"http://www.baidu.com/myDoc.."]];
 }
 
 @end
