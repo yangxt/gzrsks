@@ -13,6 +13,8 @@
 extern NSString *const UMAppKey;
 extern NSString *const kAppDownloadAddress;
 
+static NSString *const kFirstUseSendOutLinkFlag = @"FirstUseSendOutLinkFlag";
+
 @interface DocViewerVC ()<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @end
@@ -58,6 +60,14 @@ extern NSString *const kAppDownloadAddress;
 
 - (void)sendOutDocLink
 {
+    if([[NSUserDefaults standardUserDefaults] boolForKey:kFirstUseSendOutLinkFlag] == NO)
+    {
+        NSString *msg = @"什么是外发?\n外发是将附件地址分享到你选择的平台，方便之后你通过电脑下载，查看和编辑附件。" ;
+        [MessageBox showWithMessage:msg buttonTitle:@"不再提示" handler:^{
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kFirstUseSendOutLinkFlag];
+        }];
+    }
+    
 #if !(TARGET_IPHONE_SIMULATOR)
     
     NSString *msg = [NSString stringWithFormat:@"来自 %@ 的附件: %@",kAppDownloadAddress,self->_docURL.absoluteString];
