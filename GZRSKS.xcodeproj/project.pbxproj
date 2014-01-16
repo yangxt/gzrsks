@@ -118,7 +118,7 @@
 		697434CB18686DAC00A6A49A /* UIScreen+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+Size.m"; sourceTree = "<group>"; };
 		6980EFBD1866CCB4002AEFF6 /* NewsGroupListHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsGroupListHeaderView.h; sourceTree = "<group>"; };
 		6980EFBE1866CCB4002AEFF6 /* NewsGroupListHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsGroupListHeaderView.m; sourceTree = "<group>"; };
-		698B0F33186553AE0090C719 /* GZRSKS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GZRSKS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		698B0F33186553AE0090C719 /* 人事考试信息.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "人事考试信息.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		698B0F36186553AE0090C719 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		698B0F38186553AE0090C719 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		698B0F3A186553AE0090C719 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -307,7 +307,7 @@
 		698B0F34186553AE0090C719 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				698B0F33186553AE0090C719 /* GZRSKS.app */,
+				698B0F33186553AE0090C719 /* 人事考试信息.app */,
 				698B0F54186553AE0090C719 /* GZRSKSTests.xctest */,
 			);
 			name = Products;
@@ -462,7 +462,7 @@
 			);
 			name = GZRSKS;
 			productName = GZRSKS;
-			productReference = 698B0F33186553AE0090C719 /* GZRSKS.app */;
+			productReference = 698B0F33186553AE0090C719 /* 人事考试信息.app */;
 			productType = "com.apple.product-type.application";
 		};
 		698B0F53186553AE0090C719 /* GZRSKSTests */ = {
@@ -745,7 +745,7 @@
 					/Users/lt/IOS/gzrsks/GZRSKS/umeng_ios_social_sdk_3.3.2_custom/UMSocial_Sdk_3.3.2/frameworks/Wechat,
 					/Users/lt/IOS/gzrsks/GZRSKS/umeng_ios_social_sdk_3.3.2_custom/UMSocial_Sdk_3.3.2,
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "人事考试信息";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -768,7 +768,7 @@
 					/Users/lt/IOS/gzrsks/GZRSKS/umeng_ios_social_sdk_3.3.2_custom/UMSocial_Sdk_3.3.2/frameworks/Wechat,
 					/Users/lt/IOS/gzrsks/GZRSKS/umeng_ios_social_sdk_3.3.2_custom/UMSocial_Sdk_3.3.2,
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "人事考试信息";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

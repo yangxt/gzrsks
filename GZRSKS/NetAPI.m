@@ -19,7 +19,7 @@ NSString  *const kNetAPIErrorDesc = @"kNetAPIErrorDesc";
 
 
 #define MThread(func) \
-dispatch_async(dispatch_get_main_queue(), ^{\
+dispatch_sync(dispatch_get_main_queue(), ^{\
 func; \
 })
 
@@ -239,7 +239,7 @@ func; \
     [self->_dataSession dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if(error)
         {
-            errorBlock(error);
+            MThread(errorBlock(error));
             return;
         }
         
