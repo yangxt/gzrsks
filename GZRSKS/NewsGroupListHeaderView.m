@@ -32,7 +32,7 @@
 - (instancetype)initWithFrame:(CGRect)frame andNewsGroup:(NewsGroup *)newsGroup
 {
     if(self = [super initWithFrame:frame]){
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor colorWithWhite:0.962 alpha:1.0];
         self.layer.shadowColor = [UIColor colorWithWhite:0.83 alpha:1.0].CGColor;
         self.layer.shadowOffset = CGSizeMake(0, 3);
         self.layer.shadowOpacity = 0.7;

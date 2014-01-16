@@ -17,7 +17,6 @@
 #import "FavoriteNewsVC.h"
 
 extern NSString  *const UMAppKey;
-extern NSString  *const kNewsCacheKey;
 extern NSString  *const kNetAPIErorDomain;
 extern NSString  *const kNetAPIErrorDesc;
 extern NSInteger const kNetAPIErrorCode;
@@ -27,7 +26,6 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
 
 @interface NewsGroupListVC()
 @property (weak, nonatomic) IBOutlet UITableView *newsGroupListView;
-@property (weak, nonatomic) IBOutlet UITableView *myFavoriteNewsTableView;
 
 @end
 
@@ -149,7 +147,7 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
         NSString *desc = @"网络链接断开或过慢";
         if([error.domain isEqualToString:kNetAPIErorDomain])
             desc = @"很抱歉，出错啦。请告知我(QQ:410139419)必将尽快修复!";
-        [MessageBox showWithMessage:desc handler:^{
+        [MessageBox showWithMessage:desc buttonTitle:@"重试" handler:^{
             [self refreshNewsList];
         }];
     }];

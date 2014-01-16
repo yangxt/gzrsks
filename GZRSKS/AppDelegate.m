@@ -17,7 +17,9 @@ NSString *const UMAppKey = @"51451fe556240b6e59008ee2";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+#if !(TARGET_IPHONE_SIMULATOR)
     [UMSocialData setAppKey:UMAppKey];
+#endif
     
     NewsGroupListVC *newsGoupListVC = [[NewsGroupListVC alloc] init];
     

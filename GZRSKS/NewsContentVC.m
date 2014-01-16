@@ -36,31 +36,24 @@ extern NSString  *const kNetAPIErrorDesc;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-  
-    // 导航栏右边按钮
-    self->_refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self->_refreshButton setFrame:CGRectMake(0, 0, 44, 44)];
-    [self->_refreshButton setTitle:@"刷新" forState:UIControlStateNormal];
-    [self->_refreshButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self->_refreshButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
-    [self->_refreshButton addTarget:self action:@selector(refreshNewsContent) forControlEvents:UIControlEventTouchUpInside];
     
+    // 导航栏右边按钮
     self->_favoriteButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self->_favoriteButton setFrame:CGRectMake(0, 0, 44, 44)];
-    [self->_favoriteButton setEnabled:NO];
     [self->_favoriteButton setTitle:@"收藏" forState:UIControlStateNormal];
     [self->_favoriteButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self->_favoriteButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
-    [self->_favoriteButton addTarget:self action:@selector(addThisNewsToMyFavorite) forControlEvents:UIControlEventTouchUpInside];
+    [self->_favoriteButton addTarget:self action:@selector(favoriteNewsOperation) forControlEvents:UIControlEventTouchUpInside];
     
     self->_refreshActivityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     self->_refreshActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
     self->_refreshActivityIndicator.hidesWhenStopped = YES;
     
     NSArray *rightItems = @[[[UIBarButtonItem alloc] initWithCustomView:self->_favoriteButton],
-                            [[UIBarButtonItem alloc] initWithCustomView:self->_refreshButton],
                             [[UIBarButtonItem alloc] initWithCustomView:self->_refreshActivityIndicator]];
     self.navigationItem.rightBarButtonItems = rightItems;
+    
+    [self->_favoriteButton setEnabled:NO];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -73,13 +66,16 @@ extern NSString  *const kNetAPIErrorDesc;
 // 获取新闻内容
 - (void)refreshNewsContent
 {
-    [self->_refreshButton setEnabled:NO];
     [self->_refreshActivityIndicator startAnimating];
-    
+
     if(self.news.content)
     {
         [self->_favoriteButton setEnabled:YES];
         [self.webView loadHTMLString:self.news.content baseURL:nil];
+        
+        if([self theNewsIsFavorited:self.news])
+            [self->_favoriteButton setTitle:@"取消" forState:UIControlStateNormal];
+        
         return;
     }
     
@@ -87,35 +83,72 @@ extern NSString  *const kNetAPIErrorDesc;
         
         [self->_favoriteButton setEnabled:YES];
         [self.news setContent:content];
-        [self->_refreshButton setEnabled:YES];
         [self.webView loadHTMLString:content baseURL:nil];
         
+        if([self theNewsIsFavorited:self.news])
+            [self->_favoriteButton setTitle:@"取消" forState:UIControlStateNormal];
+
+        
     } onFail:^(NSError *error) {
-        [self->_refreshButton setEnabled:NO];
         [self->_refreshActivityIndicator stopAnimating];
         
         NSString *desc = @"网络链接断开或过慢";
         if([error.domain isEqualToString:kNetAPIErorDomain])
             desc = @"很抱歉，出错啦。请告知我(QQ:410139419)必将尽快修复!";
-        [MessageBox showWithMessage:desc handler:^{
+        [MessageBox showWithMessage:desc buttonTitle:@"重试" handler:^{
             [self refreshNewsContent];
         }];
     }];
 }
 
-// 收藏
-- (void)addThisNewsToMyFavorite
+#pragma mark - 收藏或取消收藏
+
+- (void)favoriteNewsOperation
 {
-   [[TMCache sharedCache] objectForKey:kNewsCacheKey block:^(TMCache *cache, NSString *key, id object) {
-       NSDictionary *dict = object;
-       if(!dict)
-           dict = [NSMutableDictionary new];
-       [dict setValue:self.news forKey:self.news.contentUrl.absoluteString];
-       
-       [[TMCache sharedCache] setObject:dict forKey:kNewsCacheKey block:^(TMCache *cache, NSString *key, id object) {
-           NSLog(@"收藏成功");
-       }];
+    [[TMCache sharedCache] objectForKey:kNewsCacheKey block:^(TMCache *cache, NSString *key, id object) {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            
+            NSMutableArray *array = object;
+            if(array)
+            {
+                // 如果新闻存在于已收藏的新闻集合中，就执行取消收藏的操作
+                if([self theNewsIsFavorited:self.news])
+                {
+                    for(News *n in array)
+                    {
+                        if([n.contentUrl.absoluteString isEqualToString:self.news.contentUrl.absoluteString])
+                        {
+                            [array removeObject:n];
+                            [self->_favoriteButton setTitle:@"收藏" forState:UIControlStateNormal];
+                            break;
+                        }
+                    }
+                }else{
+                    [array insertObject:self.news atIndex:0];
+                    [self->_favoriteButton setTitle:@"取消" forState:UIControlStateNormal];
+                }
+                
+            }else{
+                array = [NSMutableArray new];
+                [array insertObject:self.news atIndex:0];
+                [self->_favoriteButton setTitle:@"取消" forState:UIControlStateNormal];
+            }
+            
+            [[TMCache sharedCache] setObject:array forKey:kNewsCacheKey];
+        });
     }];
+}
+
+- (BOOL)theNewsIsFavorited:(News *)news
+{
+    NSArray *array = [[TMCache sharedCache] objectForKey:kNewsCacheKey];
+    for(News *n in array){
+        if([n.contentUrl.absoluteString isEqualToString:news.contentUrl.absoluteString]){
+            return YES;
+        }
+    }
+    
+    return NO;
 }
 
 #pragma mark - UIWebView Delegate
@@ -124,20 +157,17 @@ extern NSString  *const kNetAPIErrorDesc;
 {
     if(self.news.content)
     {
-        [self->_refreshButton setEnabled:NO];
         [self->_refreshActivityIndicator startAnimating];
     }
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self->_refreshButton setEnabled:YES];
     [self->_refreshActivityIndicator stopAnimating];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    [self->_refreshButton setEnabled:YES];
     [self->_refreshActivityIndicator stopAnimating];
 }
 @end

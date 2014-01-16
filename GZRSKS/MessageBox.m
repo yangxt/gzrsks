@@ -12,7 +12,7 @@
 
 @implementation MessageBox
 
-+ (void)showWithMessage:(NSString *)message handler:(void(^)())handler
++ (void)showWithMessage:(NSString *)message  buttonTitle:(NSString *)title handler:(void(^)())handler
 {
     static MessageBox *msgBox = nil;
     static dispatch_once_t onceToken;
@@ -20,14 +20,14 @@
         msgBox =  [MessageBox new];
     });
     
-    [msgBox showWithMessage:message handler:handler];
+    [msgBox showWithMessage:message buttonTitle:title handler:handler];
 }
 
-- (void)showWithMessage:(NSString *)message handler:(void(^)())handler
+- (void)showWithMessage:(NSString *)message buttonTitle:(NSString *)title handler:(void(^)())handler
 {
     self->_retryHandler = [handler copy];
     UIAlertView *alertView =
-    [[UIAlertView alloc] initWithTitle:@"注意" message:message delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"重试", nil];
+    [[UIAlertView alloc] initWithTitle:@"注意" message:message delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:title, nil];
     [alertView show];
 }
 

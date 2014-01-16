@@ -12,6 +12,6 @@
 {
     void (^_retryHandler)(void);
 }
-+ (void)showWithMessage:(NSString *)message handler:(void(^)())handler;
 
++ (void)showWithMessage:(NSString *)message buttonTitle:(NSString *)title handler:(void(^)())handler;
 @end
