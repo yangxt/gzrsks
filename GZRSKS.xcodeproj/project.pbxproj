@@ -50,6 +50,8 @@
 		698B0FA4186555200090C719 /* NewsStorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 698B0FA2186555200090C719 /* NewsStorageManager.m */; };
 		698B0FAF186555420090C719 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 698B0FAE186555420090C719 /* AppDelegate.m */; };
 		698B0FB5186555FC0090C719 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 698B0FB4186555FC0090C719 /* Config.m */; };
+		69907DCE1888C49D00EC31DF /* HelpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69907DCC1888C49D00EC31DF /* HelpVC.m */; };
+		69907DCF1888C49D00EC31DF /* HelpVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69907DCD1888C49D00EC31DF /* HelpVC.xib */; };
 		69A70E6F1887D422006D05FA /* DocTypeDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A70E6E1887D422006D05FA /* DocTypeDetector.m */; };
 		69A70E731887DFE5006D05FA /* DocViewerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A70E711887DFE5006D05FA /* DocViewerVC.m */; };
 		69A70E741887DFE5006D05FA /* DocViewerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69A70E721887DFE5006D05FA /* DocViewerVC.xib */; };
@@ -142,6 +144,9 @@
 		698B0FAE186555420090C719 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		698B0FB3186555FC0090C719 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		698B0FB4186555FC0090C719 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
+		69907DCB1888C49D00EC31DF /* HelpVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpVC.h; sourceTree = "<group>"; };
+		69907DCC1888C49D00EC31DF /* HelpVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpVC.m; sourceTree = "<group>"; };
+		69907DCD1888C49D00EC31DF /* HelpVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpVC.xib; sourceTree = "<group>"; };
 		69A70E6D1887D422006D05FA /* DocTypeDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocTypeDetector.h; sourceTree = "<group>"; };
 		69A70E6E1887D422006D05FA /* DocTypeDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocTypeDetector.m; sourceTree = "<group>"; };
 		69A70E701887DFE5006D05FA /* DocViewerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocViewerVC.h; sourceTree = "<group>"; };
@@ -393,6 +398,9 @@
 				69A70E701887DFE5006D05FA /* DocViewerVC.h */,
 				69A70E711887DFE5006D05FA /* DocViewerVC.m */,
 				69A70E721887DFE5006D05FA /* DocViewerVC.xib */,
+				69907DCB1888C49D00EC31DF /* HelpVC.h */,
+				69907DCC1888C49D00EC31DF /* HelpVC.m */,
+				69907DCD1888C49D00EC31DF /* HelpVC.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -533,6 +541,7 @@
 				694BF3C3188634CF00243D51 /* UMSocialSDKResourcesNew.bundle in Resources */,
 				694BF3BD188634CF00243D51 /* UMSCommentInputControlleriPad.xib in Resources */,
 				6966BB1118869311007B5DE0 /* FavoriteNewsVC.xib in Resources */,
+				69907DCF1888C49D00EC31DF /* HelpVC.xib in Resources */,
 				694BF3BE188634CF00243D51 /* UMShareEditViewController.xib in Resources */,
 				694BF3C2188634CF00243D51 /* UMSShareListController.xib in Resources */,
 				694BF3B7188634CF00243D51 /* UMSocialLocalizable.strings in Resources */,
@@ -595,6 +604,7 @@
 				69A70E6F1887D422006D05FA /* DocTypeDetector.m in Sources */,
 				6966BB1018869311007B5DE0 /* FavoriteNewsVC.m in Sources */,
 				697434CC18686DAC00A6A49A /* UIScreen+Size.m in Sources */,
+				69907DCE1888C49D00EC31DF /* HelpVC.m in Sources */,
 				698B0FB5186555FC0090C719 /* Config.m in Sources */,
 				698B0F9E186555110090C719 /* NetAPI.m in Sources */,
 				69A70E731887DFE5006D05FA /* DocViewerVC.m in Sources */,

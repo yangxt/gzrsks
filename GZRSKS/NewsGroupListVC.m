@@ -15,6 +15,8 @@
 #import "MessageBox.h"
 #import "UMSocial.h"
 #import "FavoriteNewsVC.h"
+#import "HelpVC.h"
+#import "PopoverView.h"
 
 extern NSString  *const UMAppKey;
 extern NSString  *const kNetAPIErorDomain;
@@ -28,6 +30,8 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
 
 @interface NewsGroupListVC()
 @property (weak, nonatomic) IBOutlet UITableView *newsGroupListView;
+@property (strong, nonatomic) IBOutlet UIView *changeBrightnessView;
+@property (weak, nonatomic) IBOutlet UISlider *changeBrightnessSlider;
 
 @end
 
@@ -41,22 +45,22 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshNewsList) name:UIApplicationWillEnterForegroundNotification object:nil];
     
     // 导航栏左边按钮
-    self->_themeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self->_themeButton setFrame:CGRectMake(0, 0, 44, 44)];
-    [self->_themeButton setTitle:@"白天" forState:UIControlStateNormal];
-    [self->_themeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self->_themeButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-    [self->_themeButton addTarget:self action:@selector(changeTheme) forControlEvents:UIControlEventTouchUpInside];
+    self->_brightnessButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self->_brightnessButton setFrame:CGRectMake(0, 0, 44, 44)];
+    [self->_brightnessButton setTitle:@"亮度" forState:UIControlStateNormal];
+    [self->_brightnessButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self->_brightnessButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+    [self->_brightnessButton addTarget:self action:@selector(popupChangeBrightnessView:) forControlEvents:UIControlEventTouchUpInside];
     
-    self->_shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self->_shareButton setFrame:CGRectMake(0, 0, 44, 44)];
-    [self->_shareButton setTitle:@"分享" forState:UIControlStateNormal];
-    [self->_shareButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self->_shareButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-    [self->_shareButton addTarget:self action:@selector(shareThisAppToFriends) forControlEvents:UIControlEventTouchUpInside];
+    self->_helpButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self->_helpButton setFrame:CGRectMake(0, 0, 44, 44)];
+    [self->_helpButton setTitle:@"帮助" forState:UIControlStateNormal];
+    [self->_helpButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self->_helpButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+    [self->_helpButton addTarget:self action:@selector(pushHelpVC) forControlEvents:UIControlEventTouchUpInside];
     
-    NSArray *leftItems = @[[[UIBarButtonItem alloc] initWithCustomView:self->_themeButton],
-                           [[UIBarButtonItem alloc] initWithCustomView:self->_shareButton]];
+    NSArray *leftItems = @[[[UIBarButtonItem alloc] initWithCustomView:self->_brightnessButton],
+                           [[UIBarButtonItem alloc] initWithCustomView:self->_helpButton]];
     [self.navigationItem setLeftBarButtonItems:leftItems];
     
     
@@ -73,7 +77,7 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
     [self->_favoriteButton setTitle:@"私货" forState:UIControlStateNormal];
     [self->_favoriteButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self->_favoriteButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-    [self->_favoriteButton addTarget:self action:@selector(myFavoriteNews) forControlEvents:UIControlEventTouchUpInside];
+    [self->_favoriteButton addTarget:self action:@selector(pushFavoriteVC) forControlEvents:UIControlEventTouchUpInside];
     
     self->_refreshActivityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     self->_refreshActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
@@ -105,6 +109,8 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
     self.newsGroupListView.tableFooterView.hidden = YES;
     
     [self.newsGroupListView registerClass:[UITableViewCell class] forCellReuseIdentifier:kNewsListCellReuseableIdentifier];
+    
+    [self.changeBrightnessSlider setValue:[[UIScreen mainScreen] brightness]];
 }
 
 // 接收到内存警告后重新刷新列表，刷新列表的操作会释放掉之前所有的News对象
@@ -178,10 +184,16 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
     }];
 }
 
-#pragma mark - 收藏,分享
-- (void)myFavoriteNews
+#pragma mark - 收藏列表,帮助，调节亮度
+- (void)pushFavoriteVC
 {
     FavoriteNewsVC *vc = [[FavoriteNewsVC alloc] initWithNibName:@"FavoriteNewsVC" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)pushHelpVC
+{
+    HelpVC *vc = [[HelpVC alloc] initWithNibName:@"HelpVC" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -196,13 +208,18 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
 #endif
 }
 
-#pragma mark - 调节屏幕亮度
-- (void)changeTheme
+- (void)popupChangeBrightnessView:(UIButton *)sender
 {
-    static BOOL isNight = NO;
-    isNight = !isNight;
-    [self->_themeButton setTitle:isNight?@"夜晚":@"白天" forState:UIControlStateNormal];
-    [[UIScreen mainScreen] setBrightness:isNight ? 0.15 : 0.8];
+    CGPoint point = sender.center;
+    point.y += sender.bounds.size.height/1.5;
+    point = [self.view convertPoint:point fromView:self.view];
+    
+    [PopoverView showPopoverAtPoint:point inView:self.view withTitle:@"调节亮度" withContentView:self.changeBrightnessView delegate:nil];
+}
+
+- (IBAction)screenBrightnessChange:(UISlider *)sender
+{
+    [[UIScreen mainScreen] setBrightness:sender.value];
 }
 
 #pragma mark - UITableViewDataSource

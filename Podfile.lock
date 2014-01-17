@@ -1,13 +1,13 @@
 PODS:
-  - FXBlurView (1.5.1)
+  - PopoverView (0.0.1)
   - TMCache (1.2.0)
 
 DEPENDENCIES:
-  - FXBlurView (~> 1.5.1)
+  - PopoverView (~> 0.0.1)
   - TMCache (~> 1.2.0)
 
 SPEC CHECKSUMS:
-  FXBlurView: 073fdfdf3fa8d715130d2c1392ba1545551776f1
+  PopoverView: 571c17ebd5f0c20570e1f12ca1800bd56e1b6dc3
   TMCache: 4b05e1b124d9f7e8d449640e059cff4cda17ed27
 
 COCOAPODS: 0.28.0

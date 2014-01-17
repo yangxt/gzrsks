@@ -169,7 +169,7 @@ extern NSString  *const kAppDownloadAddress;
             return NO;
         }
          
-        case DocTypeHTML:  // 不允许打开网站，是因为网页含有多少个链接，会导致递归操作，导致程序崩溃.
+        case DocTypeHTML:  // 不允许打开网站，是因为网页含有多个链接，会导致递归打开，导致程序崩溃.
         case DocTypePPT:
         case DocTypeZip:
         {
