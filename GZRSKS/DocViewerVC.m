@@ -63,9 +63,8 @@ static NSString *const kFirstUseSendOutLinkFlag = @"FirstUseSendOutLinkFlag";
     if([[NSUserDefaults standardUserDefaults] boolForKey:kFirstUseSendOutLinkFlag] == NO)
     {
         NSString *msg = @"什么是外发?\n外发是将附件地址分享到您选择的平台，方便之后您通过电脑下载，查看和编辑附件。" ;
-        [MessageBox showWithMessage:msg buttonTitle:@"永远消失" handler:^(NSInteger index){
-            if(index != 0)
-                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kFirstUseSendOutLinkFlag];
+        [MessageBox showWithMessage:msg buttonTitle:@"不再提示" handler:^{
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kFirstUseSendOutLinkFlag];
         }];
     }
     
@@ -95,9 +94,8 @@ static NSString *const kFirstUseSendOutLinkFlag = @"FirstUseSendOutLinkFlag";
 {
     [self->_loadingActivityIndicator stopAnimating];
     
-    [MessageBox showWithMessage:@"网络链接断开或过慢" buttonTitle:@"重试" handler:^(NSInteger index){
-        if(index != 0)
-            [self.webView loadRequest:[NSURLRequest requestWithURL:self->_docURL]];
+    [MessageBox showWithMessage:@"网络链接断开或过慢" buttonTitle:@"重试" handler:^{
+        [self.webView loadRequest:[NSURLRequest requestWithURL:self->_docURL]];
     }];
 }
 

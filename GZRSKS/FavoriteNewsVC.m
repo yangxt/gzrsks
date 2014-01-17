@@ -70,18 +70,15 @@ static NSString *const kFavoriteCellReuseId = @"FavoriteCellReuseId";
 // 删除所有收藏的考试信息
 - (void)deleteAllFavoriteNews
 {
-    [MessageBox showWithMessage:@"你确定要这么干?" buttonTitle:@"确定" handler:^(NSInteger index){
-        if(index !=0 )
-        {
-            [[TMCache sharedCache] removeAllObjects:^(TMCache *cache) {
-                
-                dispatch_sync(dispatch_get_main_queue(), ^{
-                    [self->_clearButton setEnabled:NO];
-                    self->_favoriteNewsArray = [NSArray new];
-                    [self.tableView reloadData];
-                });
-            }];
-        }
+    [MessageBox showWithMessage:@"你确定要这么干?" buttonTitle:@"确定" handler:^{
+        [[TMCache sharedCache] removeAllObjects:^(TMCache *cache) {
+            
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [self->_clearButton setEnabled:NO];
+                self->_favoriteNewsArray = [NSArray new];
+                [self.tableView reloadData];
+            });
+        }];
     }];
 }
 

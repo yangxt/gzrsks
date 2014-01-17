@@ -12,7 +12,7 @@
 
 @implementation MessageBox
 
-+ (void)showWithMessage:(NSString *)message  buttonTitle:(NSString *)title handler:(void(^)(NSInteger index))handler
++ (void)showWithMessage:(NSString *)message  buttonTitle:(NSString *)title handler:(void(^)(void))handler
 {
     static MessageBox *msgBox = nil;
     static dispatch_once_t onceToken;
@@ -23,7 +23,7 @@
     [msgBox showWithMessage:message buttonTitle:title handler:handler];
 }
 
-- (void)showWithMessage:(NSString *)message buttonTitle:(NSString *)title handler:(void(^)(NSInteger index))handler
+- (void)showWithMessage:(NSString *)message buttonTitle:(NSString *)title handler:(void(^)(void))handler
 {
     self->_handler = [handler copy];
     UIAlertView *alertView =
@@ -33,8 +33,8 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if(self->_handler){
-        self->_handler(buttonIndex);
+    if(buttonIndex == 1 && self->_handler){
+        self->_handler();
         self->_handler = nil;
     }
 }

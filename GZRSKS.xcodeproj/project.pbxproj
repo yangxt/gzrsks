@@ -509,6 +509,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "李红(410139419@qq.com)";
 				TargetAttributes = {
+					698B0F32186553AE0090C719 = {
+						DevelopmentTeam = 3X2N2BLT84;
+					};
 					698B0F53186553AE0090C719 = {
 						TestTargetID = 698B0F32186553AE0090C719;
 					};
@@ -677,7 +680,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -708,6 +711,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -716,7 +720,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -740,6 +744,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -749,8 +754,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5BD585C1ADA24E31B0E320B1 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lt/IOS/gzrsks/GZRSKS/umeng_ios_social_sdk_3.3.2_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI,
@@ -765,6 +773,7 @@
 					/Users/lt/IOS/gzrsks/GZRSKS,
 				);
 				PRODUCT_NAME = "贵州人事考试";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -773,8 +782,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5BD585C1ADA24E31B0E320B1 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lt/IOS/gzrsks/GZRSKS/umeng_ios_social_sdk_3.3.2_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI,
@@ -789,6 +801,7 @@
 					/Users/lt/IOS/gzrsks/GZRSKS,
 				);
 				PRODUCT_NAME = "贵州人事考试";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

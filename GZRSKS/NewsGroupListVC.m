@@ -43,7 +43,7 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
     [super viewDidLoad];
     
     // 每次程序从后台切换到前台时重新刷新列表
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshNewsList) name:UIApplicationWillEnterForegroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleApplicationWillEnterForegroundNotification:) name:UIApplicationWillEnterForegroundNotification object:nil];
     
     // 导航栏左边按钮
     self->_brightnessButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -118,7 +118,7 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
     
     if([Crackify isJailbroken] || [Crackify isCracked])
     {
-        [MessageBox showWithMessage:@"我做技术跟各位考试一样，挺苦的!\n请您花半包烟钱购买正版支持下我!" buttonTitle:@"获取" handler:^(NSInteger index) {
+        [MessageBox showWithMessage:@"我做技术跟各位考试一样，挺苦的!\n请您花半包烟钱购买正版支持下我!" buttonTitle:@"获取" handler:^{
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kAppDownloadAddress]];
             exit(EXIT_FAILURE);
         }];
@@ -141,6 +141,13 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
     
     if([NewsProvider sharedInstance].newsGroupCount == 0)
         [self refreshNewsList];
+}
+
+- (void)handleApplicationWillEnterForegroundNotification:(NSNotification *)not
+{
+    [self.changeBrightnessSlider setValue:[[UIScreen mainScreen] brightness]];
+
+    [self refreshNewsList];
 }
 
 #pragma mark - 刷新、加载更多
@@ -168,9 +175,8 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
         NSString *desc = @"网络链接断开或过慢";
         if([error.domain isEqualToString:kNetAPIErorDomain])
             desc = @"很抱歉，出错啦。请告知我(QQ:410139419)必将尽快修复!";
-        [MessageBox showWithMessage:desc buttonTitle:@"重试" handler:^(NSInteger index){
-            if(index != 0)
-                [self refreshNewsList];
+        [MessageBox showWithMessage:desc buttonTitle:@"重试" handler:^{
+            [self refreshNewsList];
         }];
     }];
 
