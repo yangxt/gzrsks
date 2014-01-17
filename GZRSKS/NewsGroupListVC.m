@@ -17,6 +17,7 @@
 #import "FavoriteNewsVC.h"
 #import "PopoverView.h"
 #import "UMFeedback.h"
+#import "Crackify.h"
 
 extern NSString  *const UMAppKey;
 extern NSString  *const kNetAPIErorDomain;
@@ -114,6 +115,14 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
     
     // http://beyondvincent.com/blog/2013/11/03/120-customize-navigation-status-bar-ios-7/#1
     [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
+    
+    if([Crackify isJailbroken] || [Crackify isCracked])
+    {
+        [MessageBox showWithMessage:@"我做技术跟各位考试一样，挺苦的!\n请您花半包烟钱购买正版支持下我!" buttonTitle:@"获取" handler:^(NSInteger index) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kAppDownloadAddress]];
+            exit(EXIT_FAILURE);
+        }];
+    }
 }
 
 
@@ -159,8 +168,9 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
         NSString *desc = @"网络链接断开或过慢";
         if([error.domain isEqualToString:kNetAPIErorDomain])
             desc = @"很抱歉，出错啦。请告知我(QQ:410139419)必将尽快修复!";
-        [MessageBox showWithMessage:desc buttonTitle:@"重试" handler:^{
-            [self refreshNewsList];
+        [MessageBox showWithMessage:desc buttonTitle:@"重试" handler:^(NSInteger index){
+            if(index != 0)
+                [self refreshNewsList];
         }];
     }];
 

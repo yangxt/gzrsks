@@ -10,8 +10,8 @@
 
 @interface MessageBox : NSObject<UIAlertViewDelegate>
 {
-    void (^_retryHandler)(void);
+    void (^_handler)(NSInteger index);
 }
 
-+ (void)showWithMessage:(NSString *)message buttonTitle:(NSString *)title handler:(void(^)())handler;
++ (void)showWithMessage:(NSString *)message buttonTitle:(NSString *)title handler:(void(^)(NSInteger index))handler;
 @end

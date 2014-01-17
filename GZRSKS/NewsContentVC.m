@@ -97,8 +97,9 @@ extern NSString  *const kAppDownloadAddress;
         NSString *desc = @"网络链接断开或过慢";
         if([error.domain isEqualToString:kNetAPIErorDomain])
             desc = @"很抱歉，出错啦。请告知我(QQ:410139419)必将尽快修复!";
-        [MessageBox showWithMessage:desc buttonTitle:@"重试" handler:^{
-            [self refreshNewsContent];
+        [MessageBox showWithMessage:desc buttonTitle:@"重试" handler:^(NSInteger index){
+            if(index != 0)
+                [self refreshNewsContent];
         }];
     }];
 }
@@ -175,11 +176,13 @@ extern NSString  *const kAppDownloadAddress;
         {
             NSString *dtName = [DocTypeDetector docTypeName:type];
             NSString *msg = [NSString stringWithFormat:@"不允许打开%@! 可外发到邮箱、微博、QQ空间等,稍候在电脑上打开.",dtName];
-            [MessageBox showWithMessage:msg buttonTitle:@"外发" handler:^{
-            
-                NSString *msg = [NSString stringWithFormat:@"来自 %@ 的附件: %@",kAppDownloadAddress,request.URL.absoluteString];
-                NSArray *snsNames = @[UMShareToQzone,UMShareToSina,UMShareToTencent,UMShareToSms,UMShareToEmail,UMShareToRenren,UMShareToDouban];
-                [UMSocialSnsService presentSnsIconSheetView:self appKey:UMAppKey shareText:msg shareImage:nil shareToSnsNames:snsNames delegate:nil];
+            [MessageBox showWithMessage:msg buttonTitle:@"外发" handler:^(NSInteger index){
+                if(index != 0)
+                {
+                    NSString *msg = [NSString stringWithFormat:@"来自 %@ 的附件: %@",kAppDownloadAddress,request.URL.absoluteString];
+                    NSArray *snsNames = @[UMShareToQzone,UMShareToSina,UMShareToTencent,UMShareToSms,UMShareToEmail,UMShareToRenren,UMShareToDouban];
+                    [UMSocialSnsService presentSnsIconSheetView:self appKey:UMAppKey shareText:msg shareImage:nil shareToSnsNames:snsNames delegate:nil];
+                }
                 
             }];
             
