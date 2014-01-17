@@ -111,7 +111,11 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
     [self.newsGroupListView registerClass:[UITableViewCell class] forCellReuseIdentifier:kNewsListCellReuseableIdentifier];
     
     [self.changeBrightnessSlider setValue:[[UIScreen mainScreen] brightness]];
+    
+    // http://beyondvincent.com/blog/2013/11/03/120-customize-navigation-status-bar-ios-7/#1
+    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
 }
+
 
 // 接收到内存警告后重新刷新列表，刷新列表的操作会释放掉之前所有的News对象
 - (void)didReceiveMemoryWarning
@@ -200,7 +204,7 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
 {
 #if !(TARGET_IPHONE_SIMULATOR)
     
-    NSString *msg = [NSString stringWithFormat:@"考公务员、事业单位等[必备神器]，请用力猛搓:%@ ",kAppDownloadAddress];
+    NSString *msg = [NSString stringWithFormat:@"考公务员、事业单位等[必备神器]，请用力猛戳:%@ ",kAppDownloadAddress];
     NSArray *snsNames = @[UMShareToQzone,UMShareToSina,UMShareToTencent,UMShareToSms,UMShareToEmail,UMShareToRenren,UMShareToDouban];
     [UMSocialSnsService presentSnsIconSheetView:self appKey:UMAppKey shareText:msg shareImage:nil shareToSnsNames:snsNames delegate:nil];
     
@@ -210,7 +214,7 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
 - (void)popupChangeBrightnessView:(UIButton *)sender
 {
     CGPoint point = sender.center;
-    point.y += sender.bounds.size.height/1.5;
+    point.y += (sender.bounds.size.height/1.5);
     point = [self.view convertPoint:point fromView:self.view];
     
     [PopoverView showPopoverAtPoint:point inView:self.view withTitle:@"调节亮度" withContentView:self.changeBrightnessView delegate:nil];

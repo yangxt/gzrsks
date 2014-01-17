@@ -764,7 +764,7 @@
 					/Users/lt/IOS/gzrsks/GZRSKS/umeng_ios_social_sdk_3.3.2_custom/UMSocial_Sdk_3.3.2,
 					/Users/lt/IOS/gzrsks/GZRSKS,
 				);
-				PRODUCT_NAME = "人事考试信息";
+				PRODUCT_NAME = "贵州人事考试";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -788,7 +788,7 @@
 					/Users/lt/IOS/gzrsks/GZRSKS/umeng_ios_social_sdk_3.3.2_custom/UMSocial_Sdk_3.3.2,
 					/Users/lt/IOS/gzrsks/GZRSKS,
 				);
-				PRODUCT_NAME = "人事考试信息";
+				PRODUCT_NAME = "贵州人事考试";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -99,7 +99,8 @@ static NSString *const kFavoriteCellReuseId = @"FavoriteCellReuseId";
     
     if(self->_favoriteNewsArray.count == 0)
     {
-        cell.textLabel.text = @"\t\t\t   ..空空如也..";
+        cell.textLabel.text = @"您知道吗？离线也能查看收藏的信息!";
+        cell.textLabel.textColor = [UIColor lightGrayColor];
         return cell;
     }
     

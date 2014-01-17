@@ -14,7 +14,7 @@
 {
     NSString *eName = [[url pathExtension] lowercaseString];
     NSString *schmem = [[url scheme] lowercaseString];
-    NSLog(@"%@",schmem);
+    
     if([eName isEqualToString:@"doc"] || [eName isEqualToString:@"docx"])
         return DocTypeDoc;
     
