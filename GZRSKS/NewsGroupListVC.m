@@ -15,8 +15,8 @@
 #import "MessageBox.h"
 #import "UMSocial.h"
 #import "FavoriteNewsVC.h"
-#import "HelpVC.h"
 #import "PopoverView.h"
+#import "UMFeedback.h"
 
 extern NSString  *const UMAppKey;
 extern NSString  *const kNetAPIErorDomain;
@@ -52,15 +52,15 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
     [self->_brightnessButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     [self->_brightnessButton addTarget:self action:@selector(popupChangeBrightnessView:) forControlEvents:UIControlEventTouchUpInside];
     
-    self->_helpButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self->_helpButton setFrame:CGRectMake(0, 0, 44, 44)];
-    [self->_helpButton setTitle:@"帮助" forState:UIControlStateNormal];
-    [self->_helpButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self->_helpButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-    [self->_helpButton addTarget:self action:@selector(pushHelpVC) forControlEvents:UIControlEventTouchUpInside];
+    self->_feedbackButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self->_feedbackButton setFrame:CGRectMake(0, 0, 44, 44)];
+    [self->_feedbackButton setTitle:@"吐槽" forState:UIControlStateNormal];
+    [self->_feedbackButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self->_feedbackButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+    [self->_feedbackButton addTarget:self action:@selector(presentFeedbackVC) forControlEvents:UIControlEventTouchUpInside];
     
     NSArray *leftItems = @[[[UIBarButtonItem alloc] initWithCustomView:self->_brightnessButton],
-                           [[UIBarButtonItem alloc] initWithCustomView:self->_helpButton]];
+                           [[UIBarButtonItem alloc] initWithCustomView:self->_feedbackButton]];
     [self.navigationItem setLeftBarButtonItems:leftItems];
     
     
@@ -191,10 +191,9 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)pushHelpVC
+- (void)presentFeedbackVC
 {
-    HelpVC *vc = [[HelpVC alloc] initWithNibName:@"HelpVC" bundle:nil];
-    [self.navigationController pushViewController:vc animated:YES];
+    [UMFeedback showFeedback:self withAppkey:UMAppKey];
 }
 
 - (void)shareThisAppToFriends

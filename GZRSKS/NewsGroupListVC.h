@@ -20,7 +20,7 @@ typedef enum {
     UIButton *_loadMoreButton;
     UIButton *_refreshButton;
     UIButton *_favoriteButton;
-    UIButton *_helpButton;
+    UIButton *_feedbackButton;
     UIButton *_brightnessButton;
     UIActivityIndicatorView *_loadMoreActivityIndicator;
     UIActivityIndicatorView *_refreshActivityIndicator;
