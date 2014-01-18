@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "NewsGroupListVC.h"
 #import "UMSocial.h"
+#import "MobClick.h"
 
 NSString *const UMAppKey = @"51451fe556240b6e59008ee2";
 
@@ -19,6 +20,7 @@ NSString *const UMAppKey = @"51451fe556240b6e59008ee2";
 {
 #if !(TARGET_IPHONE_SIMULATOR)
     [UMSocialData setAppKey:UMAppKey];
+    //[MobClick startWithAppkey:UMAppKey];
 #endif
     
     NewsGroupListVC *newsGoupListVC = [[NewsGroupListVC alloc] init];

@@ -58,6 +58,8 @@
 		69B5FC8118861E560048C06A /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B5FC8018861E560048C06A /* UIColor+HexString.m */; };
 		69CDAEE11884E9CA00B65984 /* NewsContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CDAEDF1884E9CA00B65984 /* NewsContentVC.m */; };
 		69CDAEE21884E9CA00B65984 /* NewsContentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69CDAEE01884E9CA00B65984 /* NewsContentVC.xib */; };
+		69E6C62A188A262200CD1AA8 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69E6C627188A262200CD1AA8 /* libMobClickLibrary.a */; };
+		69E6C62B188A262200CD1AA8 /* libMobClickLibrary_armv6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69E6C628188A262200CD1AA8 /* libMobClickLibrary_armv6.a */; };
 		69F7E33D186880AF003B5337 /* NewsGroupListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F7E33B186880AF003B5337 /* NewsGroupListVC.m */; };
 		69F7E33E186880AF003B5337 /* NewsGroupListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69F7E33C186880AF003B5337 /* NewsGroupListVC.xib */; };
 		D77CF07B91F242A492105C37 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C74160A588B54E678ADE0D8F /* libPods.a */; };
@@ -157,6 +159,9 @@
 		69CDAEDE1884E9CA00B65984 /* NewsContentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsContentVC.h; sourceTree = "<group>"; };
 		69CDAEDF1884E9CA00B65984 /* NewsContentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsContentVC.m; sourceTree = "<group>"; };
 		69CDAEE01884E9CA00B65984 /* NewsContentVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsContentVC.xib; sourceTree = "<group>"; };
+		69E6C627188A262200CD1AA8 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		69E6C628188A262200CD1AA8 /* libMobClickLibrary_armv6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary_armv6.a; sourceTree = "<group>"; };
+		69E6C629188A262200CD1AA8 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		69F7E33A186880AF003B5337 /* NewsGroupListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsGroupListVC.h; sourceTree = "<group>"; };
 		69F7E33B186880AF003B5337 /* NewsGroupListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsGroupListVC.m; sourceTree = "<group>"; };
 		69F7E33C186880AF003B5337 /* NewsGroupListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsGroupListVC.xib; sourceTree = "<group>"; };
@@ -174,7 +179,9 @@
 				694BF3CD1886379900243D51 /* libsqlite3.dylib in Frameworks */,
 				694BF3CB1886378C00243D51 /* SystemConfiguration.framework in Frameworks */,
 				694BF3C91886377E00243D51 /* libiconv.dylib in Frameworks */,
+				69E6C62B188A262200CD1AA8 /* libMobClickLibrary_armv6.a in Frameworks */,
 				694BF3C71886376700243D51 /* Security.framework in Frameworks */,
+				69E6C62A188A262200CD1AA8 /* libMobClickLibrary.a in Frameworks */,
 				698B0F39186553AE0090C719 /* CoreGraphics.framework in Frameworks */,
 				694BF3C4188634CF00243D51 /* TencentOpenAPI.framework in Frameworks */,
 				694BF3BA188634CF00243D51 /* libUMSocial_Sdk_Comment_3.3.2.a in Frameworks */,
@@ -203,6 +210,7 @@
 		694BF390188634AE00243D51 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				69E6C626188A262200CD1AA8 /* UMAnalytics_Sdk_2.2.1.OpenUDID */,
 				6988DDC81888FB06003C8BED /* umeng_feedback */,
 				694BF391188634CF00243D51 /* umeng_ios_social_sdk_3.3.2_custom */,
 			);
@@ -458,6 +466,16 @@
 				698B0F9D186555110090C719 /* NetAPI.m */,
 			);
 			name = Net;
+			sourceTree = "<group>";
+		};
+		69E6C626188A262200CD1AA8 /* UMAnalytics_Sdk_2.2.1.OpenUDID */ = {
+			isa = PBXGroup;
+			children = (
+				69E6C627188A262200CD1AA8 /* libMobClickLibrary.a */,
+				69E6C628188A262200CD1AA8 /* libMobClickLibrary_armv6.a */,
+				69E6C629188A262200CD1AA8 /* MobClick.h */,
+			);
+			path = UMAnalytics_Sdk_2.2.1.OpenUDID;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -771,6 +789,8 @@
 					/Users/lt/IOS/gzrsks/GZRSKS/umeng_ios_social_sdk_3.3.2_custom/UMSocial_Sdk_3.3.2/frameworks/Wechat,
 					/Users/lt/IOS/gzrsks/GZRSKS/umeng_ios_social_sdk_3.3.2_custom/UMSocial_Sdk_3.3.2,
 					/Users/lt/IOS/gzrsks/GZRSKS,
+					/Users/lt/IOS/gzrsks/GZRSKS/Analytics_iOS_SDK_2.2.1.OpenUDID/UMAnalytics_Sdk_2.2.1.OpenUDID,
+					/Users/lt/IOS/gzrsks/GZRSKS/UMAnalytics_Sdk_2.2.1.OpenUDID,
 				);
 				PRODUCT_NAME = "贵州人事考试";
 				PROVISIONING_PROFILE = "";
@@ -799,6 +819,8 @@
 					/Users/lt/IOS/gzrsks/GZRSKS/umeng_ios_social_sdk_3.3.2_custom/UMSocial_Sdk_3.3.2/frameworks/Wechat,
 					/Users/lt/IOS/gzrsks/GZRSKS/umeng_ios_social_sdk_3.3.2_custom/UMSocial_Sdk_3.3.2,
 					/Users/lt/IOS/gzrsks/GZRSKS,
+					/Users/lt/IOS/gzrsks/GZRSKS/Analytics_iOS_SDK_2.2.1.OpenUDID/UMAnalytics_Sdk_2.2.1.OpenUDID,
+					/Users/lt/IOS/gzrsks/GZRSKS/UMAnalytics_Sdk_2.2.1.OpenUDID,
 				);
 				PRODUCT_NAME = "贵州人事考试";
 				PROVISIONING_PROFILE = "";
