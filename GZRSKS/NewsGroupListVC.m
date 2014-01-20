@@ -28,6 +28,7 @@ NSString *const kAppDownloadAddress = @"https://itunes.apple.com/cn/app/gui-zhou
 
 static const CGFloat kNewsGroupTableViewHeaderViewHeight = 35.0;
 static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseableIdentifier";
+static NSString *const kAutoRefreshNewsInteral = @"AutoRefreshNewsInteral";
 
 @interface NewsGroupListVC()
 @property (weak, nonatomic) IBOutlet UITableView *newsGroupListView;
@@ -42,8 +43,9 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
 {
     [super viewDidLoad];
     
-    // 每次程序从后台切换到前台时重新刷新列表
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleApplicationWillEnterForegroundNotification:) name:UIApplicationWillEnterForegroundNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hanleApplicationDidEnterBackgroundNotification:) name:UIApplicationDidEnterBackgroundNotification object:nil];
     
     // 导航栏左边按钮
     self->_brightnessButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -125,7 +127,6 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
     }
 }
 
-
 // 接收到内存警告后重新刷新列表，刷新列表的操作会释放掉之前所有的News对象
 - (void)didReceiveMemoryWarning
 {
@@ -143,11 +144,22 @@ static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseabl
         [self refreshNewsList];
 }
 
+#pragma mark - 处理进入前后台通知
+
 - (void)handleApplicationWillEnterForegroundNotification:(NSNotification *)not
 {
     [self.changeBrightnessSlider setValue:[[UIScreen mainScreen] brightness]];
 
-    [self refreshNewsList];
+    NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
+    NSTimeInterval bef = [[NSUserDefaults standardUserDefaults] doubleForKey:kAutoRefreshNewsInteral];
+    if(now - bef > 60) // 进入前后台间隔60秒才执行刷新
+        [self refreshNewsList];
+}
+
+- (void)hanleApplicationDidEnterBackgroundNotification:(NSNotification *)not
+{
+    NSTimeInterval now  = [NSDate timeIntervalSinceReferenceDate];
+    [[NSUserDefaults standardUserDefaults] setDouble:now forKey:kAutoRefreshNewsInteral];
 }
 
 #pragma mark - 刷新、加载更多
