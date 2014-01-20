@@ -28,7 +28,7 @@ NSString *const kAppDownloadAddress = @"https://itunes.apple.com/cn/app/gui-zhou
 
 static const CGFloat kNewsGroupTableViewHeaderViewHeight = 35.0;
 static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseableIdentifier";
-static NSString *const kAutoRefreshNewsInteral = @"AutoRefreshNewsInteral";
+static NSString *const kAutoRefreshNewsInterval = @"AutoRefreshNewsInteral";
 
 @interface NewsGroupListVC()
 @property (weak, nonatomic) IBOutlet UITableView *newsGroupListView;
@@ -151,7 +151,7 @@ static NSString *const kAutoRefreshNewsInteral = @"AutoRefreshNewsInteral";
     [self.changeBrightnessSlider setValue:[[UIScreen mainScreen] brightness]];
 
     NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
-    NSTimeInterval bef = [[NSUserDefaults standardUserDefaults] doubleForKey:kAutoRefreshNewsInteral];
+    NSTimeInterval bef = [[NSUserDefaults standardUserDefaults] doubleForKey:kAutoRefreshNewsInterval];
     if(now - bef > 60) // 进入前后台间隔60秒才执行刷新
         [self refreshNewsList];
 }
@@ -159,7 +159,7 @@ static NSString *const kAutoRefreshNewsInteral = @"AutoRefreshNewsInteral";
 - (void)hanleApplicationDidEnterBackgroundNotification:(NSNotification *)not
 {
     NSTimeInterval now  = [NSDate timeIntervalSinceReferenceDate];
-    [[NSUserDefaults standardUserDefaults] setDouble:now forKey:kAutoRefreshNewsInteral];
+    [[NSUserDefaults standardUserDefaults] setDouble:now forKey:kAutoRefreshNewsInterval];
 }
 
 #pragma mark - 刷新、加载更多
