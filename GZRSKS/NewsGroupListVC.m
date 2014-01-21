@@ -18,6 +18,7 @@
 #import "PopoverView.h"
 #import "UMFeedback.h"
 #import "Crackify.h"
+#import "HaveReadNews.h"
 
 extern NSString  *const UMAppKey;
 extern NSString  *const kNetAPIErorDomain;
@@ -142,6 +143,7 @@ static NSString *const kAutoRefreshNewsInterval = @"AutoRefreshNewsInteral";
     
     if([NewsProvider sharedInstance].newsGroupCount == 0)
         [self refreshNewsList];
+    
 }
 
 #pragma mark - 处理进入前后台通知
@@ -278,7 +280,7 @@ static NSString *const kAutoRefreshNewsInterval = @"AutoRefreshNewsInteral";
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.text = news.title;
     cell.textLabel.font = [UIFont systemFontOfSize:16];
-    cell.textLabel.textColor = [UIColor blackColor];
+    cell.textLabel.textColor = [HaveReadNews isRead:news] ? [UIColor lightGrayColor] : [UIColor blackColor];
     
     if(!cell.accessoryView)
     {
@@ -310,8 +312,13 @@ static NSString *const kAutoRefreshNewsInterval = @"AutoRefreshNewsInteral";
     
     NewsGroup *newsGroup = [[NewsProvider sharedInstance] getNewsGroupByIndex:indexPath.section];
     News *news = newsGroup.newsGroup[indexPath.row];
-    NewsContentVC *vc = [[NewsContentVC alloc] initWithNews:news];
     
+    [HaveReadNews markAsReaded:news];
+
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.textLabel.textColor = [UIColor lightGrayColor];
+    
+    NewsContentVC *vc = [[NewsContentVC alloc] initWithNews:news];
     [self.navigationController pushViewController:vc animated:YES];
 }
 @end

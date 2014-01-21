@@ -52,6 +52,7 @@
 		698B0FA4186555200090C719 /* NewsStorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 698B0FA2186555200090C719 /* NewsStorageManager.m */; };
 		698B0FAF186555420090C719 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 698B0FAE186555420090C719 /* AppDelegate.m */; };
 		698B0FB5186555FC0090C719 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 698B0FB4186555FC0090C719 /* Config.m */; };
+		698C6FC8188E26F600935D60 /* HaveReadNews.m in Sources */ = {isa = PBXBuildFile; fileRef = 698C6FC7188E26F600935D60 /* HaveReadNews.m */; };
 		69A70E6F1887D422006D05FA /* DocTypeDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A70E6E1887D422006D05FA /* DocTypeDetector.m */; };
 		69A70E731887DFE5006D05FA /* DocViewerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A70E711887DFE5006D05FA /* DocViewerVC.m */; };
 		69A70E741887DFE5006D05FA /* DocViewerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69A70E721887DFE5006D05FA /* DocViewerVC.xib */; };
@@ -149,6 +150,8 @@
 		698B0FAE186555420090C719 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		698B0FB3186555FC0090C719 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		698B0FB4186555FC0090C719 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
+		698C6FC6188E26F600935D60 /* HaveReadNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HaveReadNews.h; sourceTree = "<group>"; };
+		698C6FC7188E26F600935D60 /* HaveReadNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HaveReadNews.m; sourceTree = "<group>"; };
 		69A70E6D1887D422006D05FA /* DocTypeDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocTypeDetector.h; sourceTree = "<group>"; };
 		69A70E6E1887D422006D05FA /* DocTypeDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocTypeDetector.m; sourceTree = "<group>"; };
 		69A70E701887DFE5006D05FA /* DocViewerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocViewerVC.h; sourceTree = "<group>"; };
@@ -455,6 +458,8 @@
 				694BF38E1886232D00243D51 /* MessageBox.m */,
 				69A70E6D1887D422006D05FA /* DocTypeDetector.h */,
 				69A70E6E1887D422006D05FA /* DocTypeDetector.m */,
+				698C6FC6188E26F600935D60 /* HaveReadNews.h */,
+				698C6FC7188E26F600935D60 /* HaveReadNews.m */,
 			);
 			name = Assist;
 			sourceTree = "<group>";
@@ -635,6 +640,7 @@
 				6966BB1018869311007B5DE0 /* FavoriteNewsVC.m in Sources */,
 				697434CC18686DAC00A6A49A /* UIScreen+Size.m in Sources */,
 				698B0FB5186555FC0090C719 /* Config.m in Sources */,
+				698C6FC8188E26F600935D60 /* HaveReadNews.m in Sources */,
 				698B0F9E186555110090C719 /* NetAPI.m in Sources */,
 				69A70E731887DFE5006D05FA /* DocViewerVC.m in Sources */,
 				698B0FA3186555200090C719 /* News.m in Sources */,
