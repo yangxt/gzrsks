@@ -23,12 +23,12 @@ static NSString *const kHaveReadNewsURLSet = @"HaveReadNewsURLSet";
 + (void) markAsReaded:(News *)news
 {
     [[TMCache sharedCache] objectForKey:kHaveReadNewsURLSet block:^(TMCache *cache, NSString *key, id object) {
-        NSMutableSet *set = object;
+        NSMutableOrderedSet *set = object;
         if(set)
         {
             [set addObject:news.contentUrl.absoluteString];
         }else{
-             set  = [NSMutableSet setWithObject:news.contentUrl.absoluteString];
+            set  = [[NSMutableOrderedSet alloc] initWithObject:news.contentUrl.absoluteString];
         }
         
         [[TMCache sharedCache] setObject:set forKey:kHaveReadNewsURLSet block:NULL];
