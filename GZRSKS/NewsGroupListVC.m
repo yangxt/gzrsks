@@ -17,15 +17,13 @@
 #import "FavoriteNewsVC.h"
 #import "PopoverView.h"
 #import "UMFeedback.h"
-#import "Crackify.h"
 #import "HaveReadNews.h"
 
 extern NSString  *const UMAppKey;
 extern NSString  *const kNetAPIErorDomain;
 extern NSString  *const kNetAPIErrorDesc;
 extern NSInteger const kNetAPIErrorCode;
-
-NSString *const kAppDownloadAddress = @"https://itunes.apple.com/cn/app/gui-zhou-ren-shi-kao-shi/id622339104?mt=8";
+extern NSString *kAppDownloadAddress;
 
 static const CGFloat kNewsGroupTableViewHeaderViewHeight = 35.0;
 static NSString *const kNewsListCellReuseableIdentifier = @"NewsListCellReuseableIdentifier";
@@ -58,7 +56,7 @@ static NSString *const kAutoRefreshNewsInterval = @"AutoRefreshNewsInteral";
     
     self->_feedbackButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self->_feedbackButton setFrame:CGRectMake(0, 0, 44, 44)];
-    [self->_feedbackButton setTitle:@"吐槽" forState:UIControlStateNormal];
+    [self->_feedbackButton setTitle:@"反馈" forState:UIControlStateNormal];
     [self->_feedbackButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self->_feedbackButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     [self->_feedbackButton addTarget:self action:@selector(presentFeedbackVC) forControlEvents:UIControlEventTouchUpInside];
@@ -78,7 +76,7 @@ static NSString *const kAutoRefreshNewsInterval = @"AutoRefreshNewsInteral";
     
     self->_favoriteButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self->_favoriteButton setFrame:CGRectMake(0, 0, 44, 44)];
-    [self->_favoriteButton setTitle:@"私货" forState:UIControlStateNormal];
+    [self->_favoriteButton setTitle:@"收藏" forState:UIControlStateNormal];
     [self->_favoriteButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self->_favoriteButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     [self->_favoriteButton addTarget:self action:@selector(pushFavoriteVC) forControlEvents:UIControlEventTouchUpInside];
@@ -119,13 +117,6 @@ static NSString *const kAutoRefreshNewsInterval = @"AutoRefreshNewsInteral";
     // http://beyondvincent.com/blog/2013/11/03/120-customize-navigation-status-bar-ios-7/#1
     [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
     
-    if([Crackify isJailbroken] || [Crackify isCracked])
-    {
-        [MessageBox showWithMessage:@"我做技术跟各位考试一样，挺苦的!\n请您花半包烟钱购买正版支持下我!" buttonTitle:@"获取" handler:^{
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kAppDownloadAddress]];
-            exit(EXIT_FAILURE);
-        }];
-    }
 }
 
 // 接收到内存警告后重新刷新列表，刷新列表的操作会释放掉之前所有的News对象

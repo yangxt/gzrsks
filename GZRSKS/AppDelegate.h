@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @class Reachability;
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,UIAlertViewDelegate>
 @property (nonatomic, strong) UIWindow *appWindow;
 @end

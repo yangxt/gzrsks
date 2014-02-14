@@ -26,7 +26,7 @@ static NSString *const kFavoriteCellReuseId = @"FavoriteCellReuseId";
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"私货";
+        self.title = @"我的收藏";
     }
     return self;
 }

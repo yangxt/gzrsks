@@ -11,8 +11,11 @@
 #import "NewsGroupListVC.h"
 #import "UMSocial.h"
 #import "MobClick.h"
+#import "MessageBox.h"
+#import "Crackify.h"
 
 NSString *const UMAppKey = @"51451fe556240b6e59008ee2";
+NSString *const kAppDownloadAddress = @"https://itunes.apple.com/cn/app/gui-zhou-ren-shi-kao-shi/id622339104?mt=8";
 
 @implementation AppDelegate
 
@@ -20,7 +23,15 @@ NSString *const UMAppKey = @"51451fe556240b6e59008ee2";
 {
 #if !(TARGET_IPHONE_SIMULATOR)
     [UMSocialData setAppKey:UMAppKey];
-    //[MobClick startWithAppkey:UMAppKey];
+    [MobClick startWithAppkey:UMAppKey];
+    [MobClick checkUpdate];
+    
+    /*if([MobClick isPirated] || [MobClick isJailbroken] || [Crackify isJailbroken] || [Crackify isCracked]){
+        NSString *msg = @"你正在使用破解或越狱版本!\n无法保证招考信息的真实性!!";
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"安全警告!!!" message:msg delegate:self cancelButtonTitle:@"获取正版软件" otherButtonTitles:nil];
+        [alert show];
+    }*/
+    
 #endif
     
     NewsGroupListVC *newsGoupListVC = [[NewsGroupListVC alloc] init];
@@ -31,7 +42,13 @@ NSString *const UMAppKey = @"51451fe556240b6e59008ee2";
     
     return YES;
 }
-							
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kAppDownloadAddress]];
+    exit(EXIT_FAILURE);
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
