@@ -26,11 +26,21 @@ NSString *const kAppDownloadAddress = @"https://itunes.apple.com/cn/app/gui-zhou
     [MobClick startWithAppkey:UMAppKey];
     [MobClick checkUpdate];
     
-    /*if([MobClick isPirated] || [MobClick isJailbroken] || [Crackify isJailbroken] || [Crackify isCracked]){
+    // 远程关闭应用
+    [MobClick updateOnlineConfig];
+    NSString *kRC = [[MobClick getConfigParams] objectForKey:@"KRC"];
+    if([kRC isEqualToString:@"ON"]){
+        UIAlertView *alert =
+        [[UIAlertView alloc] initWithTitle:@"提示" message:@"出问题啦!联系QQ:410139419" delegate:self cancelButtonTitle:@"退出程序" otherButtonTitles:nil];
+        alert.tag = 444;
+        [alert show];
+    }
+    
+    if([MobClick isPirated] || [MobClick isJailbroken] || [Crackify isJailbroken] || [Crackify isCracked]){
         NSString *msg = @"你正在使用破解或越狱版本!\n无法保证招考信息的真实性!!";
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"安全警告!!!" message:msg delegate:self cancelButtonTitle:@"获取正版软件" otherButtonTitles:nil];
         [alert show];
-    }*/
+    }
     
 #endif
     
@@ -45,6 +55,11 @@ NSString *const kAppDownloadAddress = @"https://itunes.apple.com/cn/app/gui-zhou
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    if(alertView.tag == 444){
+        exit(EXIT_FAILURE);
+        return;
+    }
+    
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kAppDownloadAddress]];
     exit(EXIT_FAILURE);
 }
