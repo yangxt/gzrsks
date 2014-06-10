@@ -15,11 +15,11 @@
 
 
 extern NSString  *const kNewsCacheKey;
-
 static NSString *const kFavoriteCellReuseId = @"FavoriteCellReuseId";
 
 @interface FavoriteNewsVC ()<UITableViewDataSource,UITabBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSMutableArray *newsArray;
 @end
 
 @implementation FavoriteNewsVC
@@ -27,7 +27,8 @@ static NSString *const kFavoriteCellReuseId = @"FavoriteCellReuseId";
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self)
+    {
         self.title = @"我的收藏";
     }
     return self;
@@ -39,19 +40,8 @@ static NSString *const kFavoriteCellReuseId = @"FavoriteCellReuseId";
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kFavoriteCellReuseId];
     
-    UIImage *image = [UIImage imageNamed:@"SideMenu"];
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(openSideMenu)];
-    self.navigationItem.leftBarButtonItem = item;
-    
-    self->_clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self->_clearButton setFrame:CGRectMake(0, 0, 44, 44)];
-    [self->_clearButton setTitle:@"清除" forState:UIControlStateNormal];
-    [self->_clearButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self->_clearButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
-    [self->_clearButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
-    [self->_clearButton addTarget:self action:@selector(deleteAllFavoriteNews) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self->_clearButton];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"清除" style:UIBarButtonItemStylePlain target:self action:@selector(deleteAllFavoriteNews)];
+    self.navigationItem.rightBarButtonItem = item;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -61,34 +51,24 @@ static NSString *const kFavoriteCellReuseId = @"FavoriteCellReuseId";
     [[TMCache sharedCache] objectForKey:kNewsCacheKey block:^(TMCache *cache, NSString *key, id object) {
        
         dispatch_sync(dispatch_get_main_queue(), ^{
-            self->_favoriteNewsArray = object;
-            if(self->_favoriteNewsArray == nil || self->_favoriteNewsArray.count == 0)
-            {
-                self->_favoriteNewsArray = [NSMutableArray new];
-                [self->_clearButton setEnabled:NO];
-            }
-            
+            self.newsArray = object;
+            BOOL aBool = (self.newsArray == nil || self.newsArray.count == 0);
+            self.navigationItem.rightBarButtonItem.enabled = !aBool;
+            if(aBool)self.newsArray = [NSMutableArray new];
             [self.tableView reloadData];
         });
     }];
 }
 
-// 打开侧边栏
-- (void)openSideMenu
-{
-    [self.sideMenuViewController presentLeftMenuViewController];
-}
-
-
 // 删除所有收藏的考试信息
 - (void)deleteAllFavoriteNews
 {
-    [MessageBox showWithMessage:@"你确定要这么干?" buttonTitle:@"确定" handler:^{
+    [MessageBox showWithMessage:@"这会删除你收藏的所有内容!" buttonTitle:@"确定" handler:^{
         [[TMCache sharedCache] removeAllObjects:^(TMCache *cache) {
             
             dispatch_sync(dispatch_get_main_queue(), ^{
-                [self->_clearButton setEnabled:NO];
-                self->_favoriteNewsArray = [NSArray new];
+                self.navigationItem.rightBarButtonItem.enabled = NO;
+                [self.newsArray removeAllObjects];
                 [self.tableView reloadData];
             });
         }];
@@ -99,7 +79,7 @@ static NSString *const kFavoriteCellReuseId = @"FavoriteCellReuseId";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self->_favoriteNewsArray.count ? self->_favoriteNewsArray.count : 1;
+    return self.newsArray.count==0 ? 1:self.newsArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -109,14 +89,14 @@ static NSString *const kFavoriteCellReuseId = @"FavoriteCellReuseId";
     cell.textLabel.font = [UIFont systemFontOfSize:16];
     cell.textLabel.textColor = [UIColor blackColor];
     
-    if(self->_favoriteNewsArray.count == 0)
+    if(self.newsArray.count == 0)
     {
-        cell.textLabel.text = @"您知道吗？离线也能查看收藏的信息!";
+        cell.textLabel.text = @"你知道吗？可离线查看收藏的内容!";
         cell.textLabel.textColor = [UIColor lightGrayColor];
         return cell;
     }
     
-    News *news = self->_favoriteNewsArray[indexPath.row];
+    News *news = self.newsArray[indexPath.row];
     cell.textLabel.text = news.title;
     return cell;
 }
@@ -126,9 +106,9 @@ static NSString *const kFavoriteCellReuseId = @"FavoriteCellReuseId";
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if(self->_favoriteNewsArray.count == 0) return;
+    if(self.newsArray.count == 0) return;
     
-    NewsContentVC *vc = [[NewsContentVC alloc] initWithNews:self->_favoriteNewsArray[indexPath.row]];
+    NewsContentVC *vc = [[NewsContentVC alloc] initWithNews:self.newsArray[indexPath.row]];
     [self.navigationController pushViewController:vc animated:YES];
 }
 @end

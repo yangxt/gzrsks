@@ -1,13 +1,14 @@
 //
-//  FavoriteNewsVC.h
+//  AboutUsVC.h
 //  GZRSKS
 //
-//  Created by LiHong on 14-1-15.
+//  Created by lihong on 14-6-10.
 //  Copyright (c) 2014年 李红(410139419@qq.com). All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "BaseController.h"
 
-@interface FavoriteNewsVC : BaseController
+@interface AboutUsVC : BaseController
+
 @end

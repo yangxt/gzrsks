@@ -14,6 +14,7 @@
 #import "DocViewerVC.h"
 #import "NewsGroup.h"
 #import "NewsProvider.h"
+#import "UIColor+HexString.h"
 
 extern NSString *const UMAppKey;
 
@@ -34,7 +35,9 @@ extern NSString  *const kAppDownloadAddress;
 - (id)initWithNews:(News *)news
 {
     self = [super initWithNibName:@"NewsContentVC" bundle:nil];
-    if (self) {
+    if (self)
+    {
+        self.title = @"详情";
         self.news = news;
     }
     return self;
@@ -44,69 +47,76 @@ extern NSString  *const kAppDownloadAddress;
 {
     [super viewDidLoad];
     
-    // 导航栏右边按钮
-    self->_favoriteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self->_favoriteButton setFrame:CGRectMake(0, 0, 44, 44)];
-    [self->_favoriteButton setTitle:@"收藏" forState:UIControlStateNormal];
-    [self->_favoriteButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self->_favoriteButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
-    [self->_favoriteButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
-    [self->_favoriteButton addTarget:self action:@selector(favoriteNewsOperation) forControlEvents:UIControlEventTouchUpInside];
-    
+    NSLog(@"%f",self.view.bounds.size.height);
+    // 收藏按钮
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"收藏" style:UIBarButtonItemStylePlain target:self action:@selector(favoriteNews)];
+    item.enabled = NO;
     self->_refreshActivityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    self->_refreshActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    self->_refreshActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
     self->_refreshActivityIndicator.hidesWhenStopped = YES;
-    
-    NSArray *rightItems = @[[[UIBarButtonItem alloc] initWithCustomView:self->_favoriteButton],
+    NSArray *rightItems = @[item,
                             [[UIBarButtonItem alloc] initWithCustomView:self->_refreshActivityIndicator]];
     self.navigationItem.rightBarButtonItems = rightItems;
     
-    [self->_favoriteButton setEnabled:NO];
-    [self refreshNewsContent];
+    // 用于滚动内容到底部按钮
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(320-52.0, self.view.frame.size.height-200.0, 50.0, 50.0);
+    [button addTarget:self action:@selector(scrollToBottom) forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"底" forState:UIControlStateNormal];
+    button.showsTouchWhenHighlighted = YES;
+    button.layer.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5].CGColor;
+    button.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    button.layer.borderWidth = 2.0;
+    button.layer.cornerRadius = 25.0;
+    [self.view insertSubview:button aboveSubview:self.webView];
+    
+    [self fetchNewsContent];
 
 }
 
+- (void)scrollToBottom
+{
+    CGSize size = self.webView.scrollView.contentSize;
+    CGFloat offsetY = abs(size.height-self.webView.bounds.size.height);
+    [self.webView.scrollView setContentOffset:CGPointMake(0, offsetY) animated:YES];
+}
+
 // 获取新闻内容
-- (void)refreshNewsContent
+- (void)fetchNewsContent
 {
     [self->_refreshActivityIndicator startAnimating];
 
     if(self.news.content)
     {
-        [self->_favoriteButton setEnabled:YES];
+        self.navigationItem.rightBarButtonItem.enabled = YES;
         [self.webView loadHTMLString:self.news.content baseURL:nil];
         
         if([self theNewsIsFavorited:self.news])
-            [self->_favoriteButton setTitle:@"取消" forState:UIControlStateNormal];
+            self.navigationItem.rightBarButtonItem.title = @"已收藏";
         
         return;
     }
     
     [[NewsProvider shared] fetchNewsContentWithURL:self.news.contentUrl onCompleted:^(NSString *content) {
         
-        [self->_favoriteButton setEnabled:YES];
+        self.navigationItem.rightBarButtonItem.enabled = YES;
         [self.news setContent:content];
         [self.webView loadHTMLString:content baseURL:nil];
         
         if([self theNewsIsFavorited:self.news])
-            [self->_favoriteButton setTitle:@"取消" forState:UIControlStateNormal];
-
+            self.navigationItem.rightBarButtonItem.title = @"已收藏";
         
     } onFail:^(NSError *error) {
         [self->_refreshActivityIndicator stopAnimating];
-        
-        NSString *desc = @"网络链接断开或过慢";
-        if([error.domain isEqualToString:kNetAPIErorDomain])
-            desc = @"很抱歉，出错啦。请告知我(QQ:410139419)必将尽快修复!";
-        [MessageBox showWithMessage:desc buttonTitle:@"重试" handler:^{
-            [self refreshNewsContent];
+        [MessageBox showWithMessage:[error localizedDescription] buttonTitle:@"重试" handler:^{
+            [self fetchNewsContent];
         }];
     }];
 }
 
 #pragma mark - 收藏或取消收藏
 
-- (void)favoriteNewsOperation
+- (void)favoriteNews
 {
     [[TMCache sharedCache] objectForKey:kNewsCacheKey block:^(TMCache *cache, NSString *key, id object) {
         dispatch_sync(dispatch_get_main_queue(), ^{
@@ -122,19 +132,23 @@ extern NSString  *const kAppDownloadAddress;
                         if([n.contentUrl.absoluteString isEqualToString:self.news.contentUrl.absoluteString])
                         {
                             [array removeObject:n];
-                            [self->_favoriteButton setTitle:@"收藏" forState:UIControlStateNormal];
+                            self.navigationItem.rightBarButtonItem.title = @"收藏";
                             break;
                         }
                     }
-                }else{
+                }
+                else
+                {
                     [array insertObject:self.news atIndex:0];
-                    [self->_favoriteButton setTitle:@"取消" forState:UIControlStateNormal];
+                    self.navigationItem.rightBarButtonItem.title = @"已收藏";
                 }
                 
-            }else{
+            }
+            else
+            {
                 array = [NSMutableArray new];
                 [array insertObject:self.news atIndex:0];
-                [self->_favoriteButton setTitle:@"取消" forState:UIControlStateNormal];
+                self.navigationItem.rightBarButtonItem.title = @"已收藏";
             }
             
             [[TMCache sharedCache] setObject:array forKey:kNewsCacheKey];

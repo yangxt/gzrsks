@@ -9,6 +9,8 @@
 #import "LeftMenuViewController.h"
 #import "NewsGroupListViewController.h"
 #import "FavoriteNewsVC.h"
+#import "AboutUsVC.h"
+#import "SettingVC.h"
 
 @interface LeftMenuViewController ()
 
@@ -43,31 +45,35 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    UIViewController *vc = nil;
     switch(indexPath.row)
     {
         case 0:
-        {
-            NewsGroupListViewController *vc = [[NewsGroupListViewController alloc] initWithStyle:UITableViewStylePlain];
-            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-            [self.sideMenuViewController setContentViewController:nav];
-            [self.sideMenuViewController hideMenuViewController];
+            vc = [[NewsGroupListViewController alloc] initWithStyle:UITableViewStylePlain];
             break;
-        }
             
         case 1:
-        {
-            FavoriteNewsVC *vc = [[FavoriteNewsVC alloc] initWithNibName:@"FavoriteNewsVC" bundle:nil];
-            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-            [self.sideMenuViewController setContentViewController:nav];
-            [self.sideMenuViewController hideMenuViewController];
+            vc = [[FavoriteNewsVC alloc] initWithNibName:@"FavoriteNewsVC" bundle:nil];
             break;
-        }
             
         case 2:
+            vc = [[SettingVC alloc] initWithNibName:@"SettingVC" bundle:nil];
+            break;
+            
+        case 3:
+            vc = [[AboutUsVC alloc] initWithNibName:@"AboutUsVC" bundle:nil];
             break;
             
         default:break;
     }
+    
+    if(vc)
+    {
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+        [self.sideMenuViewController setContentViewController:nav];
+    }
+    [self.sideMenuViewController hideMenuViewController];
+
 }
 
 #pragma mark -
@@ -78,14 +84,9 @@
     return 54;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -103,8 +104,8 @@
         cell.selectedBackgroundView = [[UIView alloc] init];
     }
     
-    NSArray *titles = @[@"招考信息", @"我的收藏", @"联系我们"];
-    NSArray *images = @[@"IconHome", @"IconCalendar", @"IconProfile"];
+    NSArray *titles = @[@"招考信息", @"我的收藏", @"关于我们",@"设置"];
+    NSArray *images = @[@"IconHome", @"IconCalendar", @"IconProfile",@"IconSettings"];
     cell.textLabel.text = titles[indexPath.row];
     cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
     

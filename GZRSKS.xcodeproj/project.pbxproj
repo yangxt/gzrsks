@@ -39,6 +39,11 @@
 		69B5FC8118861E560048C06A /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B5FC8018861E560048C06A /* UIColor+HexString.m */; };
 		69CDAEE11884E9CA00B65984 /* NewsContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CDAEDF1884E9CA00B65984 /* NewsContentVC.m */; };
 		69CDAEE21884E9CA00B65984 /* NewsContentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69CDAEE01884E9CA00B65984 /* NewsContentVC.xib */; };
+		CD16B44C1947573B00B04957 /* AboutUsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CD16B44A1947573B00B04957 /* AboutUsVC.m */; };
+		CD16B44D1947573B00B04957 /* AboutUsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD16B44B1947573B00B04957 /* AboutUsVC.xib */; };
+		CD16B4511947574E00B04957 /* SettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CD16B44F1947574E00B04957 /* SettingVC.m */; };
+		CD16B4521947574E00B04957 /* SettingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD16B4501947574E00B04957 /* SettingVC.xib */; };
+		CD16B4551947583E00B04957 /* BaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD16B4541947583E00B04957 /* BaseController.m */; };
 		CD81FA481946AE81001BE0C2 /* TMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CD81FA431946AE81001BE0C2 /* TMCache.m */; };
 		CD81FA491946AE81001BE0C2 /* TMDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CD81FA451946AE81001BE0C2 /* TMDiskCache.m */; };
 		CD81FA4A1946AE81001BE0C2 /* TMMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CD81FA471946AE81001BE0C2 /* TMMemoryCache.m */; };
@@ -109,6 +114,14 @@
 		69CDAEDE1884E9CA00B65984 /* NewsContentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsContentVC.h; sourceTree = "<group>"; };
 		69CDAEDF1884E9CA00B65984 /* NewsContentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsContentVC.m; sourceTree = "<group>"; };
 		69CDAEE01884E9CA00B65984 /* NewsContentVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsContentVC.xib; sourceTree = "<group>"; };
+		CD16B4491947573B00B04957 /* AboutUsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsVC.h; sourceTree = "<group>"; };
+		CD16B44A1947573B00B04957 /* AboutUsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsVC.m; sourceTree = "<group>"; };
+		CD16B44B1947573B00B04957 /* AboutUsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutUsVC.xib; sourceTree = "<group>"; };
+		CD16B44E1947574E00B04957 /* SettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingVC.h; sourceTree = "<group>"; };
+		CD16B44F1947574E00B04957 /* SettingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingVC.m; sourceTree = "<group>"; };
+		CD16B4501947574E00B04957 /* SettingVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingVC.xib; sourceTree = "<group>"; };
+		CD16B4531947583E00B04957 /* BaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseController.h; sourceTree = "<group>"; };
+		CD16B4541947583E00B04957 /* BaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseController.m; sourceTree = "<group>"; };
 		CD81FA421946AE81001BE0C2 /* TMCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMCache.h; sourceTree = "<group>"; };
 		CD81FA431946AE81001BE0C2 /* TMCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMCache.m; sourceTree = "<group>"; };
 		CD81FA441946AE81001BE0C2 /* TMDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDiskCache.h; sourceTree = "<group>"; };
@@ -241,6 +254,14 @@
 				69A70E721887DFE5006D05FA /* DocViewerVC.xib */,
 				CD8887AD19471796001BAB1A /* LeftMenuViewController.h */,
 				CD8887AE19471796001BAB1A /* LeftMenuViewController.m */,
+				CD16B4491947573B00B04957 /* AboutUsVC.h */,
+				CD16B44A1947573B00B04957 /* AboutUsVC.m */,
+				CD16B44B1947573B00B04957 /* AboutUsVC.xib */,
+				CD16B44E1947574E00B04957 /* SettingVC.h */,
+				CD16B44F1947574E00B04957 /* SettingVC.m */,
+				CD16B4501947574E00B04957 /* SettingVC.xib */,
+				CD16B4531947583E00B04957 /* BaseController.h */,
+				CD16B4541947583E00B04957 /* BaseController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -403,10 +424,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD16B44D1947573B00B04957 /* AboutUsVC.xib in Resources */,
 				69A70E741887DFE5006D05FA /* DocViewerVC.xib in Resources */,
 				698B0F4F186553AE0090C719 /* Images.xcassets in Resources */,
 				698B0F41186553AE0090C719 /* InfoPlist.strings in Resources */,
 				6966BB1118869311007B5DE0 /* FavoriteNewsVC.xib in Resources */,
+				CD16B4521947574E00B04957 /* SettingVC.xib in Resources */,
 				69CDAEE21884E9CA00B65984 /* NewsContentVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,12 +449,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				698B0FAF186555420090C719 /* AppDelegate.m in Sources */,
+				CD16B4551947583E00B04957 /* BaseController.m in Sources */,
+				CD16B4511947574E00B04957 /* SettingVC.m in Sources */,
 				CD81FA4D1946B55D001BE0C2 /* NewsGroup.m in Sources */,
 				CD81FA491946AE81001BE0C2 /* TMDiskCache.m in Sources */,
 				CD8887AF19471796001BAB1A /* LeftMenuViewController.m in Sources */,
 				69A70E6F1887D422006D05FA /* DocTypeDetector.m in Sources */,
 				CD81FA501946B56D001BE0C2 /* NewsProvider.m in Sources */,
 				CD81FA481946AE81001BE0C2 /* TMCache.m in Sources */,
+				CD16B44C1947573B00B04957 /* AboutUsVC.m in Sources */,
 				6966BB1018869311007B5DE0 /* FavoriteNewsVC.m in Sources */,
 				CD8887A019470386001BAB1A /* UIViewController+RESideMenu.m in Sources */,
 				697434CC18686DAC00A6A49A /* UIScreen+Size.m in Sources */,
