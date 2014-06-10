@@ -8,41 +8,33 @@
 
 #import "NewsGroupListHeaderView.h"
 #import "News.h"
+#import "NewsGroup.h"
 
 @implementation NewsGroupListHeaderView
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
-
 - (instancetype)initWithFrame:(CGRect)frame andNewsGroup:(NewsGroup *)newsGroup
 {
-    if(self = [super initWithFrame:frame]){
-        self.backgroundColor = [UIColor colorWithWhite:0.962 alpha:1.0];
-        self.layer.shadowColor = [UIColor colorWithWhite:0.83 alpha:1.0].CGColor;
-        self.layer.shadowOffset = CGSizeMake(0, 3);
-        self.layer.shadowOpacity = 0.7;
+    if(self = [super initWithFrame:frame])
+    {
+        NSDateFormatter *formatter = [NSDateFormatter new];
+        [formatter setDateStyle:NSDateFormatterLongStyle];
+        [formatter setDateFormat:@"YYYY-MM-dd"];
+        NSString *dateStr = [formatter stringFromDate:[NSDate new]];
+        dateStr = [NSString stringWithFormat:@"%@年%@",[dateStr substringToIndex:4],newsGroup.publishDate];
+        NSMutableString *now = [NSMutableString stringWithString:dateStr];
+        [now replaceCharactersInRange:NSMakeRange(7, 1) withString:@"月"];
+        
+        self.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
+        self.layer.shadowColor = [UIColor colorWithWhite:0.7 alpha:1.0].CGColor;
+        self.layer.shadowOffset = CGSizeMake(0, 4);
+        self.layer.shadowOpacity = 0.9;
         
         UILabel *lable = [[UILabel alloc] initWithFrame:frame];
         lable.backgroundColor = [UIColor clearColor];
-        lable.font = [UIFont systemFontOfSize:16];
-        lable.textColor = [UIColor blackColor];
+        lable.font = [UIFont systemFontOfSize:18.5];
+        lable.textColor = [UIColor colorWithWhite:0.2 alpha:1.0];
         lable.textAlignment = NSTextAlignmentCenter;
-        lable.text = [NSString stringWithFormat:@"日期:%@  发布:%d条",newsGroup.publishDate,(int)newsGroup.count];
+        lable.text = [NSString stringWithFormat:@"%@日 发布%d条",now,(int)newsGroup.count];
         
         [self addSubview:lable];
     }

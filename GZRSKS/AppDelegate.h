@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+//1.添加广告.从服务器获取，可以配置
+//2.
 
-@class Reachability;
 @interface AppDelegate : UIResponder <UIApplicationDelegate,UIAlertViewDelegate>
 @property (nonatomic, strong) UIWindow *appWindow;
 @end

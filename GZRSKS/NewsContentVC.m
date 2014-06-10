@@ -12,7 +12,8 @@
 #import "TMCache.h"
 #import "DocTypeDetector.h"
 #import "DocViewerVC.h"
-#import "UMSocial.h"
+#import "NewsGroup.h"
+#import "NewsProvider.h"
 
 extern NSString *const UMAppKey;
 
@@ -81,7 +82,7 @@ extern NSString  *const kAppDownloadAddress;
         return;
     }
     
-    [[NewsProvider sharedInstance] fetchNewsContentWithURL:self.news.contentUrl onCompleted:^(NSString *content) {
+    [[NewsProvider shared] fetchNewsContentWithURL:self.news.contentUrl onCompleted:^(NSString *content) {
         
         [self->_favoriteButton setEnabled:YES];
         [self.news setContent:content];
@@ -173,14 +174,8 @@ extern NSString  *const kAppDownloadAddress;
         case DocTypePPT:
         case DocTypeZip:
         {
-            NSString *dtName = [DocTypeDetector docTypeName:type];
-            NSString *msg = [NSString stringWithFormat:@"不允许打开%@! 可外发到邮箱、微博、QQ空间等,稍候在电脑上打开.",dtName];
-            [MessageBox showWithMessage:msg buttonTitle:@"外发" handler:^{
-                NSString *msg = [NSString stringWithFormat:@"来自 %@ 的附件: %@",kAppDownloadAddress,request.URL.absoluteString];
-                NSArray *snsNames = @[UMShareToQzone,UMShareToSina,UMShareToTencent,UMShareToSms,UMShareToEmail,UMShareToRenren,UMShareToDouban];
-                [UMSocialSnsService presentSnsIconSheetView:self appKey:UMAppKey shareText:msg shareImage:nil shareToSnsNames:snsNames delegate:nil];
-            }];
-            
+           // NSString *dtName = [DocTypeDetector docTypeName:type];
+      
             [self->_refreshActivityIndicator stopAnimating];
             return NO;
         }

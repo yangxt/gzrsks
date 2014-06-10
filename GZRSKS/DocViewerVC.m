@@ -8,7 +8,6 @@
 
 #import "DocViewerVC.h"
 #import "MessageBox.h"
-#import "UMSocial.h"
 
 extern NSString *const UMAppKey;
 extern NSString *const kAppDownloadAddress;
@@ -68,13 +67,6 @@ static NSString *const kFirstUseSendOutLinkFlag = @"FirstUseSendOutLinkFlag";
         }];
     }
     
-#if !(TARGET_IPHONE_SIMULATOR)
-    
-    NSString *msg = [NSString stringWithFormat:@"来自 %@ 的附件: %@",kAppDownloadAddress,self->_docURL.absoluteString];
-    NSArray *snsNames = @[UMShareToQzone,UMShareToSina,UMShareToTencent,UMShareToSms,UMShareToEmail,UMShareToRenren,UMShareToDouban];
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:UMAppKey shareText:msg shareImage:nil shareToSnsNames:snsNames delegate:nil];
-    
-#endif
 }
 
 
