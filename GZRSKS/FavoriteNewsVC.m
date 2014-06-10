@@ -11,6 +11,8 @@
 #import "News.h"
 #import "NewsContentVC.h"
 #import "MessageBox.h"
+#import "RESideMenu.h"
+
 
 extern NSString  *const kNewsCacheKey;
 
@@ -36,6 +38,10 @@ static NSString *const kFavoriteCellReuseId = @"FavoriteCellReuseId";
     [super viewDidLoad];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kFavoriteCellReuseId];
+    
+    UIImage *image = [UIImage imageNamed:@"SideMenu"];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(openSideMenu)];
+    self.navigationItem.leftBarButtonItem = item;
     
     self->_clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self->_clearButton setFrame:CGRectMake(0, 0, 44, 44)];
@@ -66,6 +72,13 @@ static NSString *const kFavoriteCellReuseId = @"FavoriteCellReuseId";
         });
     }];
 }
+
+// 打开侧边栏
+- (void)openSideMenu
+{
+    [self.sideMenuViewController presentLeftMenuViewController];
+}
+
 
 // 删除所有收藏的考试信息
 - (void)deleteAllFavoriteNews

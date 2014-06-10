@@ -45,6 +45,10 @@
 		CD81FA4D1946B55D001BE0C2 /* NewsGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = CD81FA4C1946B55D001BE0C2 /* NewsGroup.m */; };
 		CD81FA501946B56D001BE0C2 /* NewsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = CD81FA4F1946B56D001BE0C2 /* NewsProvider.m */; };
 		CD8887961946E4F0001BAB1A /* NewsGroupListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8887951946E4F0001BAB1A /* NewsGroupListViewController.m */; };
+		CD88879E19470386001BAB1A /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = CD88879919470386001BAB1A /* RECommonFunctions.m */; };
+		CD88879F19470386001BAB1A /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CD88879B19470386001BAB1A /* RESideMenu.m */; };
+		CD8887A019470386001BAB1A /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CD88879D19470386001BAB1A /* UIViewController+RESideMenu.m */; };
+		CD8887AF19471796001BAB1A /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8887AE19471796001BAB1A /* LeftMenuViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +121,14 @@
 		CD81FA4F1946B56D001BE0C2 /* NewsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsProvider.m; sourceTree = "<group>"; };
 		CD8887941946E4F0001BAB1A /* NewsGroupListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsGroupListViewController.h; sourceTree = "<group>"; };
 		CD8887951946E4F0001BAB1A /* NewsGroupListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsGroupListViewController.m; sourceTree = "<group>"; };
+		CD88879819470386001BAB1A /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
+		CD88879919470386001BAB1A /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
+		CD88879A19470386001BAB1A /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
+		CD88879B19470386001BAB1A /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
+		CD88879C19470386001BAB1A /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
+		CD88879D19470386001BAB1A /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
+		CD8887AD19471796001BAB1A /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
+		CD8887AE19471796001BAB1A /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +239,8 @@
 				69A70E701887DFE5006D05FA /* DocViewerVC.h */,
 				69A70E711887DFE5006D05FA /* DocViewerVC.m */,
 				69A70E721887DFE5006D05FA /* DocViewerVC.xib */,
+				CD8887AD19471796001BAB1A /* LeftMenuViewController.h */,
+				CD8887AE19471796001BAB1A /* LeftMenuViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -277,6 +291,7 @@
 		CD81FA401946AD7F001BE0C2 /* ExternalLib */ = {
 			isa = PBXGroup;
 			children = (
+				CD88879719470386001BAB1A /* RESideMenu */,
 				CD81FA411946AE81001BE0C2 /* TMCache */,
 			);
 			name = ExternalLib;
@@ -293,6 +308,19 @@
 				CD81FA471946AE81001BE0C2 /* TMMemoryCache.m */,
 			);
 			path = TMCache;
+			sourceTree = "<group>";
+		};
+		CD88879719470386001BAB1A /* RESideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				CD88879819470386001BAB1A /* RECommonFunctions.h */,
+				CD88879919470386001BAB1A /* RECommonFunctions.m */,
+				CD88879A19470386001BAB1A /* RESideMenu.h */,
+				CD88879B19470386001BAB1A /* RESideMenu.m */,
+				CD88879C19470386001BAB1A /* UIViewController+RESideMenu.h */,
+				CD88879D19470386001BAB1A /* UIViewController+RESideMenu.m */,
+			);
+			path = RESideMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -400,16 +428,20 @@
 				698B0FAF186555420090C719 /* AppDelegate.m in Sources */,
 				CD81FA4D1946B55D001BE0C2 /* NewsGroup.m in Sources */,
 				CD81FA491946AE81001BE0C2 /* TMDiskCache.m in Sources */,
+				CD8887AF19471796001BAB1A /* LeftMenuViewController.m in Sources */,
 				69A70E6F1887D422006D05FA /* DocTypeDetector.m in Sources */,
 				CD81FA501946B56D001BE0C2 /* NewsProvider.m in Sources */,
 				CD81FA481946AE81001BE0C2 /* TMCache.m in Sources */,
 				6966BB1018869311007B5DE0 /* FavoriteNewsVC.m in Sources */,
+				CD8887A019470386001BAB1A /* UIViewController+RESideMenu.m in Sources */,
 				697434CC18686DAC00A6A49A /* UIScreen+Size.m in Sources */,
 				698B0FB5186555FC0090C719 /* Config.m in Sources */,
 				698C6FC8188E26F600935D60 /* HaveReadNews.m in Sources */,
 				698B0F9E186555110090C719 /* NetAPI.m in Sources */,
 				69A70E731887DFE5006D05FA /* DocViewerVC.m in Sources */,
 				698B0FA3186555200090C719 /* News.m in Sources */,
+				CD88879E19470386001BAB1A /* RECommonFunctions.m in Sources */,
+				CD88879F19470386001BAB1A /* RESideMenu.m in Sources */,
 				CD8887961946E4F0001BAB1A /* NewsGroupListViewController.m in Sources */,
 				694BF38F1886232D00243D51 /* MessageBox.m in Sources */,
 				698B0F43186553AE0090C719 /* main.m in Sources */,

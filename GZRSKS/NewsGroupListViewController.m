@@ -13,6 +13,7 @@
 #import "HaveReadNews.h"
 #import "NewsContentVC.h"
 #import "NewsGroupListHeaderView.h"
+#import "RESideMenu.h"
 
 @interface NewsGroupListViewController ()
 @property (nonatomic, strong) UIButton *loadMoreButton;
@@ -43,7 +44,7 @@
     self.navigationItem.leftBarButtonItem = item;
     
     // 右边
-    item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareThisApp)];
+    item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(goBackToTop)];
     self.navigationItem.rightBarButtonItem = item;
     
     // 加载更多按钮
@@ -76,13 +77,13 @@
 // 打开侧边栏
 - (void)openSideMenu
 {
-    
+    [self.sideMenuViewController presentLeftMenuViewController];
 }
 
 // 分享App给朋友
-- (void)shareThisApp
+- (void)goBackToTop
 {
-    
+    [self.tableView setContentOffset:CGPointZero animated:YES];
 }
 
 // 刷新列表
