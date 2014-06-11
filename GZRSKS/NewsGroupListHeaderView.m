@@ -25,14 +25,20 @@
         [now replaceCharactersInRange:NSMakeRange(7, 1) withString:@"月"];
         
         self.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
-        self.layer.shadowColor = [UIColor colorWithWhite:0.7 alpha:1.0].CGColor;
+        self.layer.shadowColor = [UIColor colorWithWhite:0.6 alpha:1.0].CGColor;
         self.layer.shadowOffset = CGSizeMake(0, 4);
         self.layer.shadowOpacity = 0.9;
+        
+        UIImage *image = [UIImage imageNamed:@"NavigationBar_iOS7"];
+        image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(5, 3, 3, 3)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+        imageView.image = image;
+        [self addSubview:imageView];
         
         UILabel *lable = [[UILabel alloc] initWithFrame:frame];
         lable.backgroundColor = [UIColor clearColor];
         lable.font = [UIFont systemFontOfSize:18.5];
-        lable.textColor = [UIColor colorWithWhite:0.2 alpha:1.0];
+        lable.textColor = [UIColor colorWithWhite:1 alpha:1.0];
         lable.textAlignment = NSTextAlignmentCenter;
         lable.text = [NSString stringWithFormat:@"%@日 发布%d条",now,(int)newsGroup.count];
         

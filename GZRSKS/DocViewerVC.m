@@ -8,6 +8,8 @@
 
 #import "DocViewerVC.h"
 #import "MessageBox.h"
+#import <objc/message.h>
+#import "SubNavigationController.h"
 
 extern NSString *const UMAppKey;
 extern NSString *const kAppDownloadAddress;
@@ -36,39 +38,14 @@ static NSString *const kFirstUseSendOutLinkFlag = @"FirstUseSendOutLinkFlag";
 {
     [super viewDidLoad];
     
-    self->_sendOutButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self->_sendOutButton setFrame:CGRectMake(0, 0, 44, 44)];
-    [self->_sendOutButton setTitle:@"外发" forState:UIControlStateNormal];
-    [self->_sendOutButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self->_sendOutButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
-    [self->_sendOutButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
-    [self->_sendOutButton addTarget:self action:@selector(sendOutDocLink) forControlEvents:UIControlEventTouchUpInside];
-    
     self->_loadingActivityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    self->_loadingActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    self->_loadingActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
     self->_loadingActivityIndicator.hidesWhenStopped = YES;
-    
-    NSArray *rightItems = @[[[UIBarButtonItem alloc] initWithCustomView:self->_sendOutButton],
-                       [[UIBarButtonItem alloc] initWithCustomView:self->_loadingActivityIndicator]];
-    self.navigationItem.rightBarButtonItems = rightItems;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self->_loadingActivityIndicator];
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:self->_docURL]];
     
-    self->_sendOutButton.enabled = (self->_docType != DocTypeHTML);
 }
-
-- (void)sendOutDocLink
-{
-    if([[NSUserDefaults standardUserDefaults] boolForKey:kFirstUseSendOutLinkFlag] == NO)
-    {
-        NSString *msg = @"什么是外发?\n外发是将附件地址分享到您选择的平台，方便之后您通过电脑下载，查看和编辑附件。" ;
-        [MessageBox showWithMessage:msg buttonTitle:@"不再提示" handler:^{
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kFirstUseSendOutLinkFlag];
-        }];
-    }
-    
-}
-
 
 #pragma mark - UIWebView Delegate
 
@@ -89,6 +66,32 @@ static NSString *const kFirstUseSendOutLinkFlag = @"FirstUseSendOutLinkFlag";
     [MessageBox showWithMessage:@"网络链接断开或过慢" buttonTitle:@"重试" handler:^{
         [self.webView loadRequest:[NSURLRequest requestWithURL:self->_docURL]];
     }];
+}
+
+#pragma mark - 配置旋转
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    SubNavigationController *nav = (SubNavigationController *)self.navigationController;
+    nav.shouldAutorotate2 = YES;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    objc_msgSend([UIDevice currentDevice], @selector(setOrientation:), UIDeviceOrientationLandscapeLeft);
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    objc_msgSend([UIDevice currentDevice], @selector(setOrientation:), UIDeviceOrientationPortrait);
+    
+    SubNavigationController *nav = (SubNavigationController *)self.navigationController;
+    nav.shouldAutorotate2 = NO;
+    
+    [super viewWillDisappear:animated];
+    
 }
 
 @end

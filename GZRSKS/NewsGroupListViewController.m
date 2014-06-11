@@ -14,6 +14,7 @@
 #import "NewsContentVC.h"
 #import "NewsGroupListHeaderView.h"
 #import "RESideMenu.h"
+#import <objc/message.h>
 
 @interface NewsGroupListViewController ()
 @property (nonatomic, strong) UIButton *loadMoreButton;
@@ -72,6 +73,13 @@
     // 开始刷新
     [self.refreshControl beginRefreshing];
     [self refreshNewsGroupList];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    objc_msgSend([UIDevice currentDevice], @selector(setOrientation:), UIDeviceOrientationPortrait);
 }
 
 // 打开侧边栏
@@ -183,4 +191,14 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    objc_msgSend([UIDevice currentDevice], @selector(setOrientation:), UIDeviceOrientationPortrait);
+}
+
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
 @end

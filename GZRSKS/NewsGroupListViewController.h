@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+// 考试信息标题组列表
 @interface NewsGroupListViewController : UITableViewController
 
 @end

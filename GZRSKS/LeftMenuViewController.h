@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RESideMenu.h"
 
+// 左边菜单栏
 @interface LeftMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

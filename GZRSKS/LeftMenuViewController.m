@@ -11,6 +11,7 @@
 #import "FavoriteNewsVC.h"
 #import "AboutUsVC.h"
 #import "SettingVC.h"
+#import "SubNavigationController.h"
 
 @interface LeftMenuViewController ()
 
@@ -57,11 +58,11 @@
             break;
             
         case 2:
-            vc = [[SettingVC alloc] initWithNibName:@"SettingVC" bundle:nil];
+            vc = [[AboutUsVC alloc] initWithNibName:@"AboutUsVC" bundle:nil];
             break;
             
         case 3:
-            vc = [[AboutUsVC alloc] initWithNibName:@"AboutUsVC" bundle:nil];
+            vc = [[SettingVC alloc] initWithNibName:@"SettingVC" bundle:nil];
             break;
             
         default:break;
@@ -69,7 +70,7 @@
     
     if(vc)
     {
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+        SubNavigationController *nav = [[SubNavigationController alloc] initWithRootViewController:vc];
         [self.sideMenuViewController setContentViewController:nav];
     }
     [self.sideMenuViewController hideMenuViewController];
@@ -111,5 +112,6 @@
     
     return cell;
 }
+
 
 @end

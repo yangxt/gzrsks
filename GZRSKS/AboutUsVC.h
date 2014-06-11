@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BaseController.h"
 
+//关于我们
 @interface AboutUsVC : BaseController
 
 @end

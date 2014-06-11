@@ -8,6 +8,7 @@
 
 #import "SettingVC.h"
 
+// 设置
 @interface SettingVC ()
 
 @end
@@ -34,5 +35,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 @end

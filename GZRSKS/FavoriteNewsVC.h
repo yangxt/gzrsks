@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "BaseController.h"
 
+// 收藏列表
 @interface FavoriteNewsVC : BaseController
 @end

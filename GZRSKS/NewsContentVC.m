@@ -15,6 +15,8 @@
 #import "NewsGroup.h"
 #import "NewsProvider.h"
 #import "UIColor+HexString.h"
+#import <objc/message.h>
+
 
 extern NSString *const UMAppKey;
 
@@ -60,25 +62,32 @@ extern NSString  *const kAppDownloadAddress;
     
     // 用于滚动内容到底部按钮
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(320-52.0, self.view.frame.size.height-200.0, 50.0, 50.0);
-    [button addTarget:self action:@selector(scrollToBottom) forControlEvents:UIControlEventTouchUpInside];
-    [button setTitle:@"底" forState:UIControlStateNormal];
+    button.frame = CGRectMake(320-50.0, self.view.frame.size.height/2.0, 50.0, 50.0);
+    [button addTarget:self action:@selector(scrollNewsContentToBottom) forControlEvents:UIControlEventTouchUpInside];
+    [button setImage:[UIImage imageNamed:@"ScrollBottom"] forState:UIControlStateNormal];
+    button.transform = CGAffineTransformMakeRotation(-M_PI_2);
     button.showsTouchWhenHighlighted = YES;
-    button.layer.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5].CGColor;
-    button.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    button.layer.borderWidth = 2.0;
-    button.layer.cornerRadius = 25.0;
     [self.view insertSubview:button aboveSubview:self.webView];
     
     [self fetchNewsContent];
 
 }
 
-- (void)scrollToBottom
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+      // 强制旋转视图
+      objc_msgSend([UIDevice currentDevice], @selector(setOrientation:), UIDeviceOrientationPortrait);
+}
+
+// 滚动新闻内容到底部
+- (void)scrollNewsContentToBottom
 {
     CGSize size = self.webView.scrollView.contentSize;
-    CGFloat offsetY = abs(size.height-self.webView.bounds.size.height);
-    [self.webView.scrollView setContentOffset:CGPointMake(0, offsetY) animated:YES];
+    CGPoint offset = self.webView.scrollView.contentOffset;
+     offset.y = abs(size.height-self.webView.bounds.size.height);
+    [self.webView.scrollView setContentOffset:offset animated:YES];
 }
 
 // 获取新闻内容
@@ -218,4 +227,5 @@ extern NSString  *const kAppDownloadAddress;
 {
     [self->_refreshActivityIndicator stopAnimating];
 }
+
 @end

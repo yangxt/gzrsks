@@ -54,6 +54,7 @@
 		CD88879F19470386001BAB1A /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CD88879B19470386001BAB1A /* RESideMenu.m */; };
 		CD8887A019470386001BAB1A /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CD88879D19470386001BAB1A /* UIViewController+RESideMenu.m */; };
 		CD8887AF19471796001BAB1A /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8887AE19471796001BAB1A /* LeftMenuViewController.m */; };
+		CDFB7FD61948A60400F2EC81 /* SubNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFB7FD51948A60400F2EC81 /* SubNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +143,8 @@
 		CD88879D19470386001BAB1A /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
 		CD8887AD19471796001BAB1A /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
 		CD8887AE19471796001BAB1A /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
+		CDFB7FD41948A60400F2EC81 /* SubNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubNavigationController.h; sourceTree = "<group>"; };
+		CDFB7FD51948A60400F2EC81 /* SubNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +244,8 @@
 		698B0F6B186553C30090C719 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CDFB7FD41948A60400F2EC81 /* SubNavigationController.h */,
+				CDFB7FD51948A60400F2EC81 /* SubNavigationController.m */,
 				CD8887941946E4F0001BAB1A /* NewsGroupListViewController.h */,
 				CD8887951946E4F0001BAB1A /* NewsGroupListViewController.m */,
 				6966BB0D18869311007B5DE0 /* FavoriteNewsVC.h */,
@@ -470,6 +475,7 @@
 				CD88879F19470386001BAB1A /* RESideMenu.m in Sources */,
 				CD8887961946E4F0001BAB1A /* NewsGroupListViewController.m in Sources */,
 				694BF38F1886232D00243D51 /* MessageBox.m in Sources */,
+				CDFB7FD61948A60400F2EC81 /* SubNavigationController.m in Sources */,
 				698B0F43186553AE0090C719 /* main.m in Sources */,
 				6980EFBF1866CCB4002AEFF6 /* NewsGroupListHeaderView.m in Sources */,
 				CD81FA4A1946AE81001BE0C2 /* TMMemoryCache.m in Sources */,
@@ -586,7 +592,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/LiHong/Downloads/AMSmoothAlert-master",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GZRSKS/GZRSKS-Prefix.pch";
 				INFOPLIST_FILE = "GZRSKS/GZRSKS-Info.plist";
@@ -607,7 +616,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/LiHong/Downloads/AMSmoothAlert-master",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GZRSKS/GZRSKS-Prefix.pch";
 				INFOPLIST_FILE = "GZRSKS/GZRSKS-Info.plist";

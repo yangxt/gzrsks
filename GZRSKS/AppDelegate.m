@@ -13,6 +13,7 @@
 #import "MessageBox.h"
 #import "RESideMenu.h"
 #import "LeftMenuViewController.h"
+#import "SubNavigationController.h"
 
 @implementation AppDelegate
 
@@ -22,7 +23,7 @@
     
     NewsGroupListViewController *vc1 =
     [[NewsGroupListViewController alloc] initWithStyle:UITableViewStylePlain];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc1];
+    SubNavigationController *nav = [[SubNavigationController alloc] initWithRootViewController:vc1];
     LeftMenuViewController *leftVC = [[LeftMenuViewController alloc] init];
     
     RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:nav leftMenuViewController:leftVC rightMenuViewController:nil];

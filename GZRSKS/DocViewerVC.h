@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "DocTypeDetector.h"
 
+// 附件显示
 @interface DocViewerVC : UIViewController
 {
     @private
-    UIButton *_sendOutButton;
     UIActivityIndicatorView *_loadingActivityIndicator;
     NSURL *_docURL;
     DocType _docType;

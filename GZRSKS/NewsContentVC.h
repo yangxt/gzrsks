@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+// 考试信息内容列表
 @class News;
 @interface NewsContentVC : UIViewController
 {

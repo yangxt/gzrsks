@@ -38,6 +38,7 @@ static NSString *const kFavoriteCellReuseId = @"FavoriteCellReuseId";
 {
     [super viewDidLoad];
     
+    self.tableView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kFavoriteCellReuseId];
     
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"清除" style:UIBarButtonItemStylePlain target:self action:@selector(deleteAllFavoriteNews)];
@@ -88,6 +89,7 @@ static NSString *const kFavoriteCellReuseId = @"FavoriteCellReuseId";
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.font = [UIFont systemFontOfSize:16];
     cell.textLabel.textColor = [UIColor blackColor];
+    cell.backgroundColor = tableView.backgroundColor;
     
     if(self.newsArray.count == 0)
     {
@@ -111,4 +113,5 @@ static NSString *const kFavoriteCellReuseId = @"FavoriteCellReuseId";
     NewsContentVC *vc = [[NewsContentVC alloc] initWithNews:self.newsArray[indexPath.row]];
     [self.navigationController pushViewController:vc animated:YES];
 }
+
 @end
