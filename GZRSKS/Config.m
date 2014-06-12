@@ -9,7 +9,6 @@
 #import "Config.h"
 
 static NSString *const kNightModal = @"NIGHTMODEL";
-static NSString *const kshouldAutorotateDocViewer = @"AUTOROTATE";
 
 #define  UDSET(obj,key)  [[NSUserDefaults standardUserDefaults] setObject:obj forKey:key];\
                          [[NSUserDefaults standardUserDefaults] synchronize]
@@ -25,33 +24,21 @@ static NSString *const kshouldAutorotateDocViewer = @"AUTOROTATE";
     {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            instance = [Config new];
-            instance.NightModal = NO;
-            instance.shouldAutorotateDocViewer = YES;
+            instance = [[Config alloc] init];
         });
     }
     return instance;
 }
 
-- (void)setNightModal:(BOOL)aBool
+- (void)setNightModal:(BOOL)nightModal
 {
-    UDSET(@(aBool), kNightModal);
+    [[NSUserDefaults standardUserDefaults] setBool:nightModal forKey:kNightModal];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (BOOL)NightModal
+- (BOOL)getNightModal
 {
-    NSNumber *boolNumber = UDGET(kNightModal);
-    return [boolNumber boolValue];
+    return   [[NSUserDefaults standardUserDefaults] boolForKey:kNightModal];
 }
 
-- (void)setShouldAutorotateDocViewer:(BOOL)aBool
-{
-    UDSET(@(aBool), kshouldAutorotateDocViewer);
-}
-
-- (BOOL)shouldAutorotateDocViewer
-{
-    NSNumber *boolNumber = UDGET(kshouldAutorotateDocViewer);
-    return [boolNumber boolValue];
-}
 @end

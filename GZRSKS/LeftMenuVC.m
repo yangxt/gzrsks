@@ -1,42 +1,60 @@
 //
-//  DEMOMenuViewController.m
-//  RESideMenuExample
+//  LeftMenuVC.m
+//  GZRSKS
 //
-//  Created by Roman Efimov on 10/10/13.
-//  Copyright (c) 2013 Roman Efimov. All rights reserved.
+//  Created by lihong on 14-6-12.
+//  Copyright (c) 2014年 李红(410139419@qq.com). All rights reserved.
 //
 
-#import "LeftMenuViewController.h"
+#import "LeftMenuVC.h"
 #import "NewsGroupListViewController.h"
 #import "FavoriteNewsVC.h"
-#import "AboutUsVC.h"
-#import "SettingVC.h"
 #import "SubNavigationController.h"
+#import "RESideMenu.h"
+#import "Config.h"
 
-@interface LeftMenuViewController ()
+static UIWindow *nightModelWindow;
 
-@property (strong, readwrite, nonatomic) UITableView *tableView;
+@interface LeftMenuVC ()<UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UISwitch *nightModeSwitch;
 
 @end
 
-@implementation LeftMenuViewController
+@implementation LeftMenuVC
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tableView = ({
-        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - 54 * 5) / 2.0f, self.view.frame.size.width, 54 * 5) style:UITableViewStylePlain];
-        tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
-        tableView.delegate = self;
-        tableView.dataSource = self;
-        tableView.opaque = NO;
-        tableView.backgroundColor = [UIColor clearColor];
-        tableView.backgroundView = nil;
-        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        tableView.bounces = NO;
-        tableView;
-    });
-    [self.view addSubview:self.tableView];
+    
+    if(!nightModelWindow)
+    {
+        nightModelWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        nightModelWindow.backgroundColor = [UIColor colorWithWhite:0 alpha:0.7];
+        nightModelWindow.windowLevel = UIWindowLevelAlert-0.01;
+        nightModelWindow.userInteractionEnabled = NO;
+    }
+    
+    // 这部分语句要放到nightModelWindow初始化的后面
+    [self.nightModeSwitch setOn:[[Config shared] getNightModal] animated:YES];
+    [self openNightModal:self.nightModeSwitch];
+}
+
+// 开启或关闭夜间模式
+- (IBAction)openNightModal:(UISwitch *)sender
+{
+    [[Config shared] setNightModal:sender.on];
+    
+    if(sender.on)
+    {
+        [nightModelWindow makeKeyAndVisible];
+    }
+    else
+    {
+        nightModelWindow.hidden = YES;
+        [self.view.window  becomeKeyWindow];
+    }
 }
 
 #pragma mark -
@@ -57,14 +75,6 @@
             vc = [[FavoriteNewsVC alloc] initWithNibName:@"FavoriteNewsVC" bundle:nil];
             break;
             
-        case 2:
-            vc = [[AboutUsVC alloc] initWithNibName:@"AboutUsVC" bundle:nil];
-            break;
-            
-        case 3:
-            vc = [[SettingVC alloc] initWithNibName:@"SettingVC" bundle:nil];
-            break;
-            
         default:break;
     }
     
@@ -74,7 +84,7 @@
         [self.sideMenuViewController setContentViewController:nav];
     }
     [self.sideMenuViewController hideMenuViewController];
-
+    
 }
 
 #pragma mark -
@@ -87,7 +97,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    return 4;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -105,13 +115,12 @@
         cell.selectedBackgroundView = [[UIView alloc] init];
     }
     
-    NSArray *titles = @[@"招考信息", @"我的收藏", @"关于我们",@"设置"];
-    NSArray *images = @[@"IconHome", @"IconCalendar", @"IconProfile",@"IconSettings"];
+    NSArray *titles = @[@"招考信息", @"我的收藏", @"设置"];
+    NSArray *images = @[@"IconHome", @"IconCalendar",@"IconSettings"];
     cell.textLabel.text = titles[indexPath.row];
     cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
     
     return cell;
 }
-
 
 @end

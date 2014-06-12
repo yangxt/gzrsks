@@ -39,10 +39,6 @@
 		69B5FC8118861E560048C06A /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B5FC8018861E560048C06A /* UIColor+HexString.m */; };
 		69CDAEE11884E9CA00B65984 /* NewsContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CDAEDF1884E9CA00B65984 /* NewsContentVC.m */; };
 		69CDAEE21884E9CA00B65984 /* NewsContentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69CDAEE01884E9CA00B65984 /* NewsContentVC.xib */; };
-		CD16B44C1947573B00B04957 /* AboutUsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CD16B44A1947573B00B04957 /* AboutUsVC.m */; };
-		CD16B44D1947573B00B04957 /* AboutUsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD16B44B1947573B00B04957 /* AboutUsVC.xib */; };
-		CD16B4511947574E00B04957 /* SettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CD16B44F1947574E00B04957 /* SettingVC.m */; };
-		CD16B4521947574E00B04957 /* SettingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD16B4501947574E00B04957 /* SettingVC.xib */; };
 		CD16B4551947583E00B04957 /* BaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD16B4541947583E00B04957 /* BaseController.m */; };
 		CD81FA481946AE81001BE0C2 /* TMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CD81FA431946AE81001BE0C2 /* TMCache.m */; };
 		CD81FA491946AE81001BE0C2 /* TMDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CD81FA451946AE81001BE0C2 /* TMDiskCache.m */; };
@@ -53,7 +49,12 @@
 		CD88879E19470386001BAB1A /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = CD88879919470386001BAB1A /* RECommonFunctions.m */; };
 		CD88879F19470386001BAB1A /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CD88879B19470386001BAB1A /* RESideMenu.m */; };
 		CD8887A019470386001BAB1A /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CD88879D19470386001BAB1A /* UIViewController+RESideMenu.m */; };
-		CD8887AF19471796001BAB1A /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8887AE19471796001BAB1A /* LeftMenuViewController.m */; };
+		CDD1B50819494FD8006B4B68 /* LeftMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1B50619494FD8006B4B68 /* LeftMenuVC.m */; };
+		CDD1B50919494FD8006B4B68 /* LeftMenuVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD1B50719494FD8006B4B68 /* LeftMenuVC.xib */; };
+		CDD1B50D19496818006B4B68 /* AdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1B50B19496818006B4B68 /* AdVC.m */; };
+		CDD1B50E19496818006B4B68 /* AdVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD1B50C19496818006B4B68 /* AdVC.xib */; };
+		CDDA147A1949787A004CE437 /* FBShimmeringLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDA14771949787A004CE437 /* FBShimmeringLayer.m */; };
+		CDDA147B1949787A004CE437 /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDA14791949787A004CE437 /* FBShimmeringView.m */; };
 		CDFB7FD61948A60400F2EC81 /* SubNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFB7FD51948A60400F2EC81 /* SubNavigationController.m */; };
 		CDFB7FE219493E0F00F2EC81 /* icon-error.png in Resources */ = {isa = PBXBuildFile; fileRef = CDFB7FD919493E0F00F2EC81 /* icon-error.png */; };
 		CDFB7FE319493E0F00F2EC81 /* icon-error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDFB7FDA19493E0F00F2EC81 /* icon-error@2x.png */; };
@@ -124,12 +125,6 @@
 		69CDAEDE1884E9CA00B65984 /* NewsContentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsContentVC.h; sourceTree = "<group>"; };
 		69CDAEDF1884E9CA00B65984 /* NewsContentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsContentVC.m; sourceTree = "<group>"; };
 		69CDAEE01884E9CA00B65984 /* NewsContentVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsContentVC.xib; sourceTree = "<group>"; };
-		CD16B4491947573B00B04957 /* AboutUsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsVC.h; sourceTree = "<group>"; };
-		CD16B44A1947573B00B04957 /* AboutUsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsVC.m; sourceTree = "<group>"; };
-		CD16B44B1947573B00B04957 /* AboutUsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutUsVC.xib; sourceTree = "<group>"; };
-		CD16B44E1947574E00B04957 /* SettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingVC.h; sourceTree = "<group>"; };
-		CD16B44F1947574E00B04957 /* SettingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingVC.m; sourceTree = "<group>"; };
-		CD16B4501947574E00B04957 /* SettingVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingVC.xib; sourceTree = "<group>"; };
 		CD16B4531947583E00B04957 /* BaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseController.h; sourceTree = "<group>"; };
 		CD16B4541947583E00B04957 /* BaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseController.m; sourceTree = "<group>"; };
 		CD81FA421946AE81001BE0C2 /* TMCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMCache.h; sourceTree = "<group>"; };
@@ -150,8 +145,17 @@
 		CD88879B19470386001BAB1A /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
 		CD88879C19470386001BAB1A /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
 		CD88879D19470386001BAB1A /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
-		CD8887AD19471796001BAB1A /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
-		CD8887AE19471796001BAB1A /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
+		CDD1B50519494FD8006B4B68 /* LeftMenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuVC.h; sourceTree = "<group>"; };
+		CDD1B50619494FD8006B4B68 /* LeftMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuVC.m; sourceTree = "<group>"; };
+		CDD1B50719494FD8006B4B68 /* LeftMenuVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftMenuVC.xib; sourceTree = "<group>"; };
+		CDD1B50A19496818006B4B68 /* AdVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdVC.h; sourceTree = "<group>"; };
+		CDD1B50B19496818006B4B68 /* AdVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdVC.m; sourceTree = "<group>"; };
+		CDD1B50C19496818006B4B68 /* AdVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdVC.xib; sourceTree = "<group>"; };
+		CDDA14751949787A004CE437 /* FBShimmering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmering.h; sourceTree = "<group>"; };
+		CDDA14761949787A004CE437 /* FBShimmeringLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringLayer.h; sourceTree = "<group>"; };
+		CDDA14771949787A004CE437 /* FBShimmeringLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringLayer.m; sourceTree = "<group>"; };
+		CDDA14781949787A004CE437 /* FBShimmeringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringView.h; sourceTree = "<group>"; };
+		CDDA14791949787A004CE437 /* FBShimmeringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringView.m; sourceTree = "<group>"; };
 		CDFB7FD41948A60400F2EC81 /* SubNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubNavigationController.h; sourceTree = "<group>"; };
 		CDFB7FD51948A60400F2EC81 /* SubNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubNavigationController.m; sourceTree = "<group>"; };
 		CDFB7FD919493E0F00F2EC81 /* icon-error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-error.png"; sourceTree = "<group>"; };
@@ -264,6 +268,11 @@
 		698B0F6B186553C30090C719 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CD16B4531947583E00B04957 /* BaseController.h */,
+				CDD1B50A19496818006B4B68 /* AdVC.h */,
+				CDD1B50B19496818006B4B68 /* AdVC.m */,
+				CDD1B50C19496818006B4B68 /* AdVC.xib */,
+				CD16B4541947583E00B04957 /* BaseController.m */,
 				CDFB7FD41948A60400F2EC81 /* SubNavigationController.h */,
 				CDFB7FD51948A60400F2EC81 /* SubNavigationController.m */,
 				CD8887941946E4F0001BAB1A /* NewsGroupListViewController.h */,
@@ -280,16 +289,9 @@
 				CDFB7FEA1949433E00F2EC81 /* WebSiteViewController.h */,
 				CDFB7FEB1949433E00F2EC81 /* WebSiteViewController.m */,
 				CDFB7FEC1949433E00F2EC81 /* WebSiteViewController.xib */,
-				CD8887AD19471796001BAB1A /* LeftMenuViewController.h */,
-				CD8887AE19471796001BAB1A /* LeftMenuViewController.m */,
-				CD16B4491947573B00B04957 /* AboutUsVC.h */,
-				CD16B44A1947573B00B04957 /* AboutUsVC.m */,
-				CD16B44B1947573B00B04957 /* AboutUsVC.xib */,
-				CD16B44E1947574E00B04957 /* SettingVC.h */,
-				CD16B44F1947574E00B04957 /* SettingVC.m */,
-				CD16B4501947574E00B04957 /* SettingVC.xib */,
-				CD16B4531947583E00B04957 /* BaseController.h */,
-				CD16B4541947583E00B04957 /* BaseController.m */,
+				CDD1B50719494FD8006B4B68 /* LeftMenuVC.xib */,
+				CDD1B50519494FD8006B4B68 /* LeftMenuVC.h */,
+				CDD1B50619494FD8006B4B68 /* LeftMenuVC.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -340,6 +342,7 @@
 		CD81FA401946AD7F001BE0C2 /* ExternalLib */ = {
 			isa = PBXGroup;
 			children = (
+				CDDA14731949787A004CE437 /* FBShimmering */,
 				CDFB7FD719493E0F00F2EC81 /* TWMessageBar */,
 				CD88879719470386001BAB1A /* RESideMenu */,
 				CD81FA411946AE81001BE0C2 /* TMCache */,
@@ -371,6 +374,18 @@
 				CD88879D19470386001BAB1A /* UIViewController+RESideMenu.m */,
 			);
 			path = RESideMenu;
+			sourceTree = "<group>";
+		};
+		CDDA14731949787A004CE437 /* FBShimmering */ = {
+			isa = PBXGroup;
+			children = (
+				CDDA14751949787A004CE437 /* FBShimmering.h */,
+				CDDA14761949787A004CE437 /* FBShimmeringLayer.h */,
+				CDDA14771949787A004CE437 /* FBShimmeringLayer.m */,
+				CDDA14781949787A004CE437 /* FBShimmeringView.h */,
+				CDDA14791949787A004CE437 /* FBShimmeringView.m */,
+			);
+			path = FBShimmering;
 			sourceTree = "<group>";
 		};
 		CDFB7FD719493E0F00F2EC81 /* TWMessageBar */ = {
@@ -478,17 +493,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDFB7FE719493E0F00F2EC81 /* icon-success@2x.png in Resources */,
-				CD16B44D1947573B00B04957 /* AboutUsVC.xib in Resources */,
 				CDFB7FE219493E0F00F2EC81 /* icon-error.png in Resources */,
 				CDFB7FE619493E0F00F2EC81 /* icon-success.png in Resources */,
+				CDD1B50919494FD8006B4B68 /* LeftMenuVC.xib in Resources */,
 				CDFB7FE319493E0F00F2EC81 /* icon-error@2x.png in Resources */,
 				69A70E741887DFE5006D05FA /* DocViewerVC.xib in Resources */,
 				CDFB7FE519493E0F00F2EC81 /* icon-info@2x.png in Resources */,
+				CDD1B50E19496818006B4B68 /* AdVC.xib in Resources */,
 				698B0F4F186553AE0090C719 /* Images.xcassets in Resources */,
 				698B0F41186553AE0090C719 /* InfoPlist.strings in Resources */,
 				CDFB7FE419493E0F00F2EC81 /* icon-info.png in Resources */,
 				6966BB1118869311007B5DE0 /* FavoriteNewsVC.xib in Resources */,
-				CD16B4521947574E00B04957 /* SettingVC.xib in Resources */,
 				CDFB7FEE1949433E00F2EC81 /* WebSiteViewController.xib in Resources */,
 				69CDAEE21884E9CA00B65984 /* NewsContentVC.xib in Resources */,
 			);
@@ -508,25 +523,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDDA147B1949787A004CE437 /* FBShimmeringView.m in Sources */,
+				CDD1B50819494FD8006B4B68 /* LeftMenuVC.m in Sources */,
 				698B0FAF186555420090C719 /* AppDelegate.m in Sources */,
 				CD16B4551947583E00B04957 /* BaseController.m in Sources */,
-				CD16B4511947574E00B04957 /* SettingVC.m in Sources */,
 				CD81FA4D1946B55D001BE0C2 /* NewsGroup.m in Sources */,
 				CD81FA491946AE81001BE0C2 /* TMDiskCache.m in Sources */,
 				CDFB7FE819493E0F00F2EC81 /* TWMessageBarManager.m in Sources */,
-				CD8887AF19471796001BAB1A /* LeftMenuViewController.m in Sources */,
 				69A70E6F1887D422006D05FA /* DocTypeDetector.m in Sources */,
 				CD81FA501946B56D001BE0C2 /* NewsProvider.m in Sources */,
 				CD81FA481946AE81001BE0C2 /* TMCache.m in Sources */,
-				CD16B44C1947573B00B04957 /* AboutUsVC.m in Sources */,
 				6966BB1018869311007B5DE0 /* FavoriteNewsVC.m in Sources */,
 				CD8887A019470386001BAB1A /* UIViewController+RESideMenu.m in Sources */,
 				697434CC18686DAC00A6A49A /* UIScreen+Size.m in Sources */,
+				CDDA147A1949787A004CE437 /* FBShimmeringLayer.m in Sources */,
 				698B0FB5186555FC0090C719 /* Config.m in Sources */,
 				698C6FC8188E26F600935D60 /* HaveReadNews.m in Sources */,
 				698B0F9E186555110090C719 /* NetAPI.m in Sources */,
 				69A70E731887DFE5006D05FA /* DocViewerVC.m in Sources */,
 				698B0FA3186555200090C719 /* News.m in Sources */,
+				CDD1B50D19496818006B4B68 /* AdVC.m in Sources */,
 				CD88879E19470386001BAB1A /* RECommonFunctions.m in Sources */,
 				CD88879F19470386001BAB1A /* RESideMenu.m in Sources */,
 				CD8887961946E4F0001BAB1A /* NewsGroupListViewController.m in Sources */,
@@ -647,8 +663,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Li Hong (QYF7KQ58S6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Li Hong (QYF7KQ58S6)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/LiHong/Downloads/AMSmoothAlert-master",
@@ -661,7 +677,7 @@
 					/Users/lt/IOS/gzrsks/GZRSKS,
 				);
 				PRODUCT_NAME = "贵州人事考试";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "AC4E79D7-2E91-49D6-94BC-F864029EB832";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -671,8 +687,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Li Hong (QYF7KQ58S6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Li Hong (QYF7KQ58S6)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/LiHong/Downloads/AMSmoothAlert-master",
@@ -685,7 +701,7 @@
 					/Users/lt/IOS/gzrsks/GZRSKS,
 				);
 				PRODUCT_NAME = "贵州人事考试";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "AC4E79D7-2E91-49D6-94BC-F864029EB832";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

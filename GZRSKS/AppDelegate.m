@@ -12,8 +12,9 @@
 #import "FavoriteNewsVC.h"
 #import "MessageBox.h"
 #import "RESideMenu.h"
-#import "LeftMenuViewController.h"
+#import "LeftMenuVC.h"
 #import "SubNavigationController.h"
+#import "AdVC.h"
 
 @implementation AppDelegate
 
@@ -21,22 +22,9 @@
 {
     [self configAppAppearance];
     
-    NewsGroupListViewController *vc1 =
-    [[NewsGroupListViewController alloc] initWithStyle:UITableViewStylePlain];
-    SubNavigationController *nav = [[SubNavigationController alloc] initWithRootViewController:vc1];
-    LeftMenuViewController *leftVC = [[LeftMenuViewController alloc] init];
-    
-    RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:nav leftMenuViewController:leftVC rightMenuViewController:nil];
-    sideMenuViewController.backgroundImage = [UIImage imageNamed:@"Dandelion"];
-    sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
-    sideMenuViewController.contentViewShadowColor = [UIColor blackColor];
-    sideMenuViewController.contentViewShadowOffset = CGSizeMake(0, 0);
-    sideMenuViewController.contentViewShadowOpacity = 0.6;
-    sideMenuViewController.contentViewShadowRadius = 12;
-    sideMenuViewController.contentViewShadowEnabled = YES;
-    
+    AdVC *advc = [[AdVC alloc] initWithNibName:@"AdVC" bundle:nil];
     self.appWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.appWindow.rootViewController = sideMenuViewController;
+    self.appWindow.rootViewController = advc;
     [self.appWindow makeKeyAndVisible];
     
     return YES;

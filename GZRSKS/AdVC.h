@@ -1,14 +1,13 @@
 //
-//  SettingVC.h
+//  AdVC.h
 //  GZRSKS
 //
-//  Created by lihong on 14-6-10.
+//  Created by lihong on 14-6-12.
 //  Copyright (c) 2014年 李红(410139419@qq.com). All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseController.h"
 
-@interface SettingVC : BaseController
+@interface AdVC : UIViewController
 
 @end

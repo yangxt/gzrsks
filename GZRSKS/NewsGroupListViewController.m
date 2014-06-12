@@ -16,6 +16,7 @@
 #import "RESideMenu.h"
 #import "TWMessageBarManager.h"
 #import <objc/message.h>
+#import "AdVC.h"
 
 @interface NewsGroupListViewController ()
 @property (nonatomic, strong) UIButton *loadMoreButton;

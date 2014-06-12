@@ -13,11 +13,7 @@
 
 + (id)shared;
 
-// 夜间模式
-@property (nonatomic, assign) BOOL NightModal;
-
-// 查看附件时是否启用自动旋转视图,默认YES,启用.
-@property (nonatomic, assign) BOOL shouldAutorotateDocViewer;
-
+- (void)setNightModal:(BOOL)nightModal;
+- (BOOL)getNightModal;
 
 @end
