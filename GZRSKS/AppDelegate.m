@@ -21,7 +21,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self configAppAppearance];
-    
     AdVC *advc = [[AdVC alloc] initWithNibName:@"AdVC" bundle:nil];
     self.appWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.appWindow.rootViewController = advc;

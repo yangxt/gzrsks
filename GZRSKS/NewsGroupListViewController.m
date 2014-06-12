@@ -38,7 +38,7 @@
 {
     [super viewDidLoad];
     
-    self.tableView.rowHeight = 75.0;
+    self.tableView.rowHeight = 80.0;
     self.tableView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
     
     // 左边

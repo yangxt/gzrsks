@@ -32,7 +32,7 @@ static UIWindow *nightModelWindow;
     {
         nightModelWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
         nightModelWindow.backgroundColor = [UIColor colorWithWhite:0 alpha:0.7];
-        nightModelWindow.windowLevel = UIWindowLevelAlert-0.01;
+        nightModelWindow.windowLevel = UIWindowLevelStatusBar+1;
         nightModelWindow.userInteractionEnabled = NO;
     }
     
