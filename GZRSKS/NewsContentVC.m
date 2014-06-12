@@ -16,16 +16,12 @@
 #import "NewsProvider.h"
 #import "UIColor+HexString.h"
 #import <objc/message.h>
-
+#import "TWMessageBarManager.h"
+#import "WebSiteViewController.h"
 
 extern NSString *const UMAppKey;
 
 NSString *const kNewsCacheKey = @"NewsCacheKey";
-
-extern NSString  *const kNetAPIErorDomain;
-extern NSInteger const kNetAPIErrorCode;
-extern NSString  *const kNetAPIErrorDesc;
-extern NSString  *const kAppDownloadAddress;
 
 @interface NewsContentVC ()<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
@@ -49,7 +45,6 @@ extern NSString  *const kAppDownloadAddress;
 {
     [super viewDidLoad];
     
-    NSLog(@"%f",self.view.bounds.size.height);
     // 收藏按钮
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"收藏" style:UIBarButtonItemStylePlain target:self action:@selector(favoriteNews)];
     item.enabled = NO;
@@ -117,9 +112,7 @@ extern NSString  *const kAppDownloadAddress;
         
     } onFail:^(NSError *error) {
         [self->_refreshActivityIndicator stopAnimating];
-        [MessageBox showWithMessage:[error localizedDescription] buttonTitle:@"重试" handler:^{
-            [self fetchNewsContent];
-        }];
+        [TWMessageBarManager showInfoMessage:@"无法获取内容" description:error.localizedDescription];
     }];
 }
 
@@ -193,18 +186,30 @@ extern NSString  *const kAppDownloadAddress;
             return NO;
         }
          
-        case DocTypeHTML:  // 不允许打开网站，是因为网页含有多个链接，会导致递归打开，导致程序崩溃.
-        case DocTypePPT:
-        case DocTypeZip:
+        case DocTypeHTML:
         {
-           // NSString *dtName = [DocTypeDetector docTypeName:type];
-      
+            WebSiteViewController *vc =
+            [[WebSiteViewController alloc] initWithURL:request.URL];
+            [self.navigationController pushViewController:vc animated:YES];
             [self->_refreshActivityIndicator stopAnimating];
             return NO;
         }
             
-        case DocTypeNewsContent:
-            return YES;
+        case DocTypePPT:
+        {
+            [TWMessageBarManager showInfoMessage:@"提示" description:@"暂不支持打开PPT文件，请谅解!"];
+            [self->_refreshActivityIndicator stopAnimating];
+            return NO;
+        }
+            
+        case DocTypeZip:
+        {
+            [TWMessageBarManager showInfoMessage:@"提示" description:@"暂不支持打开压缩文件，请谅解!"];
+            [self->_refreshActivityIndicator stopAnimating];
+            return NO;
+        }
+            
+        default:return YES;
     }
     
     return YES;

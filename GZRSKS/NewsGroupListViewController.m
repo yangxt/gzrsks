@@ -14,6 +14,7 @@
 #import "NewsContentVC.h"
 #import "NewsGroupListHeaderView.h"
 #import "RESideMenu.h"
+#import "TWMessageBarManager.h"
 #import <objc/message.h>
 
 @interface NewsGroupListViewController ()
@@ -103,6 +104,7 @@
         [self.tableView reloadData];
     } onFail:^(NSError *error) {
         [self.refreshControl endRefreshing];
+        [TWMessageBarManager showInfoMessage:@"刷新失败" description:error.localizedDescription];
     }];;
 }
 
@@ -120,6 +122,7 @@
     } onFail:^(NSError *error) {
         [_loadMoreButton setEnabled:YES];
         [_indicator stopAnimating];
+        [TWMessageBarManager showInfoMessage:@"加载失败" description:error.localizedDescription ];
     }];
 }
 

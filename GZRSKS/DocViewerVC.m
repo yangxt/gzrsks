@@ -11,11 +11,6 @@
 #import <objc/message.h>
 #import "SubNavigationController.h"
 
-extern NSString *const UMAppKey;
-extern NSString *const kAppDownloadAddress;
-
-static NSString *const kFirstUseSendOutLinkFlag = @"FirstUseSendOutLinkFlag";
-
 @interface DocViewerVC ()<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @end

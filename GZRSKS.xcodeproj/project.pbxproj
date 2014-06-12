@@ -55,6 +55,15 @@
 		CD8887A019470386001BAB1A /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CD88879D19470386001BAB1A /* UIViewController+RESideMenu.m */; };
 		CD8887AF19471796001BAB1A /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8887AE19471796001BAB1A /* LeftMenuViewController.m */; };
 		CDFB7FD61948A60400F2EC81 /* SubNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFB7FD51948A60400F2EC81 /* SubNavigationController.m */; };
+		CDFB7FE219493E0F00F2EC81 /* icon-error.png in Resources */ = {isa = PBXBuildFile; fileRef = CDFB7FD919493E0F00F2EC81 /* icon-error.png */; };
+		CDFB7FE319493E0F00F2EC81 /* icon-error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDFB7FDA19493E0F00F2EC81 /* icon-error@2x.png */; };
+		CDFB7FE419493E0F00F2EC81 /* icon-info.png in Resources */ = {isa = PBXBuildFile; fileRef = CDFB7FDB19493E0F00F2EC81 /* icon-info.png */; };
+		CDFB7FE519493E0F00F2EC81 /* icon-info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDFB7FDC19493E0F00F2EC81 /* icon-info@2x.png */; };
+		CDFB7FE619493E0F00F2EC81 /* icon-success.png in Resources */ = {isa = PBXBuildFile; fileRef = CDFB7FDD19493E0F00F2EC81 /* icon-success.png */; };
+		CDFB7FE719493E0F00F2EC81 /* icon-success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDFB7FDE19493E0F00F2EC81 /* icon-success@2x.png */; };
+		CDFB7FE819493E0F00F2EC81 /* TWMessageBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFB7FE019493E0F00F2EC81 /* TWMessageBarManager.m */; };
+		CDFB7FED1949433E00F2EC81 /* WebSiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFB7FEB1949433E00F2EC81 /* WebSiteViewController.m */; };
+		CDFB7FEE1949433E00F2EC81 /* WebSiteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDFB7FEC1949433E00F2EC81 /* WebSiteViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +154,17 @@
 		CD8887AE19471796001BAB1A /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
 		CDFB7FD41948A60400F2EC81 /* SubNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubNavigationController.h; sourceTree = "<group>"; };
 		CDFB7FD51948A60400F2EC81 /* SubNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubNavigationController.m; sourceTree = "<group>"; };
+		CDFB7FD919493E0F00F2EC81 /* icon-error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-error.png"; sourceTree = "<group>"; };
+		CDFB7FDA19493E0F00F2EC81 /* icon-error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-error@2x.png"; sourceTree = "<group>"; };
+		CDFB7FDB19493E0F00F2EC81 /* icon-info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-info.png"; sourceTree = "<group>"; };
+		CDFB7FDC19493E0F00F2EC81 /* icon-info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-info@2x.png"; sourceTree = "<group>"; };
+		CDFB7FDD19493E0F00F2EC81 /* icon-success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-success.png"; sourceTree = "<group>"; };
+		CDFB7FDE19493E0F00F2EC81 /* icon-success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-success@2x.png"; sourceTree = "<group>"; };
+		CDFB7FDF19493E0F00F2EC81 /* TWMessageBarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWMessageBarManager.h; sourceTree = "<group>"; };
+		CDFB7FE019493E0F00F2EC81 /* TWMessageBarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMessageBarManager.m; sourceTree = "<group>"; };
+		CDFB7FEA1949433E00F2EC81 /* WebSiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSiteViewController.h; sourceTree = "<group>"; };
+		CDFB7FEB1949433E00F2EC81 /* WebSiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSiteViewController.m; sourceTree = "<group>"; };
+		CDFB7FEC1949433E00F2EC81 /* WebSiteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebSiteViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +277,9 @@
 				69A70E701887DFE5006D05FA /* DocViewerVC.h */,
 				69A70E711887DFE5006D05FA /* DocViewerVC.m */,
 				69A70E721887DFE5006D05FA /* DocViewerVC.xib */,
+				CDFB7FEA1949433E00F2EC81 /* WebSiteViewController.h */,
+				CDFB7FEB1949433E00F2EC81 /* WebSiteViewController.m */,
+				CDFB7FEC1949433E00F2EC81 /* WebSiteViewController.xib */,
 				CD8887AD19471796001BAB1A /* LeftMenuViewController.h */,
 				CD8887AE19471796001BAB1A /* LeftMenuViewController.m */,
 				CD16B4491947573B00B04957 /* AboutUsVC.h */,
@@ -317,6 +340,7 @@
 		CD81FA401946AD7F001BE0C2 /* ExternalLib */ = {
 			isa = PBXGroup;
 			children = (
+				CDFB7FD719493E0F00F2EC81 /* TWMessageBar */,
 				CD88879719470386001BAB1A /* RESideMenu */,
 				CD81FA411946AE81001BE0C2 /* TMCache */,
 			);
@@ -347,6 +371,30 @@
 				CD88879D19470386001BAB1A /* UIViewController+RESideMenu.m */,
 			);
 			path = RESideMenu;
+			sourceTree = "<group>";
+		};
+		CDFB7FD719493E0F00F2EC81 /* TWMessageBar */ = {
+			isa = PBXGroup;
+			children = (
+				CDFB7FD819493E0F00F2EC81 /* Icons */,
+				CDFB7FDF19493E0F00F2EC81 /* TWMessageBarManager.h */,
+				CDFB7FE019493E0F00F2EC81 /* TWMessageBarManager.m */,
+			);
+			name = TWMessageBar;
+			path = RESideMenu/Classes;
+			sourceTree = "<group>";
+		};
+		CDFB7FD819493E0F00F2EC81 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				CDFB7FD919493E0F00F2EC81 /* icon-error.png */,
+				CDFB7FDA19493E0F00F2EC81 /* icon-error@2x.png */,
+				CDFB7FDB19493E0F00F2EC81 /* icon-info.png */,
+				CDFB7FDC19493E0F00F2EC81 /* icon-info@2x.png */,
+				CDFB7FDD19493E0F00F2EC81 /* icon-success.png */,
+				CDFB7FDE19493E0F00F2EC81 /* icon-success@2x.png */,
+			);
+			path = Icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,12 +477,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDFB7FE719493E0F00F2EC81 /* icon-success@2x.png in Resources */,
 				CD16B44D1947573B00B04957 /* AboutUsVC.xib in Resources */,
+				CDFB7FE219493E0F00F2EC81 /* icon-error.png in Resources */,
+				CDFB7FE619493E0F00F2EC81 /* icon-success.png in Resources */,
+				CDFB7FE319493E0F00F2EC81 /* icon-error@2x.png in Resources */,
 				69A70E741887DFE5006D05FA /* DocViewerVC.xib in Resources */,
+				CDFB7FE519493E0F00F2EC81 /* icon-info@2x.png in Resources */,
 				698B0F4F186553AE0090C719 /* Images.xcassets in Resources */,
 				698B0F41186553AE0090C719 /* InfoPlist.strings in Resources */,
+				CDFB7FE419493E0F00F2EC81 /* icon-info.png in Resources */,
 				6966BB1118869311007B5DE0 /* FavoriteNewsVC.xib in Resources */,
 				CD16B4521947574E00B04957 /* SettingVC.xib in Resources */,
+				CDFB7FEE1949433E00F2EC81 /* WebSiteViewController.xib in Resources */,
 				69CDAEE21884E9CA00B65984 /* NewsContentVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,6 +513,7 @@
 				CD16B4511947574E00B04957 /* SettingVC.m in Sources */,
 				CD81FA4D1946B55D001BE0C2 /* NewsGroup.m in Sources */,
 				CD81FA491946AE81001BE0C2 /* TMDiskCache.m in Sources */,
+				CDFB7FE819493E0F00F2EC81 /* TWMessageBarManager.m in Sources */,
 				CD8887AF19471796001BAB1A /* LeftMenuViewController.m in Sources */,
 				69A70E6F1887D422006D05FA /* DocTypeDetector.m in Sources */,
 				CD81FA501946B56D001BE0C2 /* NewsProvider.m in Sources */,
@@ -474,6 +530,7 @@
 				CD88879E19470386001BAB1A /* RECommonFunctions.m in Sources */,
 				CD88879F19470386001BAB1A /* RESideMenu.m in Sources */,
 				CD8887961946E4F0001BAB1A /* NewsGroupListViewController.m in Sources */,
+				CDFB7FED1949433E00F2EC81 /* WebSiteViewController.m in Sources */,
 				694BF38F1886232D00243D51 /* MessageBox.m in Sources */,
 				CDFB7FD61948A60400F2EC81 /* SubNavigationController.m in Sources */,
 				698B0F43186553AE0090C719 /* main.m in Sources */,

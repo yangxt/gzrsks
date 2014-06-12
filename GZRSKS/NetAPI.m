@@ -197,7 +197,7 @@ func; \
             }else
             {
                 // 有些标题没有指定的颜色,所以匹配数可能为0
-                news.titleColor = [Config defaultNewsTitleColor];
+                news.titleColor = [UIColor darkGrayColor];
             }
             
             //4.抓取标题 (忽略此处编译器的警告,\用来转义正则表达式元字符.)

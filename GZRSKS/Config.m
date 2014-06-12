@@ -8,18 +8,50 @@
 
 #import "Config.h"
 
-static NSString *kHostName = @"www.163gz.com";
+static NSString *const kNightModal = @"NIGHTMODEL";
+static NSString *const kshouldAutorotateDocViewer = @"AUTOROTATE";
+
+#define  UDSET(obj,key)  [[NSUserDefaults standardUserDefaults] setObject:obj forKey:key];\
+                         [[NSUserDefaults standardUserDefaults] synchronize]
+
+#define  UDGET(key)      [[NSUserDefaults standardUserDefaults] objectForKey:key]
 
 @implementation Config
 
-+ (NSString *)hostName
++ (id)shared
 {
-    return kHostName;
+    static Config *instance = nil;
+    if(instance == nil)
+    {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            instance = [Config new];
+            instance.NightModal = NO;
+            instance.shouldAutorotateDocViewer = YES;
+        });
+    }
+    return instance;
 }
 
-+ (UIColor *)defaultNewsTitleColor
+- (void)setNightModal:(BOOL)aBool
 {
-    return [UIColor darkGrayColor];
+    UDSET(@(aBool), kNightModal);
 }
 
+- (BOOL)NightModal
+{
+    NSNumber *boolNumber = UDGET(kNightModal);
+    return [boolNumber boolValue];
+}
+
+- (void)setShouldAutorotateDocViewer:(BOOL)aBool
+{
+    UDSET(@(aBool), kshouldAutorotateDocViewer);
+}
+
+- (BOOL)shouldAutorotateDocViewer
+{
+    NSNumber *boolNumber = UDGET(kshouldAutorotateDocViewer);
+    return [boolNumber boolValue];
+}
 @end

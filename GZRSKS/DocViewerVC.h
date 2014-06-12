@@ -12,7 +12,6 @@
 // 附件显示
 @interface DocViewerVC : UIViewController
 {
-    @private
     UIActivityIndicatorView *_loadingActivityIndicator;
     NSURL *_docURL;
     DocType _docType;
