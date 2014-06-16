@@ -18,6 +18,8 @@
 #import <objc/message.h>
 #import "AdVC.h"
 
+static BOOL notAwakeFromBackground = YES;
+
 @interface NewsGroupListViewController ()
 @property (nonatomic, strong) UIButton *loadMoreButton;
 @property (nonatomic, strong) UIActivityIndicatorView *indicator;
@@ -38,8 +40,20 @@
 {
     [super viewDidLoad];
     
+    // 保证只有App启动时才现实广告视图
+    if(notAwakeFromBackground)
+    {
+        AdVC *vc = [[AdVC alloc] initWithNibName:@"AdVC" bundle:nil];
+        [self presentViewController:vc animated:NO completion:^{
+            notAwakeFromBackground = NO;
+        }];
+    }
+    
     self.tableView.rowHeight = 80.0;
     self.tableView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(responseUIApplicationNotification:) name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(responseUIApplicationNotification:) name:UIApplicationWillEnterForegroundNotification object:nil];
     
     // 左边
     UIImage *image = [UIImage imageNamed:@"SideMenu"];
@@ -84,9 +98,16 @@
     objc_msgSend([UIDevice currentDevice], @selector(setOrientation:), UIDeviceOrientationPortrait);
 }
 
+- (void)responseUIApplicationNotification:(NSNotification *)notification
+{
+    AdVC *vc = [[AdVC alloc] initWithNibName:@"AdVC" bundle:nil];
+    [self presentViewController:vc animated:NO completion:NULL];
+}
+
 // 打开侧边栏
 - (void)openSideMenu
 {
+    [self.refreshControl beginRefreshing];
     [self.sideMenuViewController presentLeftMenuViewController];
 }
 

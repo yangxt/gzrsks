@@ -21,9 +21,23 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self configAppAppearance];
-    AdVC *advc = [[AdVC alloc] initWithNibName:@"AdVC" bundle:nil];
+    
+    NewsGroupListViewController *vc1 =
+    [[NewsGroupListViewController alloc] initWithStyle:UITableViewStylePlain];
+    SubNavigationController *nav = [[SubNavigationController alloc] initWithRootViewController:vc1];
+    LeftMenuVC *leftVC = [[LeftMenuVC alloc] initWithNibName:@"LeftMenuVC" bundle:nil];
+    
+    RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:nav leftMenuViewController:leftVC rightMenuViewController:nil];
+    sideMenuViewController.backgroundImage = [UIImage imageNamed:@"Dandelion"];
+    sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
+    sideMenuViewController.contentViewShadowColor = [UIColor blackColor];
+    sideMenuViewController.contentViewShadowOffset = CGSizeMake(0, 0);
+    sideMenuViewController.contentViewShadowOpacity = 0.6;
+    sideMenuViewController.contentViewShadowRadius = 12;
+    sideMenuViewController.contentViewShadowEnabled = YES;
+    
     self.appWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.appWindow.rootViewController = advc;
+    self.appWindow.rootViewController = sideMenuViewController;
     [self.appWindow makeKeyAndVisible];
     
     return YES;
