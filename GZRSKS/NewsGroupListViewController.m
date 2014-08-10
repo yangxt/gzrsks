@@ -16,7 +16,6 @@
 #import "RESideMenu.h"
 #import "TWMessageBarManager.h"
 #import <objc/message.h>
-#import "AdVC.h"
 
 static BOOL notAwakeFromBackground = YES;
 
@@ -39,16 +38,7 @@ static BOOL notAwakeFromBackground = YES;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // 保证只有App启动时才现实广告视图
-    if(notAwakeFromBackground)
-    {
-        AdVC *vc = [[AdVC alloc] initWithNibName:@"AdVC" bundle:nil];
-        [self presentViewController:vc animated:NO completion:^{
-            notAwakeFromBackground = NO;
-        }];
-    }
-    
+        
     self.tableView.rowHeight = 80.0;
     self.tableView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
     
@@ -100,8 +90,7 @@ static BOOL notAwakeFromBackground = YES;
 
 - (void)responseUIApplicationNotification:(NSNotification *)notification
 {
-    AdVC *vc = [[AdVC alloc] initWithNibName:@"AdVC" bundle:nil];
-    [self presentViewController:vc animated:NO completion:NULL];
+  
 }
 
 // 打开侧边栏

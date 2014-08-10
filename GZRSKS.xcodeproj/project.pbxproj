@@ -25,9 +25,6 @@
 		698B0F41186553AE0090C719 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 698B0F3F186553AE0090C719 /* InfoPlist.strings */; };
 		698B0F43186553AE0090C719 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 698B0F42186553AE0090C719 /* main.m */; };
 		698B0F4F186553AE0090C719 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 698B0F4E186553AE0090C719 /* Images.xcassets */; };
-		698B0F56186553AE0090C719 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698B0F55186553AE0090C719 /* XCTest.framework */; };
-		698B0F57186553AE0090C719 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698B0F36186553AE0090C719 /* Foundation.framework */; };
-		698B0F58186553AE0090C719 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698B0F3A186553AE0090C719 /* UIKit.framework */; };
 		698B0F9E186555110090C719 /* NetAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 698B0F9D186555110090C719 /* NetAPI.m */; };
 		698B0FA3186555200090C719 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 698B0FA0186555200090C719 /* News.m */; };
 		698B0FAF186555420090C719 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 698B0FAE186555420090C719 /* AppDelegate.m */; };
@@ -40,6 +37,7 @@
 		69CDAEE11884E9CA00B65984 /* NewsContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CDAEDF1884E9CA00B65984 /* NewsContentVC.m */; };
 		69CDAEE21884E9CA00B65984 /* NewsContentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69CDAEE01884E9CA00B65984 /* NewsContentVC.xib */; };
 		CD16B4551947583E00B04957 /* BaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD16B4541947583E00B04957 /* BaseController.m */; };
+		CD6FEDCF199793AD001B4E8E /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6FEDCC199793AD001B4E8E /* libMobClickLibrary.a */; };
 		CD81FA481946AE81001BE0C2 /* TMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CD81FA431946AE81001BE0C2 /* TMCache.m */; };
 		CD81FA491946AE81001BE0C2 /* TMDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CD81FA451946AE81001BE0C2 /* TMDiskCache.m */; };
 		CD81FA4A1946AE81001BE0C2 /* TMMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CD81FA471946AE81001BE0C2 /* TMMemoryCache.m */; };
@@ -51,10 +49,6 @@
 		CD8887A019470386001BAB1A /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CD88879D19470386001BAB1A /* UIViewController+RESideMenu.m */; };
 		CDD1B50819494FD8006B4B68 /* LeftMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1B50619494FD8006B4B68 /* LeftMenuVC.m */; };
 		CDD1B50919494FD8006B4B68 /* LeftMenuVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD1B50719494FD8006B4B68 /* LeftMenuVC.xib */; };
-		CDD1B50D19496818006B4B68 /* AdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1B50B19496818006B4B68 /* AdVC.m */; };
-		CDD1B50E19496818006B4B68 /* AdVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD1B50C19496818006B4B68 /* AdVC.xib */; };
-		CDDA147A1949787A004CE437 /* FBShimmeringLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDA14771949787A004CE437 /* FBShimmeringLayer.m */; };
-		CDDA147B1949787A004CE437 /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDA14791949787A004CE437 /* FBShimmeringView.m */; };
 		CDFB7FD61948A60400F2EC81 /* SubNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFB7FD51948A60400F2EC81 /* SubNavigationController.m */; };
 		CDFB7FE219493E0F00F2EC81 /* icon-error.png in Resources */ = {isa = PBXBuildFile; fileRef = CDFB7FD919493E0F00F2EC81 /* icon-error.png */; };
 		CDFB7FE319493E0F00F2EC81 /* icon-error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDFB7FDA19493E0F00F2EC81 /* icon-error@2x.png */; };
@@ -66,16 +60,6 @@
 		CDFB7FED1949433E00F2EC81 /* WebSiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFB7FEB1949433E00F2EC81 /* WebSiteViewController.m */; };
 		CDFB7FEE1949433E00F2EC81 /* WebSiteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDFB7FEC1949433E00F2EC81 /* WebSiteViewController.xib */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		698B0F59186553AE0090C719 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 698B0F2B186553AD0090C719 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 698B0F32186553AE0090C719;
-			remoteInfo = GZRSKS;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		694BF38D1886232D00243D51 /* MessageBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBox.h; sourceTree = "<group>"; };
@@ -103,7 +87,6 @@
 		698B0F42186553AE0090C719 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		698B0F44186553AE0090C719 /* GZRSKS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GZRSKS-Prefix.pch"; sourceTree = "<group>"; };
 		698B0F4E186553AE0090C719 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		698B0F54186553AE0090C719 /* GZRSKSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GZRSKSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		698B0F55186553AE0090C719 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		698B0F9C186555110090C719 /* NetAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetAPI.h; sourceTree = "<group>"; };
 		698B0F9D186555110090C719 /* NetAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetAPI.m; sourceTree = "<group>"; };
@@ -127,6 +110,9 @@
 		69CDAEE01884E9CA00B65984 /* NewsContentVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsContentVC.xib; sourceTree = "<group>"; };
 		CD16B4531947583E00B04957 /* BaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseController.h; sourceTree = "<group>"; };
 		CD16B4541947583E00B04957 /* BaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseController.m; sourceTree = "<group>"; };
+		CD6FEDCC199793AD001B4E8E /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		CD6FEDCD199793AD001B4E8E /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		CD6FEDCE199793AD001B4E8E /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
 		CD81FA421946AE81001BE0C2 /* TMCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMCache.h; sourceTree = "<group>"; };
 		CD81FA431946AE81001BE0C2 /* TMCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMCache.m; sourceTree = "<group>"; };
 		CD81FA441946AE81001BE0C2 /* TMDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDiskCache.h; sourceTree = "<group>"; };
@@ -148,14 +134,6 @@
 		CDD1B50519494FD8006B4B68 /* LeftMenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuVC.h; sourceTree = "<group>"; };
 		CDD1B50619494FD8006B4B68 /* LeftMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuVC.m; sourceTree = "<group>"; };
 		CDD1B50719494FD8006B4B68 /* LeftMenuVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftMenuVC.xib; sourceTree = "<group>"; };
-		CDD1B50A19496818006B4B68 /* AdVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdVC.h; sourceTree = "<group>"; };
-		CDD1B50B19496818006B4B68 /* AdVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdVC.m; sourceTree = "<group>"; };
-		CDD1B50C19496818006B4B68 /* AdVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdVC.xib; sourceTree = "<group>"; };
-		CDDA14751949787A004CE437 /* FBShimmering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmering.h; sourceTree = "<group>"; };
-		CDDA14761949787A004CE437 /* FBShimmeringLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringLayer.h; sourceTree = "<group>"; };
-		CDDA14771949787A004CE437 /* FBShimmeringLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringLayer.m; sourceTree = "<group>"; };
-		CDDA14781949787A004CE437 /* FBShimmeringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringView.h; sourceTree = "<group>"; };
-		CDDA14791949787A004CE437 /* FBShimmeringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringView.m; sourceTree = "<group>"; };
 		CDFB7FD41948A60400F2EC81 /* SubNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubNavigationController.h; sourceTree = "<group>"; };
 		CDFB7FD51948A60400F2EC81 /* SubNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubNavigationController.m; sourceTree = "<group>"; };
 		CDFB7FD919493E0F00F2EC81 /* icon-error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-error.png"; sourceTree = "<group>"; };
@@ -185,17 +163,8 @@
 				694BF3C71886376700243D51 /* Security.framework in Frameworks */,
 				698B0F39186553AE0090C719 /* CoreGraphics.framework in Frameworks */,
 				698B0F3B186553AE0090C719 /* UIKit.framework in Frameworks */,
+				CD6FEDCF199793AD001B4E8E /* libMobClickLibrary.a in Frameworks */,
 				698B0F37186553AE0090C719 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		698B0F51186553AE0090C719 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				698B0F56186553AE0090C719 /* XCTest.framework in Frameworks */,
-				698B0F58186553AE0090C719 /* UIKit.framework in Frameworks */,
-				698B0F57186553AE0090C719 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,7 +184,6 @@
 			isa = PBXGroup;
 			children = (
 				698B0F33186553AE0090C719 /* 贵州人事考试.app */,
-				698B0F54186553AE0090C719 /* GZRSKSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -269,9 +237,6 @@
 			isa = PBXGroup;
 			children = (
 				CD16B4531947583E00B04957 /* BaseController.h */,
-				CDD1B50A19496818006B4B68 /* AdVC.h */,
-				CDD1B50B19496818006B4B68 /* AdVC.m */,
-				CDD1B50C19496818006B4B68 /* AdVC.xib */,
 				CD16B4541947583E00B04957 /* BaseController.m */,
 				CDFB7FD41948A60400F2EC81 /* SubNavigationController.h */,
 				CDFB7FD51948A60400F2EC81 /* SubNavigationController.m */,
@@ -339,10 +304,20 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		CD6FEDCB199793AD001B4E8E /* UMAnalytics_Sdk_3.1.2 */ = {
+			isa = PBXGroup;
+			children = (
+				CD6FEDCC199793AD001B4E8E /* libMobClickLibrary.a */,
+				CD6FEDCD199793AD001B4E8E /* MobClick.h */,
+				CD6FEDCE199793AD001B4E8E /* MobClickSocialAnalytics.h */,
+			);
+			path = UMAnalytics_Sdk_3.1.2;
+			sourceTree = "<group>";
+		};
 		CD81FA401946AD7F001BE0C2 /* ExternalLib */ = {
 			isa = PBXGroup;
 			children = (
-				CDDA14731949787A004CE437 /* FBShimmering */,
+				CD6FEDCB199793AD001B4E8E /* UMAnalytics_Sdk_3.1.2 */,
 				CDFB7FD719493E0F00F2EC81 /* TWMessageBar */,
 				CD88879719470386001BAB1A /* RESideMenu */,
 				CD81FA411946AE81001BE0C2 /* TMCache */,
@@ -374,18 +349,6 @@
 				CD88879D19470386001BAB1A /* UIViewController+RESideMenu.m */,
 			);
 			path = RESideMenu;
-			sourceTree = "<group>";
-		};
-		CDDA14731949787A004CE437 /* FBShimmering */ = {
-			isa = PBXGroup;
-			children = (
-				CDDA14751949787A004CE437 /* FBShimmering.h */,
-				CDDA14761949787A004CE437 /* FBShimmeringLayer.h */,
-				CDDA14771949787A004CE437 /* FBShimmeringLayer.m */,
-				CDDA14781949787A004CE437 /* FBShimmeringView.h */,
-				CDDA14791949787A004CE437 /* FBShimmeringView.m */,
-			);
-			path = FBShimmering;
 			sourceTree = "<group>";
 		};
 		CDFB7FD719493E0F00F2EC81 /* TWMessageBar */ = {
@@ -432,24 +395,6 @@
 			productReference = 698B0F33186553AE0090C719 /* 贵州人事考试.app */;
 			productType = "com.apple.product-type.application";
 		};
-		698B0F53186553AE0090C719 /* GZRSKSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 698B0F68186553AE0090C719 /* Build configuration list for PBXNativeTarget "GZRSKSTests" */;
-			buildPhases = (
-				698B0F50186553AE0090C719 /* Sources */,
-				698B0F51186553AE0090C719 /* Frameworks */,
-				698B0F52186553AE0090C719 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				698B0F5A186553AE0090C719 /* PBXTargetDependency */,
-			);
-			name = GZRSKSTests;
-			productName = GZRSKSTests;
-			productReference = 698B0F54186553AE0090C719 /* GZRSKSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -461,9 +406,6 @@
 				TargetAttributes = {
 					698B0F32186553AE0090C719 = {
 						DevelopmentTeam = 3X2N2BLT84;
-					};
-					698B0F53186553AE0090C719 = {
-						TestTargetID = 698B0F32186553AE0090C719;
 					};
 				};
 			};
@@ -482,7 +424,6 @@
 			projectRoot = "";
 			targets = (
 				698B0F32186553AE0090C719 /* GZRSKS */,
-				698B0F53186553AE0090C719 /* GZRSKSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -499,20 +440,12 @@
 				CDFB7FE319493E0F00F2EC81 /* icon-error@2x.png in Resources */,
 				69A70E741887DFE5006D05FA /* DocViewerVC.xib in Resources */,
 				CDFB7FE519493E0F00F2EC81 /* icon-info@2x.png in Resources */,
-				CDD1B50E19496818006B4B68 /* AdVC.xib in Resources */,
 				698B0F4F186553AE0090C719 /* Images.xcassets in Resources */,
 				698B0F41186553AE0090C719 /* InfoPlist.strings in Resources */,
 				CDFB7FE419493E0F00F2EC81 /* icon-info.png in Resources */,
 				6966BB1118869311007B5DE0 /* FavoriteNewsVC.xib in Resources */,
 				CDFB7FEE1949433E00F2EC81 /* WebSiteViewController.xib in Resources */,
 				69CDAEE21884E9CA00B65984 /* NewsContentVC.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		698B0F52186553AE0090C719 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,7 +456,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDDA147B1949787A004CE437 /* FBShimmeringView.m in Sources */,
 				CDD1B50819494FD8006B4B68 /* LeftMenuVC.m in Sources */,
 				698B0FAF186555420090C719 /* AppDelegate.m in Sources */,
 				CD16B4551947583E00B04957 /* BaseController.m in Sources */,
@@ -536,13 +468,11 @@
 				6966BB1018869311007B5DE0 /* FavoriteNewsVC.m in Sources */,
 				CD8887A019470386001BAB1A /* UIViewController+RESideMenu.m in Sources */,
 				697434CC18686DAC00A6A49A /* UIScreen+Size.m in Sources */,
-				CDDA147A1949787A004CE437 /* FBShimmeringLayer.m in Sources */,
 				698B0FB5186555FC0090C719 /* Config.m in Sources */,
 				698C6FC8188E26F600935D60 /* HaveReadNews.m in Sources */,
 				698B0F9E186555110090C719 /* NetAPI.m in Sources */,
 				69A70E731887DFE5006D05FA /* DocViewerVC.m in Sources */,
 				698B0FA3186555200090C719 /* News.m in Sources */,
-				CDD1B50D19496818006B4B68 /* AdVC.m in Sources */,
 				CD88879E19470386001BAB1A /* RECommonFunctions.m in Sources */,
 				CD88879F19470386001BAB1A /* RESideMenu.m in Sources */,
 				CD8887961946E4F0001BAB1A /* NewsGroupListViewController.m in Sources */,
@@ -557,22 +487,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		698B0F50186553AE0090C719 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		698B0F5A186553AE0090C719 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 698B0F32186553AE0090C719 /* GZRSKS */;
-			targetProxy = 698B0F59186553AE0090C719 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		698B0F3F186553AE0090C719 /* InfoPlist.strings */ = {
@@ -675,6 +590,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lt/IOS/gzrsks/GZRSKS,
+					"$(PROJECT_DIR)/UMAnalytics_Sdk_3.1.2",
 				);
 				PRODUCT_NAME = "贵州人事考试";
 				PROVISIONING_PROFILE = "AC4E79D7-2E91-49D6-94BC-F864029EB832";
@@ -699,50 +615,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lt/IOS/gzrsks/GZRSKS,
+					"$(PROJECT_DIR)/UMAnalytics_Sdk_3.1.2",
 				);
 				PRODUCT_NAME = "贵州人事考试";
 				PROVISIONING_PROFILE = "AC4E79D7-2E91-49D6-94BC-F864029EB832";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		698B0F69186553AE0090C719 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GZRSKS.app/GZRSKS";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "GZRSKS/GZRSKS-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "GZRSKSTests/GZRSKSTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		698B0F6A186553AE0090C719 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GZRSKS.app/GZRSKS";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "GZRSKS/GZRSKS-Prefix.pch";
-				INFOPLIST_FILE = "GZRSKSTests/GZRSKSTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -763,15 +640,6 @@
 			buildConfigurations = (
 				698B0F66186553AE0090C719 /* Debug */,
 				698B0F67186553AE0090C719 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		698B0F68186553AE0090C719 /* Build configuration list for PBXNativeTarget "GZRSKSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				698B0F69186553AE0090C719 /* Debug */,
-				698B0F6A186553AE0090C719 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
