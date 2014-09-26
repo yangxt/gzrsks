@@ -49,6 +49,9 @@
 		CD8887A019470386001BAB1A /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CD88879D19470386001BAB1A /* UIViewController+RESideMenu.m */; };
 		CDD1B50819494FD8006B4B68 /* LeftMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1B50619494FD8006B4B68 /* LeftMenuVC.m */; };
 		CDD1B50919494FD8006B4B68 /* LeftMenuVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD1B50719494FD8006B4B68 /* LeftMenuVC.xib */; };
+		CDEBC3AF19D4F9FA0075FB45 /* Ad.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEBC3AE19D4F9FA0075FB45 /* Ad.m */; };
+		CDEBC3B219D4FAAE0075FB45 /* AdManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEBC3B119D4FAAE0075FB45 /* AdManager.m */; };
+		CDEBC3B519D53F240075FB45 /* AdConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEBC3B419D53F240075FB45 /* AdConfig.m */; };
 		CDFB7FD61948A60400F2EC81 /* SubNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFB7FD51948A60400F2EC81 /* SubNavigationController.m */; };
 		CDFB7FE219493E0F00F2EC81 /* icon-error.png in Resources */ = {isa = PBXBuildFile; fileRef = CDFB7FD919493E0F00F2EC81 /* icon-error.png */; };
 		CDFB7FE319493E0F00F2EC81 /* icon-error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDFB7FDA19493E0F00F2EC81 /* icon-error@2x.png */; };
@@ -136,6 +139,12 @@
 		CDD1B50719494FD8006B4B68 /* LeftMenuVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftMenuVC.xib; sourceTree = "<group>"; };
 		CDEBC3A719D4F8690075FB45 /* AboutUs.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = AboutUs.html; sourceTree = "<group>"; };
 		CDEBC3A819D4F8690075FB45 /* AdConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AdConfig.json; sourceTree = "<group>"; };
+		CDEBC3AD19D4F9FA0075FB45 /* Ad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ad.h; sourceTree = "<group>"; };
+		CDEBC3AE19D4F9FA0075FB45 /* Ad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ad.m; sourceTree = "<group>"; };
+		CDEBC3B019D4FAAE0075FB45 /* AdManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdManager.h; sourceTree = "<group>"; };
+		CDEBC3B119D4FAAE0075FB45 /* AdManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdManager.m; sourceTree = "<group>"; };
+		CDEBC3B319D53F240075FB45 /* AdConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdConfig.h; sourceTree = "<group>"; };
+		CDEBC3B419D53F240075FB45 /* AdConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdConfig.m; sourceTree = "<group>"; };
 		CDFB7FD41948A60400F2EC81 /* SubNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubNavigationController.h; sourceTree = "<group>"; };
 		CDFB7FD51948A60400F2EC81 /* SubNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubNavigationController.m; sourceTree = "<group>"; };
 		CDFB7FD919493E0F00F2EC81 /* icon-error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-error.png"; sourceTree = "<group>"; };
@@ -295,14 +304,8 @@
 		698B0F9B186554E90090C719 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				698B0F9C186555110090C719 /* NetAPI.h */,
-				698B0F9D186555110090C719 /* NetAPI.m */,
-				698B0F9F186555200090C719 /* News.h */,
-				698B0FA0186555200090C719 /* News.m */,
-				CD81FA4B1946B55D001BE0C2 /* NewsGroup.h */,
-				CD81FA4C1946B55D001BE0C2 /* NewsGroup.m */,
-				CD81FA4E1946B56D001BE0C2 /* NewsProvider.h */,
-				CD81FA4F1946B56D001BE0C2 /* NewsProvider.m */,
+				CDEBC3AC19D4F9E60075FB45 /* Ad */,
+				CDEBC3AB19D4F9CF0075FB45 /* News */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -361,6 +364,34 @@
 				CDEBC3A819D4F8690075FB45 /* AdConfig.json */,
 			);
 			path = AdResource;
+			sourceTree = "<group>";
+		};
+		CDEBC3AB19D4F9CF0075FB45 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				698B0F9C186555110090C719 /* NetAPI.h */,
+				698B0F9D186555110090C719 /* NetAPI.m */,
+				698B0F9F186555200090C719 /* News.h */,
+				698B0FA0186555200090C719 /* News.m */,
+				CD81FA4B1946B55D001BE0C2 /* NewsGroup.h */,
+				CD81FA4C1946B55D001BE0C2 /* NewsGroup.m */,
+				CD81FA4E1946B56D001BE0C2 /* NewsProvider.h */,
+				CD81FA4F1946B56D001BE0C2 /* NewsProvider.m */,
+			);
+			name = News;
+			sourceTree = "<group>";
+		};
+		CDEBC3AC19D4F9E60075FB45 /* Ad */ = {
+			isa = PBXGroup;
+			children = (
+				CDEBC3AD19D4F9FA0075FB45 /* Ad.h */,
+				CDEBC3AE19D4F9FA0075FB45 /* Ad.m */,
+				CDEBC3B019D4FAAE0075FB45 /* AdManager.h */,
+				CDEBC3B119D4FAAE0075FB45 /* AdManager.m */,
+				CDEBC3B319D53F240075FB45 /* AdConfig.h */,
+				CDEBC3B419D53F240075FB45 /* AdConfig.m */,
+			);
+			name = Ad;
 			sourceTree = "<group>";
 		};
 		CDFB7FD719493E0F00F2EC81 /* TWMessageBar */ = {
@@ -471,10 +502,12 @@
 				CDD1B50819494FD8006B4B68 /* LeftMenuVC.m in Sources */,
 				698B0FAF186555420090C719 /* AppDelegate.m in Sources */,
 				CD16B4551947583E00B04957 /* BaseController.m in Sources */,
+				CDEBC3AF19D4F9FA0075FB45 /* Ad.m in Sources */,
 				CD81FA4D1946B55D001BE0C2 /* NewsGroup.m in Sources */,
 				CD81FA491946AE81001BE0C2 /* TMDiskCache.m in Sources */,
 				CDFB7FE819493E0F00F2EC81 /* TWMessageBarManager.m in Sources */,
 				69A70E6F1887D422006D05FA /* DocTypeDetector.m in Sources */,
+				CDEBC3B219D4FAAE0075FB45 /* AdManager.m in Sources */,
 				CD81FA501946B56D001BE0C2 /* NewsProvider.m in Sources */,
 				CD81FA481946AE81001BE0C2 /* TMCache.m in Sources */,
 				6966BB1018869311007B5DE0 /* FavoriteNewsVC.m in Sources */,
@@ -483,6 +516,7 @@
 				698B0FB5186555FC0090C719 /* Config.m in Sources */,
 				698C6FC8188E26F600935D60 /* HaveReadNews.m in Sources */,
 				698B0F9E186555110090C719 /* NetAPI.m in Sources */,
+				CDEBC3B519D53F240075FB45 /* AdConfig.m in Sources */,
 				69A70E731887DFE5006D05FA /* DocViewerVC.m in Sources */,
 				698B0FA3186555200090C719 /* News.m in Sources */,
 				CD88879E19470386001BAB1A /* RECommonFunctions.m in Sources */,

@@ -1,3 +1,13 @@
-[
-	{"desc":"testing text", "AdImageUrl":"http://","AdDetailUrl":""}
-]
+{
+    "launch":{"adImageUrl":"http://rsks.qiniudn.com/AdImage_ad0.png","adDetailUrl":""},
+    "home":[
+        {"adImageUrl":"http://rsks.qiniudn.com/AdImage_ad0.png","adDetailUrl":""},
+        {"adImageUrl":"http://rsks.qiniudn.com/AdImage_ad1.png","adDetailUrl":""},
+        {"adImageUrl":"http://rsks.qiniudn.com/AdImage_ad2.png","adDetailUrl":""}
+    ],
+    "page":[
+          {"adImageUrl":"http://rsks.qiniudn.com/AdImage_ad0.png","adDetailUrl":""},
+          {"adImageUrl":"http://rsks.qiniudn.com/AdImage_ad1.png","adDetailUrl":""},
+          {"adImageUrl":"http://rsks.qiniudn.com/AdImage_ad2.png","adDetailUrl":""}
+    ]
+}
