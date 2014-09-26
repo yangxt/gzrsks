@@ -97,7 +97,7 @@ static UIWindow *nightModelWindow;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -115,7 +115,7 @@ static UIWindow *nightModelWindow;
         cell.selectedBackgroundView = [[UIView alloc] init];
     }
     
-    NSArray *titles = @[@"招考信息", @"我的收藏", @"设置"];
+    NSArray *titles = @[@"招考信息", @"我的收藏", @"联系我们"];
     NSArray *images = @[@"IconHome", @"IconCalendar",@"IconSettings"];
     cell.textLabel.text = titles[indexPath.row];
     cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];

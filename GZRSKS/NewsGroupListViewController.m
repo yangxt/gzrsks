@@ -51,7 +51,7 @@ static BOOL notAwakeFromBackground = YES;
     self.navigationItem.leftBarButtonItem = item;
     
     // 右边
-    item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(goBackToTop)];
+    item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(pushSearchController)];
     self.navigationItem.rightBarButtonItem = item;
     
     // 加载更多按钮
@@ -100,10 +100,9 @@ static BOOL notAwakeFromBackground = YES;
     [self.sideMenuViewController presentLeftMenuViewController];
 }
 
-// 分享App给朋友
-- (void)goBackToTop
+- (void)pushSearchController
 {
-    [self.tableView setContentOffset:CGPointZero animated:YES];
+    //UISearchDisplayController *vc = [[UISearchDisplayController alloc] ini]
 }
 
 // 刷新列表

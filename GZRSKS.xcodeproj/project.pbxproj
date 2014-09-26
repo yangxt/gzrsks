@@ -134,6 +134,8 @@
 		CDD1B50519494FD8006B4B68 /* LeftMenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuVC.h; sourceTree = "<group>"; };
 		CDD1B50619494FD8006B4B68 /* LeftMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuVC.m; sourceTree = "<group>"; };
 		CDD1B50719494FD8006B4B68 /* LeftMenuVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftMenuVC.xib; sourceTree = "<group>"; };
+		CDEBC3A719D4F8690075FB45 /* AboutUs.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = AboutUs.html; sourceTree = "<group>"; };
+		CDEBC3A819D4F8690075FB45 /* AdConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AdConfig.json; sourceTree = "<group>"; };
 		CDFB7FD41948A60400F2EC81 /* SubNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubNavigationController.h; sourceTree = "<group>"; };
 		CDFB7FD51948A60400F2EC81 /* SubNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubNavigationController.m; sourceTree = "<group>"; };
 		CDFB7FD919493E0F00F2EC81 /* icon-error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-error.png"; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 		698B0F3C186553AE0090C719 /* GZRSKS */ = {
 			isa = PBXGroup;
 			children = (
+				CDEBC3A619D4F8690075FB45 /* AdResource */,
 				698B0F6E186554150090C719 /* Utils */,
 				698B0F9B186554E90090C719 /* Models */,
 				698B0F6C186553CE0090C719 /* Views */,
@@ -349,6 +352,15 @@
 				CD88879D19470386001BAB1A /* UIViewController+RESideMenu.m */,
 			);
 			path = RESideMenu;
+			sourceTree = "<group>";
+		};
+		CDEBC3A619D4F8690075FB45 /* AdResource */ = {
+			isa = PBXGroup;
+			children = (
+				CDEBC3A719D4F8690075FB45 /* AboutUs.html */,
+				CDEBC3A819D4F8690075FB45 /* AdConfig.json */,
+			);
+			path = AdResource;
 			sourceTree = "<group>";
 		};
 		CDFB7FD719493E0F00F2EC81 /* TWMessageBar */ = {
@@ -593,7 +605,7 @@
 					"$(PROJECT_DIR)/UMAnalytics_Sdk_3.1.2",
 				);
 				PRODUCT_NAME = "贵州人事考试";
-				PROVISIONING_PROFILE = "AC4E79D7-2E91-49D6-94BC-F864029EB832";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -618,7 +630,7 @@
 					"$(PROJECT_DIR)/UMAnalytics_Sdk_3.1.2",
 				);
 				PRODUCT_NAME = "贵州人事考试";
-				PROVISIONING_PROFILE = "AC4E79D7-2E91-49D6-94BC-F864029EB832";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
