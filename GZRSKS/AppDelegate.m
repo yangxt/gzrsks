@@ -15,20 +15,11 @@
 #import "LeftMenuVC.h"
 #import "SubNavigationController.h"
 #import "MobClick.h"
-#import "AdManager.h"
-
-AdManager *adManager = nil;
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    adManager = [[AdManager alloc] init];
-    [adManager requestAdData:^(AdConfig *adConfig) {
-        NSLog(@"%@ %@ %@",adConfig.luanch,adConfig.homeAdEntityArray,adConfig.pageAdEntityArray);
-    }];
-    
     // 启用友盟(www.umeng.com)统计
     [MobClick startWithAppkey:@"53e75b9ffd98c5877b00332f"];
     

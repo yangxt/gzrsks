@@ -12,6 +12,7 @@
 #import "SubNavigationController.h"
 #import "RESideMenu.h"
 #import "Config.h"
+#import "ContactUsController.h"
 
 static UIWindow *nightModelWindow;
 
@@ -74,6 +75,9 @@ static UIWindow *nightModelWindow;
         case 1:
             vc = [[FavoriteNewsVC alloc] initWithNibName:@"FavoriteNewsVC" bundle:nil];
             break;
+            
+        case 2:
+            vc = [[ContactUsController alloc] initWithNibName:@"ContactUsController" bundle:nil];
             
         default:break;
     }

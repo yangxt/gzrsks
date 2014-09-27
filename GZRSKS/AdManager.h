@@ -17,6 +17,9 @@ typedef void (^AdManagerRequestCompletedBlock)(AdConfig *adConfig);
     NSURLSession *_urlSession;
 }
 
-- (NSURLSessionDataTask *)requestAdData:(AdManagerRequestCompletedBlock)completedHandler;
+@property (nonatomic, strong) AdConfig *adConfig;
+
++ (NSURLSessionDataTask *)requestAdData:(AdManagerRequestCompletedBlock)completedHandler;
++ (AdConfig *)getAdConfig;
 
 @end

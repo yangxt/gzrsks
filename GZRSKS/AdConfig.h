@@ -11,7 +11,7 @@
 @class Ad;
 @interface AdConfig : NSObject
 
-@property (nonatomic, strong) Ad *luanch;
+@property (nonatomic, strong) Ad *luanchAdEntity;
 @property (nonatomic, strong) NSArray *homeAdEntityArray;
 @property (nonatomic, strong) NSArray *pageAdEntityArray;
 

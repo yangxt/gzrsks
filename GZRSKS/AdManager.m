@@ -11,11 +11,23 @@
 #import "AdManager.h"
 
 // ToDo:用户启动8次后才显示广告
+// ToDo:点击次数统计
 
 static NSString * const kAdConfigFileUrl = @"http://rsks.qiniudn.com/AdConfig.json";
 static NSString * const kAdCacheKey = @"AdCacheKey";
 
 @implementation AdManager
+
++ (instancetype)sharedInstance
+{
+    static AdManager *instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[AdManager alloc] init];
+    });
+    
+    return instance;
+}
 
 - (id)init
 {
@@ -32,11 +44,11 @@ static NSString * const kAdCacheKey = @"AdCacheKey";
 - (NSURLSessionDataTask *)requestAdData:(AdManagerRequestCompletedBlock)completedHandler
 {
     // 使用缓存响应请求
-    NSDictionary *cacheData = [[TMCache sharedCache] objectForKey:kAdCacheKey];
+   /* NSDictionary *cacheData = [[TMCache sharedCache] objectForKey:kAdCacheKey];
     BOOL hasCacheData = (cacheData != nil);
     if(hasCacheData) {
         completedHandler([self buildAdConfigEntity:cacheData]);
-    }
+    }*/
     
     //加参数t是为了强制CDN每次都到七牛服务器读数据。否则有可能七牛上的文件更新了，但客户端拿到是CDN缓存的数据。
     NSString *urlStr =[NSString stringWithFormat:@"%@?t=%f",kAdConfigFileUrl,[NSDate timeIntervalSinceReferenceDate]];
@@ -68,11 +80,15 @@ static NSString * const kAdCacheKey = @"AdCacheKey";
         }
         
         // 若之前没缓存有数据，则使用新的数据响应请求.
-        if (hasCacheData == NO) {
+        /*if (hasCacheData == NO) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 completedHandler([self buildAdConfigEntity:dict]);
             });
-        }
+        }*/
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completedHandler([self buildAdConfigEntity:dict]);
+        });
         
         // 更新本地缓存
         [[TMCache sharedCache] setObject:dict forKey:kAdCacheKey block:NULL];
@@ -112,11 +128,22 @@ static NSString * const kAdCacheKey = @"AdCacheKey";
         }
     }
     
-    AdConfig *adConfig = [AdConfig new];
-    adConfig.luanch = luanchAdEntity;
-    adConfig.homeAdEntityArray = homeAdEntityArray;
-    adConfig.pageAdEntityArray = pageAdEntityArray;
+    self.adConfig = [AdConfig new];
+    self.adConfig.luanchAdEntity = luanchAdEntity;
+    self.adConfig.homeAdEntityArray = homeAdEntityArray;
+    self.adConfig.pageAdEntityArray = pageAdEntityArray;
     
-    return adConfig;
+    return self.adConfig;
+}
+
+#pragma mark - 接口
++ (NSURLSessionDataTask *)requestAdData:(AdManagerRequestCompletedBlock)completedHandler
+{
+    return [[AdManager sharedInstance] requestAdData:completedHandler];
+}
+
++ (AdConfig *)getAdConfig
+{
+    return [AdManager sharedInstance].adConfig;
 }
 @end
