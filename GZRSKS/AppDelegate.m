@@ -14,12 +14,15 @@
 #import "RESideMenu.h"
 #import "LeftMenuVC.h"
 #import "SubNavigationController.h"
-#import "AdVC.h"
+#import "MobClick.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // 启用友盟(www.umeng.com)统计
+    [MobClick startWithAppkey:@"53e75b9ffd98c5877b00332f"];
+    
     [self configAppAppearance];
     
     NewsGroupListViewController *vc1 =

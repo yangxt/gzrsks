@@ -1,0 +1,13 @@
+{
+    "launch":{"adImageUrl":"http://rsks.qiniudn.com/AdImage_ad0.png","adDetailUrl":""},
+    "home":[
+        {"adImageUrl":"http://rsks.qiniudn.com/AdImage_ad0.png","adDetailUrl":"http://www.gzztedu.com/interviewtraining/"},
+        {"adImageUrl":"http://rsks.qiniudn.com/AdImage_ad1.png","adDetailUrl":"http://www.163gz.com/ad2010/txwg-20100622/tx201210/"},
+        {"adImageUrl":"http://rsks.qiniudn.com/AdImage_ad2.png","adDetailUrl":"http://www.start2002.com/sydw/"}
+    ],
+    "page":[
+          {"adImageUrl":"http://rsks.qiniudn.com/AdImage_ad0.png","adDetailUrl":""},
+          {"adImageUrl":"http://rsks.qiniudn.com/AdImage_ad1.png","adDetailUrl":""},
+          {"adImageUrl":"http://rsks.qiniudn.com/AdImage_ad2.png","adDetailUrl":""}
+    ]
+}

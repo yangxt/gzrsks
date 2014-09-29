@@ -1,0 +1,6 @@
+[submodule "AdScrollView"]
+	path = AdScrollView
+	url = https://github.com/JiangHu826/AdScrollView.git
+[submodule "SDWebImage"]
+	path = SDWebImage
+	url = https://github.com/rs/SDWebImage.git

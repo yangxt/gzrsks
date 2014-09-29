@@ -6,23 +6,25 @@
 //  Copyright (c) 2014年 李红(410139419@qq.com). All rights reserved.
 //
 
-#import "NewsGroupListViewController.h"
 #import "News.h"
 #import "NewsGroup.h"
-#import "NewsProvider.h"
-#import "HaveReadNews.h"
-#import "NewsContentVC.h"
-#import "NewsGroupListHeaderView.h"
+#import "AdManager.h"
+#import "AdDetailVC.h"
 #import "RESideMenu.h"
-#import "TWMessageBarManager.h"
+#import "AdScrollView.h"
+#import "HaveReadNews.h"
+#import "NewsProvider.h"
 #import <objc/message.h>
-#import "AdVC.h"
-
-static BOOL notAwakeFromBackground = YES;
+#import "NewsContentVC.h"
+#import "TWMessageBarManager.h"
+#import "NewsGroupListHeaderView.h"
+#import "NewsGroupListViewController.h"
 
 @interface NewsGroupListViewController ()
 @property (nonatomic, strong) UIButton *loadMoreButton;
 @property (nonatomic, strong) UIActivityIndicatorView *indicator;
+@property (nonatomic, strong) AdScrollView *adScrollView;
+@property (nonatomic, assign) NSTimeInterval lastRefreshTime;
 @end
 
 @implementation NewsGroupListViewController
@@ -40,28 +42,20 @@ static BOOL notAwakeFromBackground = YES;
 {
     [super viewDidLoad];
     
-    // 保证只有App启动时才现实广告视图
-    if(notAwakeFromBackground)
-    {
-        AdVC *vc = [[AdVC alloc] initWithNibName:@"AdVC" bundle:nil];
-        [self presentViewController:vc animated:NO completion:^{
-            notAwakeFromBackground = NO;
-        }];
-    }
+    self.lastRefreshTime = [NSDate timeIntervalSinceReferenceDate];
     
     self.tableView.rowHeight = 80.0;
     self.tableView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(responseUIApplicationNotification:) name:UIApplicationDidBecomeActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(responseUIApplicationNotification:) name:UIApplicationWillEnterForegroundNotification object:nil];
     
-    // 左边
+    // 侧边栏按钮
     UIImage *image = [UIImage imageNamed:@"SideMenu"];
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(openSideMenu)];
     self.navigationItem.leftBarButtonItem = item;
     
-    // 右边
-    item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(goBackToTop)];
+    // 搜索按钮
+    item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(pushSearchController)];
     self.navigationItem.rightBarButtonItem = item;
     
     // 加载更多按钮
@@ -82,11 +76,11 @@ static BOOL notAwakeFromBackground = YES;
     self.tableView.tableFooterView = footer;
     [self.tableView.tableFooterView setHidden:YES];
     
+    [self requestAdData];
+
     // 刷新控件
-    self.refreshControl = [UIRefreshControl new];
+    self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(refreshNewsGroupList) forControlEvents:UIControlEventValueChanged];
-    
-    // 开始刷新
     [self.refreshControl beginRefreshing];
     [self refreshNewsGroupList];
 }
@@ -98,10 +92,38 @@ static BOOL notAwakeFromBackground = YES;
     objc_msgSend([UIDevice currentDevice], @selector(setOrientation:), UIDeviceOrientationPortrait);
 }
 
+#define HalfHour (60 * 30)
+
 - (void)responseUIApplicationNotification:(NSNotification *)notification
 {
-    AdVC *vc = [[AdVC alloc] initWithNibName:@"AdVC" bundle:nil];
-    [self presentViewController:vc animated:NO completion:NULL];
+    NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
+    if (abs(now - self.lastRefreshTime) > HalfHour) {
+        [self requestAdData];
+        [self.refreshControl beginRefreshing];
+        [self.tableView setContentOffset:CGPointMake(0, -self.refreshControl.frame.size.height) animated:YES];
+        [self refreshNewsGroupList];
+    }
+}
+
+- (void)requestAdData
+{
+    CGRect frame = self.tableView.bounds;
+    frame.size.height = 60.0;
+    self.adScrollView = [[AdScrollView alloc] initWithFrame:frame];
+    [self.adScrollView addTarget:self action:@selector(toucheOnAdScrollView:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [AdManager requestAdData:^(AdConfig *adConfig) {
+        [self.adScrollView setDataSource:adConfig.homeAdEntityArray];
+        self.tableView.tableHeaderView = self.adScrollView;
+    }];
+}
+
+// 点击广告.TODO:加入统计
+- (void)toucheOnAdScrollView:(AdScrollView *)adScrollView
+{
+    Ad *ad = [[AdManager getAdConfig].homeAdEntityArray objectAtIndex:adScrollView.pageIndex];
+    AdDetailVC *vc = [[AdDetailVC alloc] initWithAd:ad];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 // 打开侧边栏
@@ -111,10 +133,9 @@ static BOOL notAwakeFromBackground = YES;
     [self.sideMenuViewController presentLeftMenuViewController];
 }
 
-// 分享App给朋友
-- (void)goBackToTop
+- (void)pushSearchController
 {
-    [self.tableView setContentOffset:CGPointZero animated:YES];
+    //UISearchDisplayController *vc = [[UISearchDisplayController alloc] ini]
 }
 
 // 刷新列表
